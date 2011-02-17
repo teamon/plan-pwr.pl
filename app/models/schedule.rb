@@ -1,4 +1,7 @@
 class Schedule < ActiveRecord::Base
+  WINTER = 1
+  SUMMER = 2
+  
   attr_accessor :raw
   attr_accessible :year, :semester
   

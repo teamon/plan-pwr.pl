@@ -4,8 +4,8 @@ class CreateEntries < ActiveRecord::Migration
       t.integer :schedule_id
       t.string :course_code
       t.string :course_name
-      t.string :group_name
       t.string :course_type
+      t.string :group_code
       t.integer :week
       t.integer :week_day
       t.integer :start_hour
