@@ -37,9 +37,6 @@ module Plan::Generators
     def to_html
       @days = @schedule.days
       @hours_count = HOURS.size
-      # @entries.sort! {|a,b| a.start_time <=> b.start_time }
-      
-
       ERB.new(File.read(template)).result(binding)
     end
 
@@ -66,9 +63,9 @@ module Plan::Generators
     end
   end
 
-  # class MiniHTML < HTML
-  #   def template
-  #     File.dirname(__FILE__) + "/../../views/pdf-template-mini.erb"
-  #   end
-  # end
+  class MiniHTML < HTML
+    def template
+      File.dirname(__FILE__) + "/../../views/pdf-template-mini.erb"
+    end
+  end
 end

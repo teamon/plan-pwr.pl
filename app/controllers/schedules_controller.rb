@@ -1,8 +1,19 @@
 class SchedulesController < ApplicationController
+  respond_to :html #, :pdf
+  
   def show
     @schedule = Schedule.find_by_hash(params[:hash])
     
     raise ActiveRecord::RecordNotFound unless @schedule
+    if params[:format]
+      respond_with(@schedule) do |format|
+        format.html do
+          render :text => Plan::Generators::HTML.generate!(@schedule)
+        end
+      end
+    else
+      
+    end
   end
 
   def new
@@ -14,7 +25,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    schedule, entries = PlanParser.parse!(params[:raw])
+    schedule, entries = Plan::Parser.parse!(params[:raw])
     
     if schedule.save
       schedule.generate_hash!

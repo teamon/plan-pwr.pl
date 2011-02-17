@@ -21,4 +21,5 @@
       = f.text_field :room
       = f.text_field :lecturer
   
-= link_to "HTML", [:generate, @schedule]
+= link_to "HTML", schedule_path(@schedule.hash, :format => "html")
+= link_to "PDF", schedule_path(@schedule.hash, :format => "pdf")
