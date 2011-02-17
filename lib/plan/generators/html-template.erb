@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='pl_PL' xml:lang='pl_PL' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>plan</title>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <style type='text/css'>
+      /*<![CDATA[*/
+        <% 
+        @dnum = @days.size
+        @dsize = 950 / @dnum
+        @hsize = 48
+        
+        %>
+        html,body,div,span,h1,h2,p,a,strong,ul,li,fieldset,form,label {
+          background:transparent;
+          border:0;
+          font-size:100%;
+          margin:0;
+          padding:0;
+          vertical-align:baseline;
+        }
+        
+        body {
+          color:#222;
+          font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
+          font-size:10px;
+        }
+        
+        #container {
+          width: <%= @dsize*@dnum + 57 %>px;
+        }
+        
+        
+        #main {
+          margin: auto;
+          width: <%= (@dsize+1)*@dnum + 50 %>px;
+          border: 1px solid #ddd;
+          overflow: hidden;
+        }
+        
+        #copy {
+          padding-top:10px;
+          float: right;
+          width: 500px;
+          text-align: right;
+          
+        }
+        
+        #legend {
+          padding: 2px 0;
+          float:left;
+          width: 400px;
+          padding-left: 51px;
+        }
+        
+        #legend span {
+          padding: 5px;
+          float: left;
+          margin-right: 2px;
+        }
+        
+        #days  {
+          overflow: hidden;
+          padding-left: 50px;
+        }
+        
+        #days div {
+          float: left;
+          text-align: center;
+          padding: 5px 0;
+          width: <%= @dsize %>px;
+          border-left: 1px solid #ddd;
+        }
+        
+        #hours {
+          float: left;
+          width: 50px;
+          margin-top: -6px;
+        }
+        
+        #hours div {
+          text-align: center;
+          width: 50px;
+          height: <%= @hsize %>px;
+        }
+        
+        .day {
+          width: <%= @dsize %>px;
+          height: <%= HOURS.size * @hsize %>px;
+          border-left: 1px solid #ddd;
+          float: left;
+          background: #eee;
+          position: relative;
+        }
+        
+        .course {
+          position: absolute;
+          width: 100%;
+        }
+        
+        .course .wrap {
+          border-width: 1px;
+          border-style: solid;
+          border-radius: 5px;
+          height: 100%;
+          padding: 0 3px;
+          overflow: hidden;
+        }
+        
+        <%= colors_css %>
+        
+        .course .n { font-weight: bold; font-size: 11px;}
+        
+        .sep {
+          display: block;
+          height: <%= @hsize-1 %>px;
+          border-top: 1px solid #ddd;
+        }
+        
+        a {
+          color: #1c64dc;
+        }
+        
+        
+        .w_2 {
+          width: <%= @dsize / 2 - 8 %>px;
+          margin-left: <%= @dsize / 2 %>px;
+        }
+        
+        .w_1 {
+          width: <%= @dsize / 2 - 8 %>px;
+        }
+        
+        .w_2_wider {
+          width: <%= @dsize / 2 - 8 + (@dsize / 10) %>px;
+          margin-left: <%= @dsize / 2 - (@dsize / 10) %>px;
+        }
+        
+        .w_1_wider {
+          width: <%= @dsize / 2 - 8 + (@dsize / 10) %>px;
+        }
+
+      /*]]>*/
+    </style>
+  </head>
+  <body>
+    <div id='container'>
+      <div id='main'>
+        <div id="days">
+          <% @days.each_pair do |day, _| %>
+            <div><%= WEEK_DAYS_NAMES[day] %></div>
+          <% end %>
+        </div>
+        
+        <div id="hours">
+          <% HOURS.each do |hour| %>
+          <div><%= "%02d:00" % hour %></div>
+          <% end %>
+        </div>
+        
+        <% @days.each_pair do |day, ent| %>
+          <div class="day">
+            <% HOURS.each do |hour| %>
+              <span class='sep'></span>
+            <% end %>
+            
+            <% entries = ent.map {|e| [e, entry_top_and_size(e)] } %>
+            <% entries.each do |entry, (top, size)| %>
+              <div class="course" style="top: <%= top * @hsize / 12 %>px; height: <%= size * @hsize / 12 %>px;">
+                <div class="wrap c_<%= entry.course_type %> <%= entry_week_wider_class(entry, top, size, entries) %>">
+                  <div class="h">
+                    <%= entry_time_string(entry) %>
+                    <% if entry.week != 0 %>
+                      | <%= WEEKS_NAMES[entry.week] %>
+                    <% end %>
+                  </div>
+                  <div class="n"><%= entry.course_name %></div>
+                  <div class="l"><%= entry.location %></div>
+                  <div class="p"><%= entry.lecturer %></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div id="legend">
+        <% COURSE_TYPES.each_pair do |name, code| %>
+        <span class="box c_<%= code %>"><%= name %></span>
+        <% end %>
+      </div>
+      <div id='copy'>
+        Plan wygenerowany przez <a href="http://pwr.heroku.com">http://pwr.heroku.com</a> | Tymon Tobolski (<a href="http://pwr.heroku.com">http://teamon.eu</a>) 2010-2011
+      </div>
+    </div>
+  </body>
+</html>

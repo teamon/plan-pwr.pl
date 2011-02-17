@@ -14,14 +14,26 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(params[:schedule])
-
-    if @schedule.save
-      @schedule.generate_hash!
-      redirect_to schedule_path(@schedule.hash), :notice => 'Schedule was successfully created.'
+    schedule, entries = PlanParser.parse!(params[:raw])
+    
+    if schedule.save
+      schedule.generate_hash!
+      
+      entries.each do |e| 
+        e.schedule = schedule
+        e.save
+      end
+      
+      redirect_to schedule_path(schedule.hash), :notice => 'Schedule was successfully created.'
     else
       render :action => "new"
     end
+  end
+  
+  def generate
+    @schedule = Schedule.find(params[:id])
+    
+    render :text => Plan::Generators::HTML.generate!(@schedule)
   end
 
   # PUT /schedules/1

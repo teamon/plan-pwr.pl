@@ -1,1 +1,24 @@
 %h2 Twój plan
+
+%h2 Kursy
+
+- @schedule.entries.each do |entry|
+  %div
+    = form_for [@schedule, entry] do |f|
+      = f.text_field :course_name
+      = f.text_field :course_code
+      = f.text_field :course_name
+      = f.text_field :course_type
+      = f.text_field :group_code
+      = f.select :week, Plan::Config::WEEKS
+      = f.select :week_day, Plan::Config::WEEK_DAYS
+      = f.select :start_hour, Plan::Config::HOURS
+      = f.select :start_min, Plan::Config::MINUTES
+      to
+      = f.select :end_hour, Plan::Config::HOURS
+      = f.select :end_min, Plan::Config::MINUTES
+      = f.text_field :building
+      = f.text_field :room
+      = f.text_field :lecturer
+  
+= link_to "HTML", [:generate, @schedule]

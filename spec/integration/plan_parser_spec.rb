@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe PlanParser do
+describe Plan::Parser do
   it "should parse 1" do
     raw = File.read(File.dirname(__FILE__) + "/data/1.html")
-    schedule, entries = PlanParser.parse!(raw)
+    schedule, entries = Plan::Parser.parse!(raw)
     
     schedule.year.should == "2010/2011"
-    schedule.semester.should == Schedule::SUMMER
+    schedule.semester.should == Plan::Config::SUMMER
     
     entries.size.should == 17
     
