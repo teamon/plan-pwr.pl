@@ -1,0 +1,36 @@
+!!! Strict
+%html{:lang => "pl_PL", "xml:lang" => "pl_PL", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title epure
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+
+  %body
+    #container
+      #main
+        %h1
+          %a{:href => "/"} epure
+          %span (0.7.0)
+        .info
+          %a{:href => "http://github.com/teamon/pwr"} source code
+        = yield
+      #foot
+        #more
+          %a{:href => "http://blog.teamon.eu"} blog
+          |
+          %a{:href => "http://teamon.tumblr.com"} tumblr
+          |
+          %a{:href => "http://github.com/teamon"} github
+          |
+          %a{:href => "http://synergia.pwr.wroc.pl"} Synergia
+          |
+          %a{:href => "http://klp.heroku.com"} KLP Printer
+          |
+          %a{:href => "http://pwr.heroku.com"} Generator planu PWR
+        %p.copy
+          \&copy; 2010-2011 Tymon Tobolski
+          %a{:href => "http://teamon.eu"} teamon.eu
+
+
+
