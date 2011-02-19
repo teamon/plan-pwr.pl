@@ -1,20 +1,24 @@
-/*html,body,div,span,h1,h2,p,a,strong,ul,li,fieldset,form,label {
-background:transparent;
-border:0;
-font-size:100%;
-margin:0;
-padding:0;
-vertical-align:baseline;
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,strong,ul,li,fieldset,form,label {
+  background:transparent;
+  border:0;
+  font-size:100%;
+  margin:0;
+  padding:0;
+  vertical-align:baseline;
 }
 
 body {
-color:#222;
-font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
-font-size:8pt;
-line-height:1;
-padding-top:20px;
+  color:#222;
+  font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
+  font-size:10px;
 }
 
+#container {
+  width: 1010px;
+  margin: auto;
+}
+
+/*
 h1,h2,strong,a {
 font-style:inherit;
 font-weight:inherit;
@@ -331,8 +335,13 @@ padding:5px 10px;
 /*  background: #BFE4FF;*
 }*/
 
+h2 {
+  font-size: 15px;
+  padding: 5px 0;
+}
 
-.entry a {
+
+#schedule .entry a {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -343,10 +352,72 @@ padding:5px 10px;
   background: url("http://facebook.mobissimo.com/images/ico-edit.png");
 }
 
-.entry .wrap {
+#schedule .entry .wrap {
   position: relative;
 }
 
+#facebox form p.location input {
+  text-align: center;
+  width: 40px;
+}
 
+#facebox form p {
+  overflow: hidden;
+  padding: 2px 0;
+}
 
+#facebox form label {
+  float: left;
+  width: 70px;
+  text-align: right;
+  padding: 5px 5px 0 0;
+}
+
+#facebox form input[type="text"] {
+  float: left;
+  border: 1px solid #ccc;
+  padding: 3px 5px;
+  width: 250px;
+}
+#facebox form select {
+  float: left;
+}
+
+#facebox form span {
+  float: left;
+  padding: 5px 5px 0 5px;
+}
+
+#facebox form p.actions {
+  text-align: center;
+}
+
+#facebox form input[type="submit"] {
+  border: 1px solid #204683;
+  background: #5E75A0;
+  color: #fff;
+}
+
+#facebox form a.cancel {
+  color: #555;
+}
+
+#facebox h3 {
+  font-size: 15px;
+  padding-bottom: 5px;
+}
+
+#facebox .form-notice {
+  background-color: #BFE4FF;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#facebox .form-errors {
+  background-color: #F3B6B7;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
 

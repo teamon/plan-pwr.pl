@@ -23,6 +23,7 @@
               .n= entry.course_name
               .l= entry.location
               .p= entry.lecturer
+              = link_to "edit", [:edit, @schedule, entry], :rel => "facebox"
     
     #legend
       - @generator.course_types.each_pair do |name, code|

@@ -36,7 +36,7 @@ module Plan::Generators
         
         entries = entries.map do |e, (top, size)|
           cls =  entry_week_wider_class(e, top, size, entries)
-          time = "#{e.start_hour}:#{e.start_min} - #{e.end_hour}:#{e.end_min}"
+          time = "#{e.start_hour}:#{"%02d" % e.start_min} - #{e.end_hour}:#{"%02d" % e.end_min}"
           time << " | #{WEEKS_NAMES[e.week]}" if e.week != 0
           
           [e, top, size, cls, time]

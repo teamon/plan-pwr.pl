@@ -1,7 +1,5 @@
 Epure::Application.routes.draw do
   resources :schedules do
-    
-    
     resources :entries
   end
   

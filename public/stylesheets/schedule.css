@@ -1,19 +1,3 @@
-/*html,body,div,span,h1,h2,p,a,strong,ul,li,fieldset,form,label {
-  background:transparent;
-  border:0;
-  font-size:100%;
-  margin:0;
-  padding:0;
-  vertical-align:baseline;
-}*/
-
-body {
-  color:#222;
-  font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
-  font-size:10px;
-}
-
-
 /*
 dsize = 950 / num (190)
 hsize = 48
@@ -30,12 +14,12 @@ hsize = 48
   overflow: hidden;
 }
 
-#days  {
+#schedule #days  {
   overflow: hidden;
   padding-left: 50px;
 }
 
-#days div {
+#schedule #days div {
   float: left;
   text-align: center;
   padding: 5px 0;
@@ -43,19 +27,19 @@ hsize = 48
   border-left: 1px solid #ddd;
 }
 
-#hours {
+#schedule #hours {
   float: left;
   width: 50px;
   margin-top: -6px;
 }
 
-#hours div {
+#schedule #hours div {
   text-align: center;
   width: 50px;
   height: 48px;
 }
 
-.day {
+#schedule .day {
   width: 190px;
   height: 720px; /* hours.size * hsize */
   border-left: 1px solid #ddd;
@@ -64,54 +48,55 @@ hsize = 48
   position: relative;
 }
 
-.entry {
+#schedule .entry {
   position: absolute;
   width: 100%;
 }
 
-.entry .wrap {
+#schedule .entry .wrap {
   border-width: 1px;
   border-style: solid;
   border-radius: 5px;
+  -moz-border-radius: 5px;
   height: 100%;
   padding: 0 3px;
   overflow: hidden;
 }
 
-.entry .n { font-weight: bold; font-size: 11px;}
+#schedule .entry .n { font-weight: bold; font-size: 11px;}
 
-.sep {
+#schedule .sep {
   display: block;
   height: 47px;
   border-top: 1px solid #ddd;
 }
 
-.w_2 {
+#schedule .w_2 {
   width: 87px;
   margin-left: <%= @dsize / 2 %>px;
 }
 
-.w_1 {
+#schedule .w_1 {
   width: 87px;
 }
 
-.w_2_wider {
+#schedule .w_2_wider {
   width: 106px;
   margin-left: 76px;
 }
 
-.w_1_wider {
+#schedule .w_1_wider {
   width: 106px;
 }
 
-#legend {
+#schedule #legend {
   padding: 2px 0;
   float:left;
   width: 400px;
   padding-left: 51px;
 }
 
-#legend span {
+#schedule #legend span {
   padding: 5px;
   float: left;
   margin-right: 2px;
