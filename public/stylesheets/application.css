@@ -1,4 +1,4 @@
-html,body,div,span,h1,h2,p,a,strong,ul,li,fieldset,form,label {
+/*html,body,div,span,h1,h2,p,a,strong,ul,li,fieldset,form,label {
 background:transparent;
 border:0;
 font-size:100%;
@@ -175,51 +175,51 @@ div.radio {
 }
 
 div.radio label {
-	float: left;
-	padding: 4px 27px 4px 4px;
-	/*width: 60px;*/
+  float: left;
+  padding: 4px 27px 4px 4px;
+  /*width: 60px;*
 }
 
 div.radio input {
-	float: left;
+  float: left;
 }
 
 
 #menu li {
-	list-style: none;
-	float: left;
-	width: 370px;
-	margin: 0 15px 5px 15px;
+  list-style: none;
+  float: left;
+  width: 370px;
+  margin: 0 15px 5px 15px;
 }
 
 #menu li a {
-	display: block;
-	text-align: center;
-	padding: 20px 0;
-	background-color: #eee;
-	font-size: 11pt;
+  display: block;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #eee;
+  font-size: 11pt;
 }
 
 
 table {
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 table td, table th {
-	border: none;
-	padding: 3px 3px 0 0;
+  border: none;
+  padding: 3px 3px 0 0;
 }
 table td input {
-	border:1px solid #ccc;
-	padding:3px;
-	width:200px;
+  border:1px solid #ccc;
+  padding:3px;
+  width:200px;
 }
 
 table td.avg {
-	text-align: center;
-	color:#1f75cc;
-	font-size:11pt;
-	font-weight:700;
-	padding: 10px;
+  text-align: center;
+  color:#1f75cc;
+  font-size:11pt;
+  font-weight:700;
+  padding: 10px;
 }
 
 table th.name { text-align: left; }
@@ -244,21 +244,21 @@ padding:5px 10px;
   padding-bottom: 10px;
 }
 #examples {
-	padding-bottom: 15px;
-	overflow: hidden;
+  padding-bottom: 15px;
+  overflow: hidden;
 }
 #examples a {
-	display: block;
-	width: 235px;
-	height: 150px;
-	float: left;
-	border: 5px solid #ddd;
-	margin-bottom: 20px;
-	margin-left: 10px;
-	background-position: center center;
+  display: block;
+  width: 235px;
+  height: 150px;
+  float: left;
+  border: 5px solid #ddd;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  background-position: center center;
 }
 #examples a.first {
-	margin-left: 0px;
+  margin-left: 0px;
 }
 
 #pmore {
@@ -324,4 +324,11 @@ padding:5px 10px;
 #picker-wrap {
     float: right;
 }
+
+/* --- entry --- *
+
+.entry {
+/*  background: #BFE4FF;*
+}*/
+
 

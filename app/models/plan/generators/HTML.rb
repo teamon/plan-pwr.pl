@@ -2,7 +2,7 @@ module Plan::Generators
   class HTML
     include Plan::Config
     def template
-      Rails.root + "lib/plan/generators/html-template.erb"
+      Rails.root + "app/models/plan/generators/html-template.erb"
     end
 
     HOURS = (7..21).to_a
@@ -19,9 +19,31 @@ module Plan::Generators
       new(schedule, colors || DEFAULT_COLORS).to_html
     end
 
-    def initialize(schedule, colors)
+    def initialize(schedule, colors = DEFAULT_COLORS)
       @schedule = schedule
       @colors = colors
+    end
+    
+    def hours
+      HOURS
+    end
+    
+    def days
+      @days ||= @schedule.days.map do |day_id, ent|
+        entries = ent.map do |e|
+          [e, entry_top_and_size(e)]
+        end
+        
+        entries = entries.map do |e, (top, size)|
+          cls =  entry_week_wider_class(e, top, size, entries)
+          time = "#{e.start_hour}:#{e.start_min} - #{e.end_hour}:#{e.end_min}"
+          time << " | #{WEEKS_NAMES[e.week]}" if e.week != 0
+          
+          [e, top, size, cls, time]
+        end
+
+        [WEEK_DAYS_NAMES[day_id], entries]
+      end
     end
 
     def colors_css
@@ -39,6 +61,10 @@ module Plan::Generators
       @hours_count = HOURS.size
       ERB.new(File.read(template)).result(binding)
     end
+    
+    def course_types
+      COURSE_TYPES
+    end
 
     protected
 
@@ -55,17 +81,14 @@ module Plan::Generators
       cls = "w_#{entry.week}"
       
       stop = top+size
-      cls + (entry.week != "" && all.any? {|e, (t,s)| (t >= top && t <= stop) || (t < top && t+s > top) } ? "_wider" : "")
+      cls + (all.select {|e, (t,s)| (t >= top && t <= stop) || (t+s >= top && t+s <= stop) }.size > 1 ? "" : "_wider")
     end
     
-    def entry_time_string(entry)
-      "#{entry.start_hour}:#{entry.start_min} - #{entry.end_hour}:#{entry.end_min}"
-    end
   end
 
-  class MiniHTML < HTML
-    def template
-      File.dirname(__FILE__) + "/../../views/pdf-template-mini.erb"
-    end
-  end
+  # class MiniHTML < HTML
+  #   def template
+  #     File.dirname(__FILE__) + "/../../views/pdf-template-mini.erb"
+  #   end
+  # end
 end

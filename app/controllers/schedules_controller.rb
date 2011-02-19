@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
         end
       end
     else
-      
+      @generator = Plan::Generators::HTML.new(@schedule)
     end
   end
 
