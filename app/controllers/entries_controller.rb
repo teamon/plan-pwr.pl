@@ -10,8 +10,7 @@ class EntriesController < ApplicationController
   
   def create
     @entry = @schedule.entries.new(params[:entry])
-    
-    p @entry.save
+
     if @entry.save
       render :json => { :notice => "Kurs pomyślnie zapisany" }
     else
@@ -32,6 +31,11 @@ class EntriesController < ApplicationController
     else
       render :json => @entry.errors, :status => :unprocessable_entity
     end
+  end
+  
+  def show
+    @entry = @schedule.entries.find(params[:id])
+    render :partial => "entry", :locals => {:entry => @entry}
   end
   
   protected

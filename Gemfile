@@ -5,7 +5,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 
 # parser
-gem "nokogiri"
+gem "nokogiri", "1.4.4"
+
+# pdf
+gem "pdfkit", "0.5.0"
 # Use unicorn as the web server
 # gem 'unicorn'
 

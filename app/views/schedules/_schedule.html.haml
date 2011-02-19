@@ -1,8 +1,8 @@
 :css
   #{@generator.colors_css}
   
-#schedule
-  #schedule_main
+#schedule{:class => @generator.schedule_cls}
+  #schedule-main
     #days
       - @generator.days.each do |name, _|
         %div= name
@@ -24,7 +24,6 @@
               .l= entry.location
               .p= entry.lecturer
               = link_to "edit", [:edit, @schedule, entry], :rel => "facebox"
-    
     #legend
       - @generator.course_types.each_pair do |name, code|
         %span{:class => "c_#{code}"}= name

@@ -12,10 +12,15 @@ class Schedule < ActiveRecord::Base
   def days
     @days ||= begin
       d = entries.group_by {|e| e.week_day }
-      if d[5].blank? && d[6].blank?
-        d.delete(5)
-        d.delete(6)
+      x = if d[5].blank? && d[6].blank?
+        4
+      elsif d[6].blank?
+        5
+      else
+        6
       end
+      
+      (0..x).each {|i| d[i] ||= []}
       d
     end
   end

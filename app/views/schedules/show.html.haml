@@ -1,7 +1,18 @@
 %h2 Twój plan
+.schedule-menu
+  = link_to "Eksportuj", "#exports", :rel => "facebox"
+  = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox"
 
-= render :partial => "schedule"
-= link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox"
+#schedule-wrap
+  = render :partial => "schedule"
 
-/ = link_to "HTML", schedule_path(@schedule.hash, :format => "html")
-/ = link_to "PDF", schedule_path(@schedule.hash, :format => "pdf")
+#exports
+  .exports
+    %h3 Eksportuj plan
+    %ul
+      %li= link_to "HTML", schedule_path(@schedule.hash, :format => "html")
+      %li= link_to "PDF", schedule_path(@schedule.hash, :format => "pdf")
+      %li= link_to "iCal", schedule_path(@schedule.hash, :format => "ical")
+      %li= link_to "VCS", schedule_path(@schedule.hash, :format => "vcs")
+
+

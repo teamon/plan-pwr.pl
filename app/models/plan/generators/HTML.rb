@@ -28,6 +28,14 @@ module Plan::Generators
       HOURS
     end
     
+    def schedule_cls
+      case days.size
+      when 7 then "seven"
+      when 6 then "six"
+      else ""
+      end
+    end
+    
     def days
       @days ||= @schedule.days.map do |day_id, ent|
         entries = ent.map do |e|
@@ -36,12 +44,13 @@ module Plan::Generators
         
         entries = entries.map do |e, (top, size)|
           cls =  entry_week_wider_class(e, top, size, entries)
-          time = "#{e.start_hour}:#{"%02d" % e.start_min} - #{e.end_hour}:#{"%02d" % e.end_min}"
-          time << " | #{WEEKS_NAMES[e.week]}" if e.week != 0
+          time = "#{e.start_hour}<sup>#{"%02d" % e.start_min}</sup>-#{e.end_hour}<sup>#{"%02d" % e.end_min}</sup>".html_safe
+          # time << " | #{WEEKS_NAMES[e.week]}" if e.week != 0
           
           [e, top, size, cls, time]
         end
-
+        [day_id, entries]
+      end.sort_by {|day_id, entries| day_id }.map do |day_id, entries|
         [WEEK_DAYS_NAMES[day_id], entries]
       end
     end

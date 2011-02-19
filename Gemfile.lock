@@ -45,6 +45,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     nokogiri (1.4.4)
+    pdfkit (0.5.0)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -92,7 +93,8 @@ PLATFORMS
 DEPENDENCIES
   autotest
   haml
-  nokogiri
+  nokogiri (= 1.4.4)
+  pdfkit (= 0.5.0)
   rails (= 3.0.3)
   rspec-rails
   sqlite3-ruby

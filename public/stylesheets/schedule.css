@@ -1,15 +1,10 @@
-/*
-dsize = 950 / num (190)
-hsize = 48
-*/
-
 #schedule {
-  width: 1007px; /* dsize*dnum + 57 */
+  width: 1007px;
 }
 
-#schedule_main {
+#schedule-main {
   margin: auto;
-  width: 1005px; /* (dsize+1)*dnum + 50 */
+  width: 1005px;
   border: 1px solid #ddd;
   overflow: hidden;
 }
@@ -23,7 +18,7 @@ hsize = 48
   float: left;
   text-align: center;
   padding: 5px 0;
-  width: 190px; /* dsize */
+  width: 190px;
   border-left: 1px solid #ddd;
 }
 
@@ -41,7 +36,7 @@ hsize = 48
 
 #schedule .day {
   width: 190px;
-  height: 720px; /* hours.size * hsize */
+  height: 720px;
   border-left: 1px solid #ddd;
   float: left;
   background: #eee;
@@ -73,7 +68,7 @@ hsize = 48
 
 #schedule .w_2 {
   width: 87px;
-  margin-left: <%= @dsize / 2 %>px;
+  margin-left: 95px;
 }
 
 #schedule .w_1 {
@@ -100,4 +95,66 @@ hsize = 48
   padding: 5px;
   float: left;
   margin-right: 2px;
+}
+
+/* SIX */
+
+#schedule.six {
+  width: 1006px;
+}
+
+#schedule.six #schedule-main {
+  width: 1004px;
+}
+
+#schedule.six #days div {
+  width: 158px;
+}
+
+#schedule.six .day {
+  width: 158px;
+}
+
+#schedule.six .w_2_wider {
+  margin-left: 44px;
+}
+
+#schedule.six .w_1 {
+  width: 71px;
+}
+
+#schedule.six .w_2 {
+  width: 71px;
+  margin-left: 79px;
+} 
+
+
+
+/* SEVEN */
+#schedule.seven {
+  width: 1004px;
+}
+
+#schedule.seven #schedule-main {
+  width: 1002px;
+}
+
+#schedule.seven #days div {
+  width: 135px;
+}
+
+#schedule.seven .day {
+  width: 135px;
+}
+
+#schedule.seven .w_2_wider {
+  margin-left: 21px;
+}
+
+#schedule.seven .w_1, #schedule.seven .w_2 {
+  width: 59px;
+}
+
+#schedule.seven .w_2 {
+  margin-left: 68px;
 }

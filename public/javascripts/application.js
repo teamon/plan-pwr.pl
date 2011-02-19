@@ -2,14 +2,9 @@ $(document).ready(function(){
   $.facebox.settings.closeImage = 'http://assets.teamon.eu/facebox/closelabel.png'
   $.facebox.settings.loadingImage = 'http://assets.teamon.eu/facebox/loading.gif'
   
-  $(".entry .wrap").hover(function(){
-    $(this).find("a").show()
-  }, function(){
-    $(this).find("a").hide()
-  })
-  
-  $(".entry .wrap a").hide();
-  $("a[rel=facebox]").facebox();
+  $("a[rel=facebox]").livequery(function(){
+    $(this).facebox();
+  });
   
   $("#facebox form").live("ajax:success", function(ev, data, status, xhr){
     var notice = $(this).children(".form-notice")
@@ -43,6 +38,13 @@ $(document).ready(function(){
     $("#facebox a.close").click()
     return false
   })
+  
+  $("form.edit_entry").live("ajax:success", function(ev, data, status, xhr){
+    $.get(document.location.href, {}, function(data){
+      // $("#schedule").remove()
+      $("#schedule-wrap").html(data)
+    })
+  });
 })
 
 

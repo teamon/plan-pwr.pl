@@ -1,18 +1,37 @@
 class SchedulesController < ApplicationController
-  respond_to :html #, :pdf
+  respond_to :html, :pdf
   
   def show
     @schedule = Schedule.find_by_hash(params[:hash])
     
     raise ActiveRecord::RecordNotFound unless @schedule
-    if params[:format]
-      respond_with(@schedule) do |format|
-        format.html do
-          render :text => Plan::Generators::HTML.generate!(@schedule)
-        end
-      end
-    else
+    
+    if request.xhr?
       @generator = Plan::Generators::HTML.new(@schedule)
+      render :partial => "schedule", :layout => false
+    else
+      if params[:format]
+        respond_with(@schedule) do |format|
+          format.html do
+            @generator = Plan::Generators::HTML.new(@schedule)
+            @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
+            render "export", :layout => "export"
+          end
+          
+          format.pdf do
+            @generator = Plan::Generators::HTML.new(@schedule)
+            @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
+            html = render_to_string "export.html", :layout => "export.html"
+            
+            pdf = Plan::Generators::PDF.new.generate(html)
+            send_data pdf, :filename => "plan.pdf", 
+                           :type => "application/pdf", 
+                           :disposition => "inline"
+          end
+        end
+      else
+        @generator = Plan::Generators::HTML.new(@schedule)
+      end
     end
   end
 

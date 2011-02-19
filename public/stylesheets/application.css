@@ -340,6 +340,16 @@ h2 {
   padding: 5px 0;
 }
 
+.schedule-menu {
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.schedule-menu a {
+  float: right;
+  font-size: 15px;
+  padding-left: 10px;
+}
 
 #schedule .entry a {
   position: absolute;
@@ -350,11 +360,54 @@ h2 {
   text-indent: -200px;
   height: 10px;
   background: url("http://facebook.mobissimo.com/images/ico-edit.png");
+  visibility: hidden;
+}
+
+#schedule .entry:hover a {
+  visibility: visible;
 }
 
 #schedule .entry .wrap {
   position: relative;
 }
+
+#exports {
+  display: none;
+}
+
+.exports ul {
+  list-style: none;
+  overflow: hidden;
+  width: 400px;
+}
+
+.exports li {
+  float: left;
+  margin: 10px;
+}
+/*.exports li:first-child {
+  margin-left: 0px;
+}*/
+
+.exports li a {
+  background-color: #BFE4FF;
+  text-align: center;
+  display: block;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+.exports li a:hover {
+  background-color: #AED3EE;
+}
+
+
+
+
 
 #facebox form p.location input {
   text-align: center;
@@ -419,5 +472,6 @@ h2 {
   text-align: center;
   padding: 5px;
   margin-bottom: 10px;
+  list-style: none;
 }
 
