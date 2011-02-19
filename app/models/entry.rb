@@ -7,6 +7,6 @@ class Entry < ActiveRecord::Base
   belongs_to :schedule
   
   def location
-    [building, room].reject{|e| e.blank?}.join(" /")
+    [building, room].reject{|e| e.blank?}.join(" / ")
   end
 end

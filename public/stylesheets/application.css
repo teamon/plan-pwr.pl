@@ -332,3 +332,21 @@ padding:5px 10px;
 }*/
 
 
+.entry a {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 10px;
+  overflow: hidden;
+  text-indent: -200px;
+  height: 10px;
+  background: url("http://facebook.mobissimo.com/images/ico-edit.png");
+}
+
+.entry .wrap {
+  position: relative;
+}
+
+
+
+
