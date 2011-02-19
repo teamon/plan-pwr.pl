@@ -33,3 +33,5 @@
   %p.actions
     = f.submit "Zapisz", :class => "btn-generic", "data-disable-with" => "Saving..."
     = link_to "Zamknij", "#", :class => "cancel"
+    - unless @entry.new_record?
+      = link_to "Usuń", [@schedule, @entry], :remote => true, "data-method" => "delete", :class => "delete"

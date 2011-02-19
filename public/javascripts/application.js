@@ -1,3 +1,25 @@
+var Epure = {
+  reload: function(){
+    $("#schedule-overlay").show()
+    $.get(document.location.href, {}, function(data){
+      $("#schedule-wrap").html(data)
+      $("#schedule-overlay").hide()
+    })
+  },
+  
+  showNotice: function(msg){
+    var form = $("#facebox form")
+    form.children(".form-errors").hide()
+    var notice = $(form).children(".form-notice")
+    if(notice.size() == 0){
+      notice = $("<div class='form-notice'></div>");
+      form.prepend(notice);
+    }
+    notice.text(msg).show();
+    setTimeout(function(){ notice.slideUp() }, 1500);
+  }
+}
+
 $(document).ready(function(){
   $.facebox.settings.closeImage = 'http://assets.teamon.eu/facebox/closelabel.png'
   $.facebox.settings.loadingImage = 'http://assets.teamon.eu/facebox/loading.gif'
@@ -7,13 +29,7 @@ $(document).ready(function(){
   });
   
   $("#facebox form").live("ajax:success", function(ev, data, status, xhr){
-    var notice = $(this).children(".form-notice")
-    if(notice.size() == 0){
-      notice = $("<div class='form-notice'></div>");
-      $(this).prepend(notice);
-    }
-    notice.text(data.notice).show();
-    setTimeout(function(){ notice.slideUp() }, 1500);
+    Epure.showNotice(data.notice)
   })
   
   $("#facebox form").live("ajax:error", function(ev, xhr, status){
@@ -31,20 +47,33 @@ $(document).ready(function(){
     }
     
     errors.show();
-    setTimeout(function(){ errors.slideUp() }, 1500);
   })
   
   $("#facebox form a.cancel").live("click", function(){
-    $("#facebox a.close").click()
+    jQuery(document).trigger('close.facebox');
     return false
   })
   
-  $("form.edit_entry").live("ajax:success", function(ev, data, status, xhr){
-    $.get(document.location.href, {}, function(data){
-      // $("#schedule").remove()
-      $("#schedule-wrap").html(data)
+  $("form.edit_entry").live("ajax:success", function(){
+    Epure.reload();
+  });
+  
+  $("form.new_entry").live("ajax:success", function(ev, data, status, xhr){
+    Epure.reload();
+    jQuery.facebox({ ajax: data.edit_path });
+    var self = this
+    var msg = data.notice
+    $(document).bind('reveal.facebox', function(){
+      Epure.showNotice(msg);
+      $(document).unbind("reveal.facebox");
     })
   });
+  
+  $("#facebox a.delete").live("click", function(){
+    jQuery(document).trigger('close.facebox');
+  })
+  
+  
 })
 
 

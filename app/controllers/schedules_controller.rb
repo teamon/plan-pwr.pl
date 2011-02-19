@@ -2,8 +2,7 @@ class SchedulesController < ApplicationController
   respond_to :html, :pdf
   
   def show
-    @schedule = Schedule.find_by_hash(params[:hash])
-    
+    @schedule = Schedule.find_by_slug(params[:slug])
     raise ActiveRecord::RecordNotFound unless @schedule
     
     if request.xhr?
@@ -44,30 +43,17 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    schedule, entries = Plan::Parser.parse!(params[:raw])
+    @schedule = Plan::Parser.parse!(params[:raw])
     
-    if schedule.save
-      schedule.generate_hash!
-      
-      entries.each do |e| 
-        e.schedule = schedule
-        e.save
-      end
-      
-      redirect_to schedule_path(schedule.hash), :notice => 'Schedule was successfully created.'
+    if @schedule.save
+      redirect_to schedule_path(@schedule.slug), :notice => 'Schedule was successfully created.'
     else
       render :action => "new"
     end
-  end
-  
-  def generate
-    @schedule = Schedule.find(params[:id])
-    
-    render :text => Plan::Generators::HTML.generate!(@schedule)
+  rescue
+    render :actions => "new"
   end
 
-  # PUT /schedules/1
-  # PUT /schedules/1.xml
   def update
     @schedule = Schedule.find(params[:id])
 
@@ -82,15 +68,13 @@ class SchedulesController < ApplicationController
     end
   end
 
-  # DELETE /schedules/1
-  # DELETE /schedules/1.xml
-  def destroy
-    @schedule = Schedule.find(params[:id])
-    @schedule.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(schedules_url) }
-      format.xml  { head :ok }
-    end
-  end
+  # def destroy
+  #   @schedule = Schedule.find(params[:id])
+  #   @schedule.destroy
+  # 
+  #   respond_to do |format|
+  #     format.html { redirect_to(schedules_url) }
+  #     format.xml  { head :ok }
+  #   end
+  # end
 end

@@ -1,7 +1,7 @@
 class CreateSchedules < ActiveRecord::Migration
   def self.up
     create_table :schedules do |t|
-      t.string :hash, :unique => true
+      t.string :slug, :unique => true
       t.string :year
       t.integer :semester
 

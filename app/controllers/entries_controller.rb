@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
     @entry = @schedule.entries.new(params[:entry])
 
     if @entry.save
-      render :json => { :notice => "Kurs pomyślnie zapisany" }
+      render :json => { :notice => "Kurs pomyślnie zapisany", :edit_path => edit_schedule_entry_path(@schedule, @entry) }
     else
       render :json => @entry.errors, :status => :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class EntriesController < ApplicationController
   
   def update
     @entry = @schedule.entries.find(params[:id])
-  
+
     if @entry.update_attributes(params[:entry])
       render :json => { :notice => "Kurs pomyślnie zapisany" }
     else
@@ -38,41 +38,15 @@ class EntriesController < ApplicationController
     render :partial => "entry", :locals => {:entry => @entry}
   end
   
+  def destroy
+    @entry = @schedule.entries.find(params[:id])
+    @entry.destroy
+    render :json => { :notice => "Kurs usunięty" }
+  end
+  
   protected
   
   def fetch_schedule
     @schedule = Schedule.find(params[:schedule_id])
   end
-
-  # def create
-  #   schedule, entries = Plan::Parser.parse!(params[:raw])
-  #   
-  #   if schedule.save
-  #     schedule.generate_hash!
-  #     
-  #     entries.each do |e| 
-  #       e.schedule = schedule
-  #       e.save
-  #     end
-  #     
-  #     redirect_to schedule_path(schedule.hash), :notice => 'Schedule was successfully created.'
-  #   else
-  #     render :action => "new"
-  #   end
-  # end
-  
-
-
-
-  # # DELETE /schedules/1
-  # # DELETE /schedules/1.xml
-  # def destroy
-  #   @schedule = Schedule.find(params[:id])
-  #   @schedule.destroy
-  # 
-  #   respond_to do |format|
-  #     format.html { redirect_to(schedules_url) }
-  #     format.xml  { head :ok }
-  #   end
-  # end
 end

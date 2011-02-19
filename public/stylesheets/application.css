@@ -371,6 +371,18 @@ h2 {
   position: relative;
 }
 
+#schedule-overlay {
+  position: absolute;
+  width: 943px;
+  height: 752px;
+  z-index: 100;
+  background: rgba(255,255,255,0.7) url("http://assets.teamon.eu/facebox/loading.gif") no-repeat 20px 20px;
+  font-size: 20px;
+  color: #555;
+  padding: 22px 0 0 60px;
+  display: none;
+}
+
 #exports {
   display: none;
 }
@@ -453,6 +465,12 @@ h2 {
 
 #facebox form a.cancel {
   color: #555;
+  padding: 0 4px;
+}
+
+#facebox form a.delete {
+  color: #a00;
+  padding: 0 4px;
 }
 
 #facebox h3 {
@@ -464,7 +482,12 @@ h2 {
   background-color: #BFE4FF;
   text-align: center;
   padding: 5px;
-  margin-bottom: 10px;
+  position: absolute;
+  top: 0;
+  left: 120px;
+  width: 200px;
+  border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
 }
 
 #facebox .form-errors {

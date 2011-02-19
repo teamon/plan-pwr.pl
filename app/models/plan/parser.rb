@@ -64,8 +64,9 @@ module Plan
           entry
         end
       end.flatten
-    
-      [schedule, entries]
+
+      schedule.entries += entries
+      schedule
     end
   end
 end

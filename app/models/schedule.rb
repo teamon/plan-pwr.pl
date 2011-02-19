@@ -3,12 +3,11 @@ class Schedule < ActiveRecord::Base
   attr_accessible :year, :semester
   
   has_many :entries
-
-  def generate_hash!
-    self.hash = rand(36**8).to_s(36) + id.to_s(36)
-    save
-  end
+  has_many :color_schemes
   
+  after_create :generate_slug
+  after_create :create_default_color_schemes
+
   def days
     @days ||= begin
       d = entries.group_by {|e| e.week_day }
@@ -24,4 +23,38 @@ class Schedule < ActiveRecord::Base
       d
     end
   end
+  
+  protected
+  
+  def generate_slug
+    self.slug = rand(36**8).to_s(36) + id.to_s(36)
+    save
+  end
+  
+  def create_default_color_schemes
+    cs = color_schemes.new(:background => "#f3b6b7", :border => "#e63021", :font => "#e63021")
+    cs.course_type = "W"
+    cs.save
+    
+    cs = color_schemes.new(:background => "#aeed91", :border => "#47ae03", :font => "#47ae03")
+    cs.course_type = "C"
+    cs.save
+    
+    cs = color_schemes.new(:background => "#a5c4f7", :border => "#1c64dc", :font => "#1c64dc")
+    cs.course_type = "L"
+    cs.save
+    
+    cs = color_schemes.new(:background => "#efbcf0", :border => "#bb3abd", :font => "#bb3abd")
+    cs.course_type = "P"
+    cs.save
+    
+    cs = color_schemes.new(:background => "#f5dcc0", :border => "#f38e00", :font => "#f38e00")
+    cs.course_type = "S"
+    cs.save
+    
+    cs = color_schemes.new(:background => "#ccc1ec", :border => "#5c3ab2", :font => "#5c3ab2")
+    cs.course_type = "X"
+    cs.save
+  end
 end
+

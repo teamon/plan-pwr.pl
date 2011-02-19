@@ -1,5 +1,13 @@
 #encoding: utf-8
 
+class Array
+  def map_with_index
+    res = []
+    each_with_index {|e,i| res << yield(e,i) }
+    res
+  end
+end
+
 module Plan
   module Config
     WINTER = 1.freeze
@@ -17,7 +25,7 @@ module Plan
     MINUTES = (0..11).map {|e| "%.2d" % (e*5)}.freeze
 
     WEEKS_SELECT = { "Co tydzień" => 0, "Tydzień nieparzysty" => 1, "Tydzień parzysty" => 2 }.freeze
-    WEEK_DAYS_SELECT = Hash[WEEK_DAYS_NAMES.map.with_index{|e,i| [e, i]}].freeze
+    WEEK_DAYS_SELECT = Hash[WEEK_DAYS_NAMES.map_with_index{|e,i| [e, i]}].freeze
     HOURS_SELECT = (7..21).map {|e| ["%.2d" % e, e] }.freeze
     MINUTES_SELECT = (0..11).map {|e| ["%.2d" % (e*5), e*5] }.freeze
   end

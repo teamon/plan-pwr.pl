@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217215432) do
+ActiveRecord::Schema.define(:version => 20110219202547) do
+
+  create_table "color_schemes", :force => true do |t|
+    t.integer "schedule_id"
+    t.string  "course_type"
+    t.string  "background"
+    t.string  "border"
+    t.string  "font"
+  end
 
   create_table "entries", :force => true do |t|
     t.integer  "schedule_id"
@@ -32,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20110217215432) do
   end
 
   create_table "schedules", :force => true do |t|
-    t.string   "hash"
+    t.string   "slug"
     t.string   "year"
     t.integer  "semester"
     t.datetime "created_at"
