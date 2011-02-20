@@ -27,6 +27,10 @@ class SchedulesController < ApplicationController
                            :type => "application/pdf", 
                            :disposition => "inline"
           end
+          
+          format.js do
+            render :json => @schedule
+          end
         end
       else
         @generator = Plan::Generators::HTML.new(@schedule)
@@ -36,6 +40,7 @@ class SchedulesController < ApplicationController
 
   def new
     @schedule = Schedule.new
+    render :layout => !request.xhr?
   end
 
   def edit

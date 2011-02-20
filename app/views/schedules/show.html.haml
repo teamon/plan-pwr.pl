@@ -1,5 +1,6 @@
 %h2 Twój plan
 .schedule-menu
+  = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
   = link_to "Eksportuj", "#exports", :rel => "facebox"
   = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox"
 
@@ -13,8 +14,8 @@
     %h3 Eksportuj plan
     %ul
       %li= link_to "HTML", schedule_path(@schedule.slug, :format => "html")
-      %li= link_to "PDF", schedule_path(@schedule.slug,  :format => "pdf")
+      %li= link_to "PDF",  schedule_path(@schedule.slug, :format => "pdf")
       %li= link_to "iCal", schedule_path(@schedule.slug, :format => "ical")
-      %li= link_to "VCS", schedule_path(@schedule.slug,  :format => "vcs")
+      %li= link_to "VCS",  schedule_path(@schedule.slug, :format => "vcs")
 
 

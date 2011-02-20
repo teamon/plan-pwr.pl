@@ -61,18 +61,47 @@ $(document).ready(function(){
   $("form.new_entry").live("ajax:success", function(ev, data, status, xhr){
     Epure.reload();
     jQuery.facebox({ ajax: data.edit_path });
-    var self = this
-    var msg = data.notice
     $(document).bind('reveal.facebox', function(){
-      Epure.showNotice(msg);
+      Epure.showNotice(data.notice);
       $(document).unbind("reveal.facebox");
     })
   });
   
   $("#facebox a.delete").live("click", function(){
     jQuery(document).trigger('close.facebox');
+  });
+  
+  $("form.edit_schedule").live("ajax:success", function(ev, data, status, xhr){
+    Epure.reload();
+  });
+  
+  $("#facebox #color-schemes-reset").live("ajax:success", function(ev, data, status, xhr){
+    Epure.reload();
+    jQuery.facebox({ ajax: $("#menu-settings").attr("href") });
+    $(document).bind('reveal.facebox', function(){
+      Epure.showNotice(data.notice);
+      $(document).unbind("reveal.facebox");
+    });
+  });
+  
+  $("#picker").livequery(function(){
+    var farb = $.farbtastic('#picker');
+    var picker = $('#picker').css('opacity', 0.15);
+    var selected;
+    $('.color-scheme input[type="text"]').each(function () { 
+      farb.linkTo(this); 
+      $(this).css('opacity', 0.75); 
+    }).focus(function() {
+      if (selected) {
+        $(selected).css('opacity', 0.75).removeClass('color-selected');
+      }
+      farb.linkTo(this);
+      picker.css('opacity', 1);
+      $(selected = this).css('opacity', 1).addClass('color-selected');
+    });
   })
   
+
   
 })
 

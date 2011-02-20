@@ -10,4 +10,9 @@ class Entry < ActiveRecord::Base
   def location
     [building, room].reject{|e| e.blank?}.join(" / ")
   end
+  
+  def as_json(options={})
+    "dupa"
+    # super(:except => [:schedule_id])
+  end
 end

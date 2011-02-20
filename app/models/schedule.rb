@@ -1,9 +1,10 @@
 class Schedule < ActiveRecord::Base
   attr_accessor :raw
-  attr_accessible :year, :semester
+  attr_accessible :year, :semester, :color_schemes_attributes
   
   has_many :entries
   has_many :color_schemes
+  accepts_nested_attributes_for :color_schemes
   
   after_create :generate_slug
   after_create :create_default_color_schemes
@@ -22,6 +23,16 @@ class Schedule < ActiveRecord::Base
       (0..x).each {|i| d[i] ||= []}
       d
     end
+  end
+  
+  def as_json(options={})
+    super(:except => [:created_at, :updated_at, :id, :slug], 
+          :include => { :entries => { :except => [:created_at, :updated_at, :id, :schedule_id] } })
+  end
+  
+  def reset_color_schemes!
+    color_schemes.destroy_all
+    create_default_color_schemes
   end
   
   protected

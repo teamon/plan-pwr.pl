@@ -18,6 +18,20 @@ body {
   margin: auto;
 }
 
+h1 {
+  font-size: 20px;
+}
+
+h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 span {
+  font-size: 10px;
+  color: #aaa;
+}
+
 /*
 h1,h2,strong,a {
 font-style:inherit;
@@ -397,9 +411,6 @@ h2 {
   float: left;
   margin: 10px;
 }
-/*.exports li:first-child {
-  margin-left: 0px;
-}*/
 
 .exports li a {
   background-color: #BFE4FF;
@@ -417,6 +428,15 @@ h2 {
   background-color: #AED3EE;
 }
 
+#foot {
+  padding: 10px 0;
+  color: #aaa;
+  text-align: center;
+}
+
+#foot a {
+  color: #888;
+}
 
 
 
@@ -463,7 +483,8 @@ h2 {
   color: #fff;
 }
 
-#facebox form a.cancel {
+#facebox form a.cancel,
+#facebox form a.custom {
   color: #555;
   padding: 0 4px;
 }
@@ -498,3 +519,38 @@ h2 {
   list-style: none;
 }
 
+#facebox textarea#raw {
+  width: 550px;
+  height: 200px;
+}
+
+#facebox .settings {
+  width: 600px;
+  overflow: hidden;
+}
+
+#facebox .settings .schemes {
+  width: 340px;
+  float: left;
+  overflow: hidden;
+}
+
+
+#facebox .color-scheme {
+  width: 150px;
+  float: left;
+  background-color: #f5f5f5;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+
+#facebox .color-scheme input[type="text"] {
+  width: 50px;
+}
+
+#picker-wrap {
+  float: right;
+  padding-right: 20px;
+}

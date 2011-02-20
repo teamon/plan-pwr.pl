@@ -6,22 +6,17 @@ module Plan::Generators
     end
 
     HOURS = (7..21).to_a
-    DEFAULT_COLORS = {
-      "c_W" => %w(#f3b6b7 #e63021 #e63021),
-      "c_C" => %w(#aeed91 #47ae03 #47ae03),
-      "c_L" => %w(#a5c4f7 #1c64dc #1c64dc),
-      "c_P" => %w(#efbcf0 #bb3abd #bb3abd),
-      "c_S" => %w(#f5dcc0 #f38e00 #f38e00),
-      "c_X" => %w(#ccc1ec #5c3ab2 #5c3ab2)     
-    }
+    # DEFAULT_COLORS = {
+    #   "c_W" => %w(#f3b6b7 #e63021 #e63021),
+    #   "c_C" => %w(#aeed91 #47ae03 #47ae03),
+    #   "c_L" => %w(#a5c4f7 #1c64dc #1c64dc),
+    #   "c_P" => %w(#efbcf0 #bb3abd #bb3abd),
+    #   "c_S" => %w(#f5dcc0 #f38e00 #f38e00),
+    #   "c_X" => %w(#ccc1ec #5c3ab2 #5c3ab2)     
+    # }
 
-    def self.generate!(schedule, colors = nil)
-      new(schedule, colors || DEFAULT_COLORS).to_html
-    end
-
-    def initialize(schedule, colors = DEFAULT_COLORS)
+    def initialize(schedule)
       @schedule = schedule
-      @colors = colors
     end
     
     def hours
@@ -56,11 +51,11 @@ module Plan::Generators
     end
 
     def colors_css
-      @colors.map do |cls, c|
-        ".#{cls} {
-          background-color: #{c[0]};
-          border-color: #{c[1]};
-          color: #{c[2]};
+      @schedule.color_schemes.map do |cs|
+        ".c_#{cs.course_type} {
+          background-color: #{cs.background};
+          border-color: #{cs.border};
+          color: #{cs.font};
         }"
       end.join "\n"
     end
