@@ -175,7 +175,7 @@ describe Entry do
       )
     end
     
-    Entry.search_lecturers("dr").should == [
+    Entry.search("dr", :lecturer).should include(
       "Dr hab. inż. Janusz Biernat",
       "Dr hab. inż. Krzysztof Walkowiak",
       "Dr inż. Bożena Chrobot",
@@ -183,19 +183,19 @@ describe Entry do
       "Dr inż. Jacek Mazurkiewicz",
       "Mgr inż. Dariusz Jankowski",
       "Prof. dr hab. inż. Jan Kowalski"
-    ]
+    )
     
-    Entry.search_lecturers("prof").should == [
+    Entry.search("prof", :lecturer).should include(
       "Prof. dr hab. inż. Jan Kowalski"
-    ]
+    )
     
-    Entry.search_lecturers("bier").should == [
+    Entry.search("bier", :lecturer).should include(
       "Dr hab. inż. Janusz Biernat",
-    ]
+    )
     
-    Entry.search_lecturers("jacek").should == [
+    Entry.search("jacek", :lecturer).should include(
       "Dr inż. Jacek Jarnicki",
       "Dr inż. Jacek Mazurkiewicz",
-    ]
+    )
   end
 end

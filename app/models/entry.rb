@@ -38,7 +38,7 @@ class Entry < ActiveRecord::Base
   
   def self.search(term, key)
     query = term.split(//).reject{|e| e == " "}.join("%")
-    select("DISTINCT(#{key})").where("#{key} LIKE ?", "%#{query}%").map(&key)
+    select("DISTINCT(#{key})").where("#{key} ILIKE ?", "%#{query}%").map(&key)
   end
   
   def correct_time
