@@ -1,15 +1,7 @@
 module Epure
   module Generators
-    class HTML
-      include Epure::Config
-      def template
-        Rails.root + "app/models/plan/generators/html-template.erb"
-      end
-
-      def initialize(schedule)
-        @schedule = schedule
-      end
-    
+    class HTML < Generator
+      
       def hours
         HOURS
       end

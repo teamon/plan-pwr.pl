@@ -6,3 +6,5 @@
 Mime::Type.register "application/pdf", :pdf
 Mime::Type.register_alias "application/pdf", :pdfmini
 Mime::Type.register_alias "text/html", :htmlmini
+Mime::Type.register "text/plain", :ics
+Mime::Type.register "text/X-vCalendar", :vcs

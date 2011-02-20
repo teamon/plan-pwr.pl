@@ -1,0 +1,12 @@
+%h3 Edytuj plan zajęć
+= form_for @schedule, :remote => true do |f|
+  %p
+    = f.label "Rok:"
+    = f.select :year, Epure::EDate.semesters.keys
+  %p
+    = f.label "Semestr:"
+    = f.select :semester, Epure::Config::SEMESTERS
+  %p.actions
+    = f.submit "Zapisz"
+    = link_to "Anuluj", "#", :class => "cancel"
+   

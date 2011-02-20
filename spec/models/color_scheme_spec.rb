@@ -1,5 +1,15 @@
+# encoding: utf-8
+
 require 'spec_helper'
 
 describe ColorScheme do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should respond with correct name" do
+    cs = ColorScheme.new
+    cs.course_type = "W"
+    cs.name.should == "Wykład"
+    
+    cs = ColorScheme.new
+    cs.course_type = "P"
+    cs.name.should == "Projekt"
+  end
 end

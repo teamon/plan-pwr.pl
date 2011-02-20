@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class SchedulesController < ApplicationController
-  respond_to :html, :htmlmini, :pdf, :pdfmini, :js, :xml
+  respond_to :html, :htmlmini, :pdf, :pdfmini, :js, :xml, :ics, :vcs
   
   def index
     @schedules = Schedule.all
@@ -59,6 +59,26 @@ class SchedulesController < ApplicationController
                            :disposition => "inline"
           end
           
+          format.ics do
+            ics = cached(@schedule, "ical") do
+              Epure::Generators::ICS.new(@schedule).generate
+            end
+            
+            send_data ics,  :filename => "plan.ics",
+                            :type => "text/plain",
+                            :disposition => "inline"
+          end
+          
+          format.vcs do
+            vcs = cached(@schedule, "ical") do
+              Epure::Generators::VCS.new(@schedule).generate
+            end
+            
+            send_data vcs,  :filename => "plan.vcs",
+                            :type => "text/X-vCalendar",
+                            :disposition => "inline"
+          end
+          
           format.js do
             render :json => @schedule
           end
@@ -77,12 +97,11 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new
     render :layout => !request.xhr?
   end
-  
 
-
-  # def edit
-  #   @schedule = Schedule.find(params[:id])
-  # end
+  def edit
+    @schedule = Schedule.find(params[:id])
+    render :layout => !request.xhr?
+  end
 
   def create
     @schedule = params[:empty] ? Schedule.new : Epure::Parser.parse!(params[:schedule][:raw])
@@ -90,10 +109,11 @@ class SchedulesController < ApplicationController
     if @schedule.save
       render :json => { :path => schedule_slug_path(@schedule.slug) }
     else
-      render "new"
+      render :json => @schedule.errors, :status => :unprocessable_entity
     end
-  rescue
-    render "new"
+  rescue Exception => e
+    p e
+    render "new" 
   end
 
   
@@ -128,7 +148,7 @@ class SchedulesController < ApplicationController
   
   def cached(schedule, format)
     path = File.join(Epure.cache_root, schedule.slug, schedule.slug + "." + format)
-    if File.exist?(path)
+    if Epure::Application.config.cache_generated && File.exist?(path)
       File.read(path)
     else
       data = yield

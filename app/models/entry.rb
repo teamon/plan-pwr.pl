@@ -22,6 +22,19 @@ class Entry < ActiveRecord::Base
     Epure::Config::WEEKS_NAMES[week]
   end
   
+  def course_name_with_type
+    "#{course_name} (#{course_type})"
+  end
+  
+  def description
+    [lecturer, course_code].reject{|e| e.blank?}.join("\n")
+  end
+  
+  def in_week?(n)
+    week == 0 || (n - week) % 2 == 0
+  end
+    
+  
   def self.search_lecturers(name)
     query = name.split(//).reject{|e| e == " "}.join("%")
     select("DISTINCT(lecturer)").where("lecturer LIKE ?", "%#{query}%").map(&:lecturer)
@@ -30,7 +43,8 @@ class Entry < ActiveRecord::Base
   protected
   
   def correct_time
-    if start_hour > end_hour || (start_hour == end_hour && start_min >= end_min)
+    
+    if !start_hour || !start_min || !end_hour || !end_min || start_hour > end_hour || (start_hour == end_hour && start_min >= end_min)
       errors.add(:start_hour, "Podane godziny są niepoprawne")
     end
   end

@@ -1,6 +1,6 @@
 module Epure
   module Generators
-    class PDF
+    class PDF < Generator
       OPTIONS = {
         :orientation => "Landscape", 
         :margin_top => '3mm',

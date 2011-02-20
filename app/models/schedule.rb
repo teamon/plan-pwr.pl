@@ -49,7 +49,8 @@ class Schedule < ActiveRecord::Base
       cs.course_type = type
       cs.save
     end
-
+    
+    color_schemes.reload
     invalidate_cache
   end
   

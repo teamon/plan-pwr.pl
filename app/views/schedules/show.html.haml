@@ -8,12 +8,17 @@
 
 %h2 
   Twój plan
-%div
-  Rok akademicki:
-  %span= @schedule.year
-%div
-  Semestr:
-  %span= @schedule.semester_name
+#info
+  %div
+    Rok akademicki:
+    %span= @schedule.year
+  %div
+    Semestr:
+    %span= @schedule.semester_name
+  %div
+    = link_to "Edytuj", [:edit, @schedule], :rel => "facebox", :id => "info-edit"
+    
+
   
 .schedule-menu
   = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
@@ -33,10 +38,11 @@
       %li= link_to "Mini PDF",  schedule_slug_path(@schedule.slug, :format => "pdfmini")
       %li= link_to "HTML",      schedule_slug_path(@schedule.slug, :format => "html")
       %li= link_to "Mini HTML", schedule_slug_path(@schedule.slug, :format => "htmlmini")
-      %li= link_to "iCal",      schedule_slug_path(@schedule.slug, :format => "ical")
+      %li= link_to "iCal",      schedule_slug_path(@schedule.slug, :format => "ics")
       %li= link_to "VCS",       schedule_slug_path(@schedule.slug, :format => "vcs")
       %li= link_to "JSON",      schedule_slug_path(@schedule.slug, :format => "js")
       %li= link_to "XML",       schedule_slug_path(@schedule.slug, :format => "xml")
+
       
 - if @schedule.entries.empty?
   :javascript
