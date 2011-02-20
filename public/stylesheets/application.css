@@ -367,13 +367,14 @@ h2 {
 
 #schedule .entry a {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0;
+  right: 0;
+  padding: 5px;
   width: 10px;
   overflow: hidden;
   text-indent: -200px;
   height: 10px;
-  background: url("http://facebook.mobissimo.com/images/ico-edit.png");
+  background: url("http://facebook.mobissimo.com/images/ico-edit.png") no-repeat 5px 5px;
   visibility: hidden;
 }
 
@@ -475,6 +476,7 @@ h2 {
 
 #facebox form p.actions {
   text-align: center;
+  padding-top: 10px;
 }
 
 #facebox form input[type="submit"] {

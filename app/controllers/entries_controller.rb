@@ -12,7 +12,8 @@ class EntriesController < ApplicationController
     @entry = @schedule.entries.new(params[:entry])
 
     if @entry.save
-      render :json => { :notice => "Kurs pomyślnie zapisany", :edit_path => edit_schedule_entry_path(@schedule, @entry) }
+      path = params[:commit] == "Zapisz" ? edit_schedule_entry_path(@schedule, @entry) : new_schedule_entry_path(@schedule)
+      render :json => { :notice => "Kurs pomyślnie zapisany", :path => path }
     else
       render :json => @entry.errors, :status => :unprocessable_entity
     end

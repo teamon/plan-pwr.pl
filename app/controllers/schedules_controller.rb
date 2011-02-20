@@ -50,15 +50,15 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Plan::Parser.parse!(params[:raw])
+    @schedule = params[:empty] ? Schedule.new : Plan::Parser.parse!(params[:raw])
     
     if @schedule.save
-      redirect_to schedule_slug_path(@schedule.slug), :notice => 'Schedule was successfully created.'
+      render :json => { :path => schedule_slug_path(@schedule.slug) }
     else
-      render :action => "new"
+      render "new"
     end
   rescue
-    render :actions => "new"
+    render "new"
   end
 
   

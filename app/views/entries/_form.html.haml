@@ -31,7 +31,9 @@
     = f.label "Prowadzący:"
     = f.text_field :lecturer
   %p.actions
-    = f.submit "Zapisz", :class => "btn-generic", "data-disable-with" => "Saving..."
+    = f.submit "Zapisz", "data-disable-with" => "Zapisuje..."
+    - if @entry.new_record?
+      = f.submit "Zapisz i dodaj następny", "data-disable-with" => "Zapisuje..."
     = link_to "Anuluj", "#", :class => "cancel"
     - unless @entry.new_record?
       = link_to "Usuń", [@schedule, @entry], :remote => true, "data-method" => "delete", :class => "delete"

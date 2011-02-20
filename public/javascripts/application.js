@@ -43,7 +43,7 @@ $(document).ready(function(){
     errors.html("")
     data = $.parseJSON(xhr.responseText);
     for(key in data){
-      errors.append("<li>" + key + " " + data[key] + "</li>")
+      errors.append("<li>" + data[key] + "</li>")
     }
     
     errors.show();
@@ -60,7 +60,7 @@ $(document).ready(function(){
   
   $("form.new_entry").live("ajax:success", function(ev, data, status, xhr){
     Epure.reload();
-    jQuery.facebox({ ajax: data.edit_path });
+    jQuery.facebox({ ajax: data.path });
     $(document).bind('reveal.facebox', function(){
       Epure.showNotice(data.notice);
       $(document).unbind("reveal.facebox");
@@ -83,6 +83,10 @@ $(document).ready(function(){
       $(document).unbind("reveal.facebox");
     });
   });
+  
+  $("#new-empty-schedule").live("ajax:success", function(ev, data, status, xhr){
+    document.location.href = data.path;
+  })
   
   $("#picker").livequery(function(){
     var farb = $.farbtastic('#picker');

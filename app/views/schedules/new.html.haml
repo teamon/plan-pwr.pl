@@ -4,3 +4,5 @@
     = text_area_tag :raw
   %p.actions
     = submit_tag "Generuj"
+    lub
+    = link_to "Utwórz ręcznie", schedules_path(:empty => true), :remote => true, "data-method" => "post", :class => "custom", :id => "new-empty-schedule"
