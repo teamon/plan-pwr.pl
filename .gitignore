@@ -1,4 +1,5 @@
 .bundle
+webrat.log
 db/*.sqlite3
 log/*.log
 tmp/**/*

@@ -1,4 +1,6 @@
 Epure::Application.routes.draw do
+  resources :schedules
+
   resources :schedules do
     resources :entries do
       collection do

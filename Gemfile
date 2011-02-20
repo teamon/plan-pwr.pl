@@ -30,5 +30,7 @@ gem "pdfkit", "0.5.0"
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'rspec-rails'
-  gem "autotest"
+  gem 'watchr'
+  gem 'webrat'
+  gem 'spork', '~> 0.9.0.rc'
 end
