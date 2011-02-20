@@ -13,9 +13,9 @@
   .exports
     %h3 Eksportuj plan
     %ul
-      %li= link_to "HTML", schedule_path(@schedule.slug, :format => "html")
-      %li= link_to "PDF",  schedule_path(@schedule.slug, :format => "pdf")
-      %li= link_to "iCal", schedule_path(@schedule.slug, :format => "ical")
-      %li= link_to "VCS",  schedule_path(@schedule.slug, :format => "vcs")
+      %li= link_to "HTML", schedule_slug_path(@schedule.slug, :format => "html")
+      %li= link_to "PDF",  schedule_slug_path(@schedule.slug, :format => "pdf")
+      %li= link_to "iCal", schedule_slug_path(@schedule.slug, :format => "ical")
+      %li= link_to "VCS",  schedule_slug_path(@schedule.slug, :format => "vcs")
 
 

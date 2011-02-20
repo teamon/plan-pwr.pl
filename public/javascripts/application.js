@@ -75,7 +75,7 @@ $(document).ready(function(){
     Epure.reload();
   });
   
-  $("#facebox #color-schemes-reset").live("ajax:success", function(ev, data, status, xhr){
+  $("#facebox #color-schemes-reset, #facebox #color-schemes-bw").live("ajax:success", function(ev, data, status, xhr){
     Epure.reload();
     jQuery.facebox({ ajax: $("#menu-settings").attr("href") });
     $(document).bind('reveal.facebox', function(){

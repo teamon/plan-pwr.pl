@@ -1,6 +1,6 @@
 %h3 Edytuj ustawienia
 
-= form_for @schedule, :url => schedule_color_schemes_path(@schedule), :method => "put", :remote => true do |f|
+= form_for @schedule, :remote => true do |f|
   .settings
     .schemes
       = f.fields_for :color_schemes do |ff|
@@ -17,7 +17,11 @@
             = ff.text_field :font
     #picker-wrap
       #picker
+      %h6 Wybierz schemat kolorów
+      %ul.menu
+        %li= link_to "Domyślny", schedule_color_schemes_reset_path(@schedule), :class => "button", :id => "color-schemes-reset", :remote => true, "data-method" => "post"
+        %li= link_to "Czarno-biały", schedule_color_schemes_bw_path(@schedule), :class => "button", :id => "color-schemes-bw", :remote => true, "data-method" => "post"
+        
   %p.actions
     = f.submit "Zapisz"
     = link_to "Anuluj", "#", :class => "cancel"
-    = link_to "Przywróć domyślne kolory", schedule_color_schemes_reset_path(@schedule), :class => "custom", :id => "color-schemes-reset", :remote => true, "data-method" => "post"

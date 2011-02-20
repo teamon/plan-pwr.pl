@@ -8,17 +8,14 @@ class ColorSchemesController < ApplicationController
     render :layout => false
   end
   
-  def update
-    if @schedule.update_attributes(params[:schedule])
-      render :json => { :notice => "Ustawienia pomyślnie zapisane" }
-    else
-      render :json => @entry.errors, :status => :unprocessable_entity
-    end
-  end
-  
   def reset
     @schedule.reset_color_schemes!
     render :json => { :notice => "Przywrócono ustawienia domyślne" }
+  end
+  
+  def bw
+    @schedule.bw_color_schemes!
+    render :json => { :notice => "Ustawiono motyw czarno-biały" }
   end
 
   protected

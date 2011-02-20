@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class SchedulesController < ApplicationController
   respond_to :html, :pdf
   
@@ -51,7 +53,7 @@ class SchedulesController < ApplicationController
     @schedule = Plan::Parser.parse!(params[:raw])
     
     if @schedule.save
-      redirect_to schedule_path(@schedule.slug), :notice => 'Schedule was successfully created.'
+      redirect_to schedule_slug_path(@schedule.slug), :notice => 'Schedule was successfully created.'
     else
       render :action => "new"
     end
@@ -59,19 +61,16 @@ class SchedulesController < ApplicationController
     render :actions => "new"
   end
 
+  
   def update
     @schedule = Schedule.find(params[:id])
-
-    respond_to do |format|
-      if @schedule.update_attributes(params[:schedule])
-        format.html { redirect_to(@schedule, :notice => 'Schedule was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @schedule.errors, :status => :unprocessable_entity }
-      end
+    if @schedule.update_attributes(params[:schedule])
+      render :json => { :notice => "Ustawienia pomyślnie zapisane" }
+    else
+      render :json => @schedule.errors, :status => :unprocessable_entity
     end
   end
+
 
   # def destroy
   #   @schedule = Schedule.find(params[:id])

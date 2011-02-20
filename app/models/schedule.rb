@@ -35,6 +35,10 @@ class Schedule < ActiveRecord::Base
     create_default_color_schemes
   end
   
+  def bw_color_schemes!
+    color_schemes.update_all(:background => "#fff", :border => "#000", :font => "#000")
+  end
+  
   protected
   
   def generate_slug

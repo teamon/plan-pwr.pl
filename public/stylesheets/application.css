@@ -554,3 +554,26 @@ h2 {
   float: right;
   padding-right: 20px;
 }
+
+#picker-wrap h6 {
+  margin-top: 30px;
+}
+
+#picker-wrap ul.menu {
+  list-style: none;
+}
+
+#picker-wrap ul.menu li {
+  padding: 5px 0 0 0;
+}
+
+a.button {
+  border: 1px solid #204683;
+  background: #5E75A0;
+  color: #fff;
+  text-decoration: none;
+  padding: 2px 4px;
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+}
