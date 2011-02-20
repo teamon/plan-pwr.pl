@@ -17,7 +17,7 @@ var Epure = {
       form.prepend(notice);
     }
     notice.text(msg).show();
-    setTimeout(function(){ notice.slideUp() }, 1500);
+    setTimeout(function(){ notice.fadeOut() }, 1500);
   }
 }
 

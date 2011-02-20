@@ -9,12 +9,12 @@ class ColorSchemesController < ApplicationController
   end
   
   def reset
-    @schedule.reset_color_schemes!
+    @schedule.set_color_scheme(:default)
     render :json => { :notice => "Przywrócono ustawienia domyślne" }
   end
   
   def bw
-    @schedule.bw_color_schemes!
+    @schedule.set_color_scheme(:bw)
     render :json => { :notice => "Ustawiono motyw czarno-biały" }
   end
 

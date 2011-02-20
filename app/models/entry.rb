@@ -12,8 +12,15 @@ class Entry < ActiveRecord::Base
   validates_inclusion_of :week_day, :in => (0..6)
   validate :correct_time
   
+  after_update :invalidate_cache
+  
   def location
     [building, room].reject{|e| e.blank?}.join(" / ")
+  end
+  
+  def self.search_lecturers(name)
+    query = name.split(//).reject{|e| e == " "}.join("%")
+    select("DISTINCT(lecturer)").where("lecturer LIKE ?", "%#{query}%").map(&:lecturer)
   end
   
   protected
@@ -22,6 +29,10 @@ class Entry < ActiveRecord::Base
     if start_hour > end_hour || (start_hour == end_hour && start_min >= end_min)
       errors.add(:start_hour, "Podane godziny są niepoprawne")
     end
+  end
+  
+  def invalidate_cache
+    schedule.invalidate_cache
   end
   
 end

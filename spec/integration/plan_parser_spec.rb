@@ -3,9 +3,15 @@
 require 'spec_helper'
 
 describe Plan::Parser do
+  def parse_schedule(filename)
+    raw = File.read(File.join(File.dirname(__FILE__), "data", filename))
+    schedule = Plan::Parser.parse!(raw)
+    entries = schedule.entries
+    [schedule, entries]
+  end
+  
   it "should parse 1" do
-    raw = File.read(File.dirname(__FILE__) + "/data/1.html")
-    schedule, entries = Plan::Parser.parse!(raw)
+    schedule, entries = parse_schedule "1.html"
     
     schedule.year.should == "2010/2011"
     schedule.semester.should == Plan::Config::SUMMER

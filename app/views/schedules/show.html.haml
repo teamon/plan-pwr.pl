@@ -1,3 +1,11 @@
+:javascript
+  $("#entry_lecturer").livequery(function(){
+    $(this).autocomplete({
+      source: "#{search_lecturers_schedule_entries_path(@schedule)}",
+      // minLength: 2,
+    });
+  })
+
 %h2 
   Twój plan
 %div
@@ -10,7 +18,7 @@
 .schedule-menu
   = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
   = link_to "Eksportuj", "#exports", :rel => "facebox"
-  = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox"
+  = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox", :id => "menu-new-entry"
 
 #schedule-wrap
   #schedule-overlay
@@ -29,5 +37,9 @@
       %li= link_to "VCS",  schedule_slug_path(@schedule.slug, :format => "vcs")
       %li= link_to "JSON",  schedule_slug_path(@schedule.slug, :format => "js")
       %li= link_to "XML",  schedule_slug_path(@schedule.slug, :format => "xml")
+      
+- if @schedule.entries.empty?
+  :javascript
+    $(document).ready(function(){ $("#menu-new-entry").click() })
 
 

@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe Schedule do
-  it "should create default color schemes" do
-    begin
+  
+  describe "color schemes" do
+    it "should create default color schemes" do
       schedule = Schedule.create
-      schedule.color_schemes.size.should == 6
-    rescue Exception => e
-      puts e.backtrace
+      schedule.color_schemes.reload.size.should == 6
     end
   end
 end

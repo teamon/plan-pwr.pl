@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class SchedulesController < ApplicationController
-  respond_to :html, :pdf, :js, :xml
+  respond_to :html, :htmlmini, :pdf, :pdfmini, :js, :xml
   
   def index
     @schedules = Schedule.all
@@ -18,16 +18,42 @@ class SchedulesController < ApplicationController
       if params[:format]
         respond_with(@schedule) do |format|
           format.html do
-            html = render_html(@schedule, params[:mini])
+            html = cached(@schedule, "html") do
+              render_html(@schedule, false)
+            end
+            
             send_data html, :filename => "plan.html", 
                             :type => "text/html", 
                             :disposition => "inline"
           end
           
+          format.htmlmini do
+            html = cached(@schedule, "htmlmini") do
+              render_html(@schedule, true)
+            end
+            
+            send_data html, :filename => "plan_mini.html", 
+                            :type => "text/html", 
+                            :disposition => "inline"
+          end
+          
           format.pdf do
-            orient = params[:mini] ? "portrait" : "landscape"
-            html = render_html(@schedule, params[:mini])
-            pdf = Plan::Generators::PDF.new.generate(html, :orientation => orient)
+            pdf = cached(@schedule, "pdf") do
+              html = render_html(@schedule, false)
+              Plan::Generators::PDF.new.generate(html, :orientation => "landscape")
+            end
+            
+            send_data pdf, :filename => "plan.pdf", 
+                           :type => "application/pdf", 
+                           :disposition => "inline"
+          end
+          
+          format.pdfmini do
+            pdf = cached(@schedule, "pdfmini") do
+              html = render_html(@schedule, true)
+              Plan::Generators::PDF.new.generate(html, :orientation => "portrait")
+            end
+            
             send_data pdf, :filename => "plan.pdf", 
                            :type => "application/pdf", 
                            :disposition => "inline"
@@ -47,16 +73,12 @@ class SchedulesController < ApplicationController
     end
   end
   
-  def render_html(schedule, mini = false)
-    @generator = Plan::Generators::HTML.new(schedule)
-    @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
-    render_to_string "exports/#{mini ? "mini" : "normal"}.html", :layout => false
-  end
-
   def new
     @schedule = Schedule.new
     render :layout => !request.xhr?
   end
+  
+
 
   # def edit
   #   @schedule = Schedule.find(params[:id])
@@ -83,6 +105,7 @@ class SchedulesController < ApplicationController
       render :json => @schedule.errors, :status => :unprocessable_entity
     end
   end
+  
 
 
   # def destroy
@@ -94,4 +117,25 @@ class SchedulesController < ApplicationController
   #     format.xml  { head :ok }
   #   end
   # end
+  
+  protected 
+  
+  def render_html(schedule, mini = false)
+    @generator = Plan::Generators::HTML.new(schedule)
+    @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
+    render_to_string "exports/#{mini ? "mini" : "normal"}.html", :layout => false
+  end
+  
+  def cached(schedule, format)
+    path = File.join(Epure.cache_root, schedule.slug, schedule.slug + "." + format)
+    if File.exist?(path)
+      File.read(path)
+    else
+      data = yield
+      FileUtils.mkdir_p(File.join(Epure.cache_root, schedule.slug))
+      File.open(path, "w"){|f| f.write data}
+      data
+    end
+  end
+  
 end

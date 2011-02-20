@@ -365,6 +365,10 @@ h2 {
   padding-left: 10px;
 }
 
+#schedule-wrap {
+  height: 770px;
+}
+
 #schedule .entry a {
   position: absolute;
   top: 0;
@@ -502,22 +506,22 @@ h2 {
 }
 
 #facebox .form-notice {
-  background-color: #BFE4FF;
+  color: green;
+  font-size: 12px;
   text-align: center;
-  padding: 5px;
+  padding: 10px 0 0 0;
   position: absolute;
   top: 0;
-  left: 120px;
-  width: 200px;
+  right: 30px;
+/*  width: 200px;*/
   border-radius: 0px 0px 5px 5px;
   -moz-border-radius: 0px 0px 5px 5px;
 }
 
 #facebox .form-errors {
-  background-color: #F3B6B7;
+  color: red;
   text-align: center;
   padding: 5px;
-  margin-bottom: 10px;
   list-style: none;
 }
 
@@ -578,4 +582,41 @@ a.button {
   display: inline-block;
   width: 70px;
   text-align: center;
+}
+
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+.ui-widget-content { border: 1px solid #dddddd; background: #fff; color: #333333; }
+.ui-state-hover, .ui-state-focus {background: #6D84B4 ; font-weight: bold; color: #eee; padding: 0 1px; }
+
+.ui-menu {
+	list-style:none;
+  padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+  margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
 }
