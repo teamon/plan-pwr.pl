@@ -72,8 +72,14 @@ $(document).ready(function(){
     jQuery(document).trigger('close.facebox');
   });
   
-  $("form.edit_schedule").live("ajax:success", function(ev, data, status, xhr){
+  $("form.edit_schedule_settings").live("ajax:success", function(ev, data, status, xhr){
     Epure.reload();
+  });
+  
+  $("form.edit_schedule").live("ajax:success", function(ev, data, status, xhr){
+    $("#info .year").text(data.year);
+    $("#info .sem").text(data.semester);
+    jQuery(document).trigger('close.facebox');
   });
   
   $("#facebox #color-schemes-reset, #facebox #color-schemes-bw").live("ajax:success", function(ev, data, status, xhr){

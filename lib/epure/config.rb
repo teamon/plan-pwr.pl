@@ -2,6 +2,7 @@
 
 module Epure
   module Config
+    URL = "http://epure.pl"
     WINTER = 1.freeze
     SUMMER = 2.freeze
     SEMESTERS = { "Letni" => SUMMER, "Zimowy" => WINTER }.freeze

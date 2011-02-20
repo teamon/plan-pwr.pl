@@ -4,6 +4,7 @@ Epure::Application.routes.draw do
   resources :schedules do
     resources :entries do
       collection do
+        get :search_course_names
         get :search_lecturers
       end
     end

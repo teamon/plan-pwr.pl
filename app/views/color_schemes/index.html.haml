@@ -1,6 +1,6 @@
 %h3 Edytuj ustawienia
 
-= form_for @schedule, :remote => true do |f|
+= form_for @schedule, :remote => true, :class => "edit_schedule_settings" do |f|
   .settings
     .schemes
       = f.fields_for :color_schemes do |ff|

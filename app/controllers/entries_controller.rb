@@ -45,10 +45,14 @@ class EntriesController < ApplicationController
     render :json => { :notice => "Kurs usunięty" }
   end
   
-  def search_lecturers
-    render :json => Entry.search_lecturers(params[:term])
+  def search_course_names
+    render :json => Entry.search(params[:term], :course_name)
   end
-  
+    
+  def search_lecturers
+    render :json => Entry.search(params[:term], :lecturer)
+  end
+
   protected
   
   def fetch_schedule

@@ -33,17 +33,15 @@ class Entry < ActiveRecord::Base
   def in_week?(n)
     week == 0 || (n - week) % 2 == 0
   end
-    
-  
-  def self.search_lecturers(name)
-    query = name.split(//).reject{|e| e == " "}.join("%")
-    select("DISTINCT(lecturer)").where("lecturer LIKE ?", "%#{query}%").map(&:lecturer)
-  end
   
   protected
   
+  def self.search(term, key)
+    query = term.split(//).reject{|e| e == " "}.join("%")
+    select("DISTINCT(#{key})").where("#{key} LIKE ?", "%#{query}%").map(&key)
+  end
+  
   def correct_time
-    
     if !start_hour || !start_min || !end_hour || !end_min || start_hour > end_hour || (start_hour == end_hour && start_min >= end_min)
       errors.add(:start_hour, "Podane godziny są niepoprawne")
     end

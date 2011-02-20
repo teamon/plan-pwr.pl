@@ -112,7 +112,7 @@ class SchedulesController < ApplicationController
       render :json => @schedule.errors, :status => :unprocessable_entity
     end
   rescue Exception => e
-    p e
+    logger.error e
     render "new" 
   end
 
@@ -120,7 +120,11 @@ class SchedulesController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     if @schedule.update_attributes(params[:schedule])
-      render :json => { :notice => "Ustawienia pomyślnie zapisane" }
+      render :json => { 
+        :notice => "Ustawienia pomyślnie zapisane", 
+        :year => @schedule.year, 
+        :semester => @schedule.semester_name
+      }
     else
       render :json => @schedule.errors, :status => :unprocessable_entity
     end

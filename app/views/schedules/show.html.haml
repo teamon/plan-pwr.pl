@@ -5,21 +5,30 @@
       minLength: 2,
     });
   })
+  
+  $("#entry_course_name").livequery(function(){
+    $(this).autocomplete({
+      source: "#{search_course_names_schedule_entries_path(@schedule)}",
+      minLength: 2,
+    });
+  })
+
+- if @schedule.entries.empty?
+  :javascript
+    $(document).ready(function(){ $("#menu-new-entry").click() })
 
 %h2 
   Twój plan
 #info
   %div
     Rok akademicki:
-    %span= @schedule.year
+    %span.year= @schedule.year
   %div
     Semestr:
-    %span= @schedule.semester_name
+    %span.sem= @schedule.semester_name
   %div
     = link_to "Edytuj", [:edit, @schedule], :rel => "facebox", :id => "info-edit"
-    
 
-  
 .schedule-menu
   = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
   = link_to "Eksportuj", "#exports", :rel => "facebox"
@@ -42,10 +51,3 @@
       %li= link_to "VCS",       schedule_slug_path(@schedule.slug, :format => "vcs")
       %li= link_to "JSON",      schedule_slug_path(@schedule.slug, :format => "js")
       %li= link_to "XML",       schedule_slug_path(@schedule.slug, :format => "xml")
-
-      
-- if @schedule.entries.empty?
-  :javascript
-    $(document).ready(function(){ $("#menu-new-entry").click() })
-
-
