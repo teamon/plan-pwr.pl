@@ -25,9 +25,23 @@ class Schedule < ActiveRecord::Base
     end
   end
   
-  def as_json(options={})
-    super(:except => [:created_at, :updated_at, :id, :slug], 
-          :include => { :entries => { :except => [:created_at, :updated_at, :id, :schedule_id] } })
+  def to_json(options = {})
+    super(serialize_options)
+  end
+  
+  def to_xml(options = {})
+    super(serialize_options)
+  end
+  
+  def serialize_options
+    { 
+      :except => [:created_at, :updated_at, :id, :slug], 
+      :include => { 
+        :entries => { 
+          :except => [:created_at, :updated_at, :id, :schedule_id] 
+        } 
+      }
+    }
   end
   
   def reset_color_schemes!

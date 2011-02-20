@@ -1,3 +1,7 @@
 %h2 Stwórz nowy plan zajęć
 
 = link_to "Plan PWR", new_schedule_path, :rel => "facebox"
+
+%ul
+  - @schedules.each do |s|
+    %li= link_to "#{s.slug} (#{s.entries.count})", schedule_slug_path(s.slug)

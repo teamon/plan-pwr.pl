@@ -8,6 +8,7 @@ var Epure = {
   },
   
   showNotice: function(msg){
+    if(msg == undefined) return; 
     var form = $("#facebox form")
     form.children(".form-errors").hide()
     var notice = $(form).children(".form-notice")
@@ -84,7 +85,7 @@ $(document).ready(function(){
     });
   });
   
-  $("#new-empty-schedule").live("ajax:success", function(ev, data, status, xhr){
+  $("#new-empty-schedule, #new_schedule").live("ajax:success", function(ev, data, status, xhr){
     document.location.href = data.path;
   })
   
@@ -104,9 +105,5 @@ $(document).ready(function(){
       $(selected = this).css('opacity', 1).addClass('color-selected');
     });
   })
-  
-
-  
 })
-
 

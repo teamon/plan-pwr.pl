@@ -1,4 +1,12 @@
-%h2 Twój plan
+%h2 
+  Twój plan
+%div
+  Rok akademicki:
+  %span= @schedule.year
+%div
+  Semestr:
+  %span= Plan::Config::SEMESTERS_NAMES[@schedule.semester]
+  
 .schedule-menu
   = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
   = link_to "Eksportuj", "#exports", :rel => "facebox"
@@ -13,9 +21,13 @@
   .exports
     %h3 Eksportuj plan
     %ul
-      %li= link_to "HTML", schedule_slug_path(@schedule.slug, :format => "html")
       %li= link_to "PDF",  schedule_slug_path(@schedule.slug, :format => "pdf")
+      %li= link_to "Mini PDF",  schedule_slug_path(@schedule.slug, :format => "pdf", :mini => true)
+      %li= link_to "HTML", schedule_slug_path(@schedule.slug, :format => "html")
+      %li= link_to "Mini HTML", schedule_slug_path(@schedule.slug, :format => "html", :mini => true)
       %li= link_to "iCal", schedule_slug_path(@schedule.slug, :format => "ical")
       %li= link_to "VCS",  schedule_slug_path(@schedule.slug, :format => "vcs")
+      %li= link_to "JSON",  schedule_slug_path(@schedule.slug, :format => "js")
+      %li= link_to "XML",  schedule_slug_path(@schedule.slug, :format => "xml")
 
 

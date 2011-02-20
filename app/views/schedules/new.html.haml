@@ -1,8 +1,8 @@
 %h3 Nowy plan zajęc
-= form_tag schedules_path do
+= form_for @schedule, :remote => true do |f|
   %p
-    = text_area_tag :raw
+    = f.text_area :raw
   %p.actions
-    = submit_tag "Generuj"
+    = f.submit "Wczytaj"
     lub
     = link_to "Utwórz ręcznie", schedules_path(:empty => true), :remote => true, "data-method" => "post", :class => "custom", :id => "new-empty-schedule"

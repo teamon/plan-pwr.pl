@@ -1,7 +1,11 @@
 # encoding: utf-8
 
 class SchedulesController < ApplicationController
-  respond_to :html, :pdf
+  respond_to :html, :pdf, :js, :xml
+  
+  def index
+    @schedules = Schedule.all
+  end
   
   def show
     @schedule = Schedule.find_by_slug(params[:slug])
@@ -14,17 +18,16 @@ class SchedulesController < ApplicationController
       if params[:format]
         respond_with(@schedule) do |format|
           format.html do
-            @generator = Plan::Generators::HTML.new(@schedule)
-            @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
-            render "export", :layout => "export"
+            html = render_html(@schedule, params[:mini])
+            send_data html, :filename => "plan.html", 
+                            :type => "text/html", 
+                            :disposition => "inline"
           end
           
           format.pdf do
-            @generator = Plan::Generators::HTML.new(@schedule)
-            @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
-            html = render_to_string "export.html", :layout => "export.html"
-            
-            pdf = Plan::Generators::PDF.new.generate(html)
+            orient = params[:mini] ? "portrait" : "landscape"
+            html = render_html(@schedule, params[:mini])
+            pdf = Plan::Generators::PDF.new.generate(html, :orientation => orient)
             send_data pdf, :filename => "plan.pdf", 
                            :type => "application/pdf", 
                            :disposition => "inline"
@@ -33,11 +36,21 @@ class SchedulesController < ApplicationController
           format.js do
             render :json => @schedule
           end
+          
+          format.xml do
+            render :xml => @schedule
+          end
         end
       else
         @generator = Plan::Generators::HTML.new(@schedule)
       end
     end
+  end
+  
+  def render_html(schedule, mini = false)
+    @generator = Plan::Generators::HTML.new(schedule)
+    @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
+    render_to_string "exports/#{mini ? "mini" : "normal"}.html", :layout => false
   end
 
   def new
@@ -45,12 +58,12 @@ class SchedulesController < ApplicationController
     render :layout => !request.xhr?
   end
 
-  def edit
-    @schedule = Schedule.find(params[:id])
-  end
+  # def edit
+  #   @schedule = Schedule.find(params[:id])
+  # end
 
   def create
-    @schedule = params[:empty] ? Schedule.new : Plan::Parser.parse!(params[:raw])
+    @schedule = params[:empty] ? Schedule.new : Plan::Parser.parse!(params[:schedule][:raw])
     
     if @schedule.save
       render :json => { :path => schedule_slug_path(@schedule.slug) }

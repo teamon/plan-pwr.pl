@@ -521,7 +521,7 @@ h2 {
   list-style: none;
 }
 
-#facebox textarea#raw {
+#facebox textarea {
   width: 550px;
   height: 200px;
 }

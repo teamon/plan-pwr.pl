@@ -28,7 +28,7 @@
       #wrapper { width: 1007px; position: relative; }
   %body
     #wrapper
-      = yield
+      = render :partial => "schedules/schedule.html"
       #copy
         Plan wygenerowany przez 
         = link_to "http://pwr.heroku.com"

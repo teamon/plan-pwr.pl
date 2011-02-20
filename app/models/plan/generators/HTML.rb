@@ -87,12 +87,5 @@ module Plan::Generators
       stop = top+size
       cls + (all.select {|e, (t,s)| (t >= top && t <= stop) || (t+s >= top && t+s <= stop) }.size > 1 ? "" : "_wider")
     end
-    
   end
-
-  # class MiniHTML < HTML
-  #   def template
-  #     File.dirname(__FILE__) + "/../../views/pdf-template-mini.erb"
-  #   end
-  # end
 end

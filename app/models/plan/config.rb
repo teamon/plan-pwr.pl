@@ -13,6 +13,7 @@ module Plan
     WINTER = 1.freeze
     SUMMER = 2.freeze
     SEMESTERS = { "Letni" => SUMMER, "Zimowy" => WINTER }.freeze
+    SEMESTERS_NAMES = SEMESTERS.invert.freeze
     COURSE_TYPES = { "Wykład" => "W", "Ćwiczenia" => "C", "Seminarium" => "S",
       "Zajęcia laboratoryjne" => "L", "Projekt" => "P", "Inne" => "X" }.freeze
     COURSE_TYPES_NAMES = COURSE_TYPES.invert.freeze

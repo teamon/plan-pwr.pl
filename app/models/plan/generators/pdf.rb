@@ -8,8 +8,8 @@ module Plan::Generators
       :margin_right => '3mm'
     }
     
-    def generate(html)
-      ::PDFKit.new(html, OPTIONS).to_pdf
+    def generate(html, options = {})
+      ::PDFKit.new(html, OPTIONS.merge(options)).to_pdf
     end
   end
 end
