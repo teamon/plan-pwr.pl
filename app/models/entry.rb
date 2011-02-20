@@ -18,6 +18,10 @@ class Entry < ActiveRecord::Base
     [building, room].reject{|e| e.blank?}.join(" / ")
   end
   
+  def week_name
+    Epure::Config::WEEKS_NAMES[week]
+  end
+  
   def self.search_lecturers(name)
     query = name.split(//).reject{|e| e == " "}.join("%")
     select("DISTINCT(lecturer)").where("lecturer LIKE ?", "%#{query}%").map(&:lecturer)

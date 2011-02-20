@@ -19,6 +19,10 @@ class Schedule < ActiveRecord::Base
     end
   end
   
+  def semester_name
+    Epure::Config::SEMESTERS_NAMES[semester]
+  end
+  
   def to_json(options = {})
     super(serialize_options)
   end
@@ -40,7 +44,7 @@ class Schedule < ActiveRecord::Base
   
   def set_color_scheme(name)
     color_schemes.destroy_all
-    Plan::Config::COLOR_SCHEMES[name].each_pair do |type, colors|
+    Epure::Config::COLOR_SCHEMES[name].each_pair do |type, colors|
       cs = color_schemes.new(:background => colors[0], :border => colors[1], :font => colors[2])
       cs.course_type = type
       cs.save

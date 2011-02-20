@@ -4,6 +4,6 @@ class ColorScheme < ActiveRecord::Base
   belongs_to :schedule
   
   def name
-    Plan::Config::COURSE_TYPES_NAMES[course_type]
+    Epure::Config::COURSE_TYPES_NAMES[course_type]
   end
 end

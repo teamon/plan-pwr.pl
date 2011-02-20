@@ -1,8 +1,8 @@
 # encoding: utf-8
 
-module Plan
+module Epure
   class Parser
-    include Plan::Config
+    include Epure::Config
     
     def self.parse!(html)
       doc = new(html)

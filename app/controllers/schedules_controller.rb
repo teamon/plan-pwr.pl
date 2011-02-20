@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @schedule
     
     if request.xhr?
-      @generator = Plan::Generators::HTML.new(@schedule)
+      @generator = Epure::Generators::HTML.new(@schedule)
       render :partial => "schedule", :layout => false
     else
       if params[:format]
@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
           format.pdf do
             pdf = cached(@schedule, "pdf") do
               html = render_html(@schedule, false)
-              Plan::Generators::PDF.new.generate(html, :orientation => "landscape")
+              Epure::Generators::PDF.new.generate(html, :orientation => "landscape")
             end
             
             send_data pdf, :filename => "plan.pdf", 
@@ -51,7 +51,7 @@ class SchedulesController < ApplicationController
           format.pdfmini do
             pdf = cached(@schedule, "pdfmini") do
               html = render_html(@schedule, true)
-              Plan::Generators::PDF.new.generate(html, :orientation => "portrait")
+              Epure::Generators::PDF.new.generate(html, :orientation => "portrait")
             end
             
             send_data pdf, :filename => "plan.pdf", 
@@ -68,7 +68,7 @@ class SchedulesController < ApplicationController
           end
         end
       else
-        @generator = Plan::Generators::HTML.new(@schedule)
+        @generator = Epure::Generators::HTML.new(@schedule)
       end
     end
   end
@@ -85,7 +85,7 @@ class SchedulesController < ApplicationController
   # end
 
   def create
-    @schedule = params[:empty] ? Schedule.new : Plan::Parser.parse!(params[:schedule][:raw])
+    @schedule = params[:empty] ? Schedule.new : Epure::Parser.parse!(params[:schedule][:raw])
     
     if @schedule.save
       render :json => { :path => schedule_slug_path(@schedule.slug) }
@@ -121,7 +121,7 @@ class SchedulesController < ApplicationController
   protected 
   
   def render_html(schedule, mini = false)
-    @generator = Plan::Generators::HTML.new(schedule)
+    @generator = Epure::Generators::HTML.new(schedule)
     @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
     render_to_string "exports/#{mini ? "mini" : "normal"}.html", :layout => false
   end

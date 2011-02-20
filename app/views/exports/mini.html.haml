@@ -31,13 +31,13 @@
         %tr
           %th{:colspan => "4"}= name
           
-        - entries.each do |entry, top, size, cls, time|
+        - entries.each do |entry, top, size, cls|
           %tr
             %td
               = entry.course_name 
               = "(#{entry.course_type})"
             %td
-              = time
-              = Plan::Config::WEEKS_NAMES[entry.week]
+              = entry_time(time)
+              = entry.week_name
             %td= entry.location
             %td= entry.lecturer

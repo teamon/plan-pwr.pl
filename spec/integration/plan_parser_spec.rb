@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe Plan::Parser do
+describe Epure::Parser do
   def parse_schedule(filename)
     raw = File.read(File.join(File.dirname(__FILE__), "data", filename))
-    schedule = Plan::Parser.parse!(raw)
+    schedule = Epure::Parser.parse!(raw)
     entries = schedule.entries
     [schedule, entries]
   end
@@ -14,7 +14,7 @@ describe Plan::Parser do
     schedule, entries = parse_schedule "1.html"
     
     schedule.year.should == "2010/2011"
-    schedule.semester.should == Plan::Config::SUMMER
+    schedule.semester.should == Epure::Config::SUMMER
     
     entries.size.should == 17
     

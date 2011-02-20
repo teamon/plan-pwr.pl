@@ -16,10 +16,10 @@
         - @generator.hours.each do |hour|
           %span.sep
         
-        - entries.each do |entry, top, size, cls, time|
+        - entries.each do |entry, top, size, cls|
           .entry{:style => "top: #{top*4}px; height: #{size*4}px"}
             .wrap{:class => "c_#{entry.course_type} #{cls}"}
-              .h= time
+              .h= entry_time(entry)
               .n= entry.course_name
               .l= entry.location
               .p= entry.lecturer

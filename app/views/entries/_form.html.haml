@@ -10,18 +10,18 @@
     = f.text_field :group_code
   %p
     = f.label "Typ kursu:"
-    = f.select :course_type, Plan::Config::COURSE_TYPES
+    = f.select :course_type, Epure::Config::COURSE_TYPES
   %p.week
     = f.label "Termin:"
-    = f.select :week, Plan::Config::WEEKS_SELECT
-    = f.select :week_day, Plan::Config::WEEK_DAYS_SELECT
+    = f.select :week, Epure::Config::WEEKS_SELECT
+    = f.select :week_day, Epure::Config::WEEK_DAYS_SELECT
   %p.time
     = f.label "Godziny:"
-    = f.select :start_hour, Plan::Config::HOURS_SELECT
-    = f.select :start_min, Plan::Config::MINUTES_SELECT
+    = f.select :start_hour, Epure::Config::HOURS_SELECT
+    = f.select :start_min, Epure::Config::MINUTES_SELECT
     %span :
-    = f.select :end_hour, Plan::Config::HOURS_SELECT
-    = f.select :end_min, Plan::Config::MINUTES_SELECT
+    = f.select :end_hour, Epure::Config::HOURS_SELECT
+    = f.select :end_min, Epure::Config::MINUTES_SELECT
   %p.location
     = f.label "Miejsce:"
     = f.text_field :building
