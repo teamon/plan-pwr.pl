@@ -12,7 +12,8 @@ module Epure
     COURSE_TYPES_NAMES = COURSE_TYPES.invert.freeze
     WEEKS = { "" => 0, "TN" => 1, "TP" => 2 }.freeze
     WEEKS_NAMES = WEEKS.invert.freeze
-    WEEK_DAYS = { "pn" => 0, "wt" => 1, "śr" => 2, "cz" => 3, "pt" => 4, "sb" => 5, "nd" => 6 }.freeze
+    WEEK_DAYS = { "pn" => 0, "wt" => 1, "śr" => 2, "cz" => 3, "pt" => 4, "sb" => 5, "nd" => 6,
+      "so" => 5, "n" => 6}.freeze
     WEEK_DAYS_NAMES = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"].freeze
 
     HOURS = (7..21).freeze

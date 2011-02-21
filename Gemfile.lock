@@ -80,6 +80,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
+    silent-postgres (0.0.7)
     spork (0.9.0.rc3)
     thin (1.2.7)
       daemons (>= 1.0.9)
@@ -107,6 +108,7 @@ DEPENDENCIES
   rails (= 3.0.3)
   ri_cal (= 0.8.7)
   rspec-rails
+  silent-postgres
   spork (~> 0.9.0.rc)
   thin
   vpim (= 0.695)
