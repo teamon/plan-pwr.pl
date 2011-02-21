@@ -54,7 +54,7 @@ class SchedulesController < ApplicationController
               Epure::Generators::PDF.new.generate(html, :orientation => "portrait")
             end
             
-            send_data pdf, :filename => "plan.pdf", 
+            send_data pdf, :filename => "plan_mini.pdf", 
                            :type => "application/pdf", 
                            :disposition => "inline"
           end
@@ -111,9 +111,8 @@ class SchedulesController < ApplicationController
     else
       render :json => @schedule.errors, :status => :unprocessable_entity
     end
-  rescue Exception => e
-    logger.error e
-    render "new" 
+  rescue
+    render :json => { :errors => ["Błąd parsera. Prosze skontaktować się z administratorem."] }, :status => :unprocessable_entity
   end
 
   
