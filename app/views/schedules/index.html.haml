@@ -1,3 +1,43 @@
-%h2 Stwórz nowy plan zajęć
+#home
+  %p.info
+    Generator planu pozwala na wygenerowanie estetycznego planu w PDF wprost z systemu Edukacja.CL.
+    Po wczytaniu planu z edukacji generator pozwala na dodawanie, edycję oraz usuwanie kursów. 
+    Wygenerowany plan jest zapisywany i dostępny zawsze pod wskazanym adresem.
+  %p.info
+    Serwis udostępnia eksport planu do formatów: PDF, HTML, VCS, ICS (iCal, Google Calendar z możliwością subskrybcji), JSON, XML.
+  %p.info
+    Jeżeli nie jesteś studentem Politechniki Wrocławskiej możesz sam stworzyć cały plan od podstaw.
+  
+  %h2 Instrukcja obsługi
+  %ul.howto
+    %li 
+      Wejdź na 
+      = link_to "Edukacje.CL", "http://edukacja.pwr.wroc.pl"
+      (zaloguj się itp) 
+      = "(#{link_to "screen", "/images/howto/1.jpg", :title => "Logowanie", :rel => "facebox"})".html_safe
+    %li 
+      Kliknij zakładkę 
+      %strong "Zapisy"
+      (po lewej w menu)
+      = "(#{link_to "screen", "/images/howto/2.jpg", :title => "Zapisy", :rel => "facebox"})".html_safe
+    %li 
+      Teraz klik na 
+      %strong "Przełącz na &lt;Grupy zajęciowe do których słuchacz jest zapisany w semestrze&gt;"
+      = "(#{link_to "screen", "/images/howto/3.jpg", :title => "Grupy", :rel => "facebox"})".html_safe
+    %li 
+      Skopiuj źródło strony, kliknij na
+      %strong Stwórz nowy plan zajęć
+      i wklej w pole.
+      %ul
+        %li Z menu "Widok" wybierz "Źródło strony"
+        %li Z menu "Edycja" wybierz "Zaznacz wszystko"
+        %li Kopiuj (Ctrl + C lub "Edycja" -> "Kopiuj")
+        
+  #new
+    = link_to "Stwórz nowy plan zajęć", new_schedule_path, :rel => "facebox"
+  
+  %h2 Przykładowe plany
+  %ul#examples
+    - examples.each do |title, file|
+      %li{:class => cycle("odd", "even")}= link_to "", "/images/examples/#{file}.png", :rel => "facebox", :style => "background-image: url(/images/examples/#{file}-thumb.png)", :title => title
 
-= link_to "Plan PWR", new_schedule_path, :rel => "facebox"

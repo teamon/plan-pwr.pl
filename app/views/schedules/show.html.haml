@@ -17,22 +17,27 @@
   :javascript
     $(document).ready(function(){ $("#menu-new-entry").click() })
 
-%h2 
-  Twój plan
-#info
-  %div
-    Rok akademicki:
-    %span.year= @schedule.year
-  %div
-    Semestr:
-    %span.sem= @schedule.semester_name
-  %div
-    = link_to "Edytuj", [:edit, @schedule], :rel => "facebox", :id => "info-edit"
+.address
+  Adres twojego planu:
+  = text_field_tag "", schedule_slug_url(@schedule.slug), :id => "schedule_url"
 
-.schedule-menu
-  = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
-  = link_to "Eksportuj", "#exports", :rel => "facebox"
-  = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox", :id => "menu-new-entry"
+.head
+  %h2 
+    Twój plan
+  #info
+    %div
+      - if @schedule.pwr?
+        %span
+          Rok akademicki:
+          %strong= @schedule.year
+        %span
+          Semestr:
+          %strong= @schedule.semester_name
+
+  .schedule-menu
+    = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
+    = link_to "Eksportuj", "#exports", :rel => "facebox"
+    = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox", :id => "menu-new-entry"
 
 #schedule-wrap
   #schedule-overlay
@@ -47,7 +52,8 @@
       %li= link_to "Mini PDF",  schedule_slug_path(@schedule.slug, :format => "pdfmini")
       %li= link_to "HTML",      schedule_slug_path(@schedule.slug, :format => "html")
       %li= link_to "Mini HTML", schedule_slug_path(@schedule.slug, :format => "htmlmini")
-      %li= link_to "iCal",      schedule_slug_path(@schedule.slug, :format => "ics")
-      %li= link_to "VCS",       schedule_slug_path(@schedule.slug, :format => "vcs")
+      - if @schedule.pwr?
+        %li= link_to "iCal",      schedule_slug_path(@schedule.slug, :format => "ics")
+        %li= link_to "VCS",       schedule_slug_path(@schedule.slug, :format => "vcs")
       %li= link_to "JSON",      schedule_slug_path(@schedule.slug, :format => "js")
       %li= link_to "XML",       schedule_slug_path(@schedule.slug, :format => "xml")

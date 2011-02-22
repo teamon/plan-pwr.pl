@@ -67,7 +67,6 @@ module Epure
               entry.end_min     = m_when[6].to_i
             end
 
-
             if m_where = where_when.match(/bud. (.+?), sala (.+)/u)
               entry.building = m_where[1]
               entry.room = m_where[2]
@@ -86,54 +85,3 @@ module Epure
     end
   end
 end
-
-
-
-
-
-# 
-# class EntryX
-# 
-#                 
-#   def start_time
-#     @start_time ||= parse_time(time[:start])
-#   end
-#   
-#   def end_time
-#     @end_time ||= parse_time(time[:end])
-#   end
-#   
-# 
-#   
-#   def location
-#     "#{building} / #{room}"
-#   end
-#   
-#   def time_string
-#     "#{time[:start][:hour]}:#{time[:start][:min]} - #{time[:end][:hour]}:#{time[:end][:min]}"
-#   end
-#   
-#   
-#   def type_code
-#     TYPES[type] || type
-#   end
-#   
-#   def type_color
-#     {"W" => "ecdf92", "C" => "ff4283", "L" => "b0e35d", 
-#       "S" => "ffa645", "P" => "bf9bf8"}[type_code] || "FFFFFF"
-#   end
-#   
-#   def in_week?(n)
-#     week == "" || week == ["TP", "TN"][n%2]
-#   end
-#   
-#   def course_name_with_type
-#     "#{course_name} (#{type_code})"
-#   end
-#   
-#   protected
-#   
-#   def parse_time(time)
-#     time[:hour].to_i * 100 + time[:min].to_i
-#   end
-# end

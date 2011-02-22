@@ -112,7 +112,7 @@ class SchedulesController < ApplicationController
       render :json => @schedule.errors, :status => :unprocessable_entity
     end
   rescue
-    render :json => { :errors => ["Błąd parsera. Prosze skontaktować się z administratorem."] }, :status => :unprocessable_entity
+    render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
   end
 
   

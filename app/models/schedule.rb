@@ -54,6 +54,10 @@ class Schedule < ActiveRecord::Base
     invalidate_cache
   end
   
+  def pwr?
+    !(year.blank? || semester.blank?)
+  end
+  
   protected
   
   def generate_slug
