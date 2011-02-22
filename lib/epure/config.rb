@@ -2,7 +2,7 @@
 
 module Epure
   module Config
-    URL = "http://epure.pl"
+    URL = "http://plan-pwr.pl"
     WINTER = 1.freeze
     SUMMER = 2.freeze
     SEMESTERS = { "Letni" => SUMMER, "Zimowy" => WINTER }.freeze
@@ -12,7 +12,8 @@ module Epure
     COURSE_TYPES_NAMES = COURSE_TYPES.invert.freeze
     WEEKS = { "" => 0, "TN" => 1, "TP" => 2 }.freeze
     WEEKS_NAMES = WEEKS.invert.freeze
-    WEEK_DAYS = { "pn" => 0, "wt" => 1, "śr" => 2, "cz" => 3, "pt" => 4, "sb" => 5, "nd" => 6 }.freeze
+    WEEK_DAYS = { "pn" => 0, "wt" => 1, "śr" => 2, "cz" => 3, "pt" => 4, "sb" => 5, "nd" => 6,
+      "so" => 5, "n" => 6}.freeze
     WEEK_DAYS_NAMES = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"].freeze
 
     HOURS = (7..21).freeze

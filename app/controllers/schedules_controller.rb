@@ -54,7 +54,7 @@ class SchedulesController < ApplicationController
               Epure::Generators::PDF.new.generate(html, :orientation => "portrait")
             end
             
-            send_data pdf, :filename => "plan.pdf", 
+            send_data pdf, :filename => "plan_mini.pdf", 
                            :type => "application/pdf", 
                            :disposition => "inline"
           end
@@ -111,9 +111,8 @@ class SchedulesController < ApplicationController
     else
       render :json => @schedule.errors, :status => :unprocessable_entity
     end
-  rescue Exception => e
-    logger.error e
-    render "new" 
+  rescue
+    render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
   end
 
   

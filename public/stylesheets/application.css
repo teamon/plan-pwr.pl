@@ -9,17 +9,20 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,strong,ul,li,fieldset,form,label {
 
 body {
   color:#222;
-  font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
+  font-family: 'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
   font-size:10px;
 }
 
 #container {
   width: 1010px;
   margin: auto;
+  position: relative;
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: normal;
+  padding-top: 10px;
 }
 
 h1 a {
@@ -32,322 +35,112 @@ h1 span {
   color: #aaa;
 }
 
-/*
-h1,h2,strong,a {
-font-style:inherit;
-font-weight:inherit;
-text-decoration:none;
+body.home {
+  background-color: #eee;
 }
 
-input,textarea {
-font:inherit;
+body.home #main {
+  width: 540px;
+  background-color: #fff;
+  padding: 30px;
 }
 
-input::-moz-focus-inner {
-border:0;
-margin:0;
-padding:0;
-}
-
-#container {
-margin:auto;
-width:800px;
-}
-
-#main {
-background-color:#f5f5f5;
-overflow:hidden;
-padding:10px 0;
-position:relative;
-}
-
-a {
-color:#1f75cc;
-}
-
-a:hover {
-text-decoration:underline;
-}
-
-strong {
-font-weight:700;
-}
-
-div.info {
-position:absolute;
-right:10px;
-top:15px;
-}
-
-h1 {
-color:#1f75cc;
-font-size:12pt;
-font-weight:700;
-padding:5px 0 15px 15px;
-}
-
-h2 {
-color:#1f75cc;
-font-size:10pt;
-font-weight:700;
-padding:5px 15px 0 15px ;
-}
-
-h3 {
-color:#1f75cc;
-font-size:10pt;
-font-weight:700;
-padding:5px 0 ;
-}
-
-h4 {
-color:#1f75cc;
-font-size:8pt;
-font-weight:700;
-}
-
-
-
-h1 span {
-color:#aaa;
-font-size:6pt;
-}
-
-form {
-padding:20px;
-}
-
-fieldset label {
-float:left;
-padding:6px;
-text-align:right;
-width:100px;
-}
-
-fieldset textarea {
-border:1px solid #ccc;
-float:left;
-padding:3px;
-height:150px;
-width:750px;
-}
-
-form .actions {
-padding-bottom:10px;
-padding-top:10px;
-overflow:hidden;
-}
-
-form .actions input {
--webkit-border-radius:4px;
-background-color:#4e4e4e;
-border:none;
-color:#f2f2f2;
-float:right;
-padding:5px 10px;
-}
-
-#foot {
-color:#aaa;
-font-size:8pt;
-padding:10px 15px;
-}
-
-#foot a {
-font-size:8pt;
-}
-
-#foot p.copy {
-float:right;
-text-align:right;
-width:250px;
-padding-bottom: 20px;
-}
-
-#more {
-float:left;
-line-height:11pt;
-width:400px;
-}
-
-#more a {
-color:#bbb;
-}
-
-#more a:hover {
-color:#555;
-}
-
-#howto ul {
-line-height:15px;
-padding-left:20px;
-}
-
-#howto ul li {
-list-style:decimal;
-}
-
-div.radio {
-  float: left;
+body.home #container {
   width: 600px;
 }
 
-div.radio label {
-  float: left;
-  padding: 4px 27px 4px 4px;
-  /*width: 60px;*
+body.home h1 {
+  padding-top: 0;
 }
 
-div.radio input {
-  float: left;
-}
-
-
-#menu li {
-  list-style: none;
-  float: left;
-  width: 370px;
-  margin: 0 15px 5px 15px;
-}
-
-#menu li a {
-  display: block;
+#new a {
+  background-color: #BFE4FF;
   text-align: center;
+  display: block;
+  font-size: 15px;
   padding: 20px 0;
-  background-color: #eee;
-  font-size: 11pt;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  margin-top: 30px;
 }
 
-
-table {
-  border-collapse: collapse;
-}
-table td, table th {
-  border: none;
-  padding: 3px 3px 0 0;
-}
-table td input {
-  border:1px solid #ccc;
-  padding:3px;
-  width:200px;
+#new a:hover {
+  background-color: #AED3EE;
 }
 
-table td.avg {
-  text-align: center;
-  color:#1f75cc;
-  font-size:11pt;
-  font-weight:700;
-  padding: 10px;
-}
-
-table th.name { text-align: left; }
-
-table td.name input { width: 250px; }
-table td.ects input { width: 50px; text-align: center; margin: 0 0 0 5px;}
-table td.grade input { width: 50px; text-align: center; margin: 0 0 0 5px; }
-table td.name a { color: red;}
-table td.name a.f { color: #f5f5f5;}
-input.add {
--webkit-border-radius:4px;
-background-color:#4e4e4e;
-border:none;
-color:#f2f2f2;
-padding:5px 10px;
-}
-
-.error {
-  padding: 15px;
-}
-.error ul {
-  padding-bottom: 10px;
-}
 #examples {
-  padding-bottom: 15px;
   overflow: hidden;
+  list-style: none;
 }
-#examples a {
-  display: block;
-  width: 235px;
-  height: 150px;
+
+#examples li {
   float: left;
+  width: 163px;
+  height: 150px;
   border: 5px solid #ddd;
   margin-bottom: 20px;
   margin-left: 10px;
-  background-position: center center;
-}
-#examples a.first {
-  margin-left: 0px;
 }
 
-#pmore {
-    margin-bottom: 10px;
+#examples li:first-child {
+  margin-left: 0;
 }
 
-#pmore td.name input {
-    width: 145px;
+#examples li a {
+  display: block;
+  width: 163px;
+  height: 150px;
 }
 
-#pmore td.building input {
-    width: 40px;
+.home h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
-#advanced {
-    display: none;
-    overflow: hidden;
+.howto, .howto ul {
+  font-size: 9pt;
+  line-height: 15pt;
+  padding-left: 20px;
 }
 
-#colors {
-    float:left;
-    width: 400px;
+.info {
+  font-size: 9pt;
+  padding-top: 20px;
 }
 
-#colors div {
-    float: left;
-    width: 170px;
-    background: #eee;
-    padding: 10px;
-    margin: 0;
-    margin-bottom: 10px;
+#info {
+  float: left;
+  padding: 10px 0 0 20px;
 }
 
-#colors div.o {
-    margin-right: 10px;
+#info span {
+  padding-right: 20px;
 }
 
-#colors h5 {
-    font-size: 11pt;
+.head {
+  overflow: hidden;
+  padding-bottom: 5px;
 }
 
-#colors div h6 {
-    font-size: 10pt;
-    padding: 0;
-    margin: 0;
-    padding-bottom: 10px;
+.head h2 {
+  float: left;
 }
 
-#colors div p {
-    overflow: hidden;
+.head .schedule-menu {
+  float: right;
 }
 
-#colors div label {
-    float: left;
-    width: 100px;
+.address {
+  padding: 15px 0;
 }
 
-#colors div input {
-    float: left;
-    width: 60px;
+#schedule_url {
+  width: 250px;
+  border: 1px solid #ccc;
+  padding: 3px 5px;
 }
 
-#picker-wrap {
-    float: right;
-}
-
-/* --- entry --- *
-
-.entry {
-/*  background: #BFE4FF;*
-}*/
 
 h2 {
   font-size: 15px;
@@ -434,16 +227,14 @@ h2 {
 }
 
 #foot {
-  padding: 10px 0;
+  padding: 10px 10px;
   color: #aaa;
-  text-align: center;
+  text-align: right;
 }
 
 #foot a {
   color: #888;
 }
-
-
 
 
 #facebox form p.location input {
@@ -498,6 +289,22 @@ h2 {
 #facebox form a.delete {
   color: #a00;
   padding: 0 4px;
+}
+
+#facebox form .radio {
+  float: left;
+  padding: 0;
+}
+
+#facebox form .radio input {
+  float: left;
+}
+
+#facebox form label {
+  float: left;
+  text-align: left;
+  width: 40px;
+  line-height: 10px;
 }
 
 #facebox h3 {

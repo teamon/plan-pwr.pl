@@ -1,6 +1,8 @@
 %h3 Nowy plan zajęc
 = form_for @schedule, :remote => true do |f|
   %p
+    Wklej źródło strony w pole poniżej
+  %p
     = f.text_area :raw
   %p.actions
     = f.submit "Wczytaj"

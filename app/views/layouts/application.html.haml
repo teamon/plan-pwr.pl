@@ -1,7 +1,9 @@
 !!! Strict
 %html{:lang => "pl_PL", "xml:lang" => "pl_PL", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
-    %title épure
+    %title Generator planu PWR
+    %meta{"http-equiv" => 'content-type', "content" => 'text/html; charset=utf-8'}
+    
     = stylesheet_link_tag "http://assets.teamon.eu/facebox/facebox.css"
     = stylesheet_link_tag "http://assets.teamon.eu/farbtastic/farbtastic.css"
     = stylesheet_link_tag :all
@@ -16,12 +18,12 @@
 
     = csrf_meta_tag
 
-  %body
+  %body{:class => request.path == "/" ? "home" : nil}
     #container
       #main
         %h1
-          %a{:href => "/"} épure
-          %span (0.7.0)
+          %a{:href => "/"} Generator planu PWR
+          %span (i nie tylko)
         = yield
       #foot
         \&copy; 2010-2011 Tymon Tobolski

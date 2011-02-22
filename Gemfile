@@ -21,4 +21,5 @@ group :development, :test do
   gem 'watchr'
   gem 'webrat'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'silent-postgres'
 end
