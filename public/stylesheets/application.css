@@ -141,6 +141,16 @@ body.home h1 {
   padding: 3px 5px;
 }
 
+#facebook {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}
+
+#fb-root {
+  padding-top: 20px;
+}
+
 
 h2 {
   font-size: 15px;
