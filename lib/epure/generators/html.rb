@@ -26,7 +26,7 @@ module Epure
           end
           [day_id, entries]
         end.sort_by {|day_id, entries| day_id }.map do |day_id, entries|
-          [WEEK_DAYS_NAMES[day_id], entries]
+          [WEEK_DAYS_NAMES[day_id], entries.sort_by {|e, *| e.start_hour*60 + e.start_min }]
         end
       end
 

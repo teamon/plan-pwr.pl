@@ -11,7 +11,7 @@ describe Epure::Parser do
   end
   
   it "should parse all and give no errors" do
-    (1..3).each do |i|
+    (1..4).each do |i|
       schedule, entries = parse_schedule "#{i}.html"
       # schedule.valid?
       # p schedule.errors
@@ -423,6 +423,12 @@ describe Epure::Parser do
     entries[9].end_min.should == 10
     entries[9].building.should == "H-4"
     entries[9].room.should == "412"
+  end
+  
+  it "should parse 4" do
+    # schedule, entries = parse_schedule "4.html"
+  
+    
   end
 end
 
