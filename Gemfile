@@ -16,6 +16,8 @@ gem 'vpim', '0.695'
 # server
 gem 'thin'
 
+gem "rack-google_analytics", '1.0.1', :require => "rack/google_analytics"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'watchr'
