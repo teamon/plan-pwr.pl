@@ -9,4 +9,23 @@ namespace :epure do
     FileUtils.rm_r(File.join(Epure.cache_root))
     FileUtils.mkdir_p(File.join(Epure.cache_root))
   end
+  
+  desc "Show all"
+  task :show => :environment do   
+    ActiveRecord::Base.logger = Logger.new("/dev/null")
+    empty = 0
+    
+    puts "     # slug      entries"
+    puts "-" * 25
+    Schedule.all.each do |schedule|
+      esize = schedule.entries.count
+      empty += 1 if esize == 0
+      puts [schedule.id.to_s.rjust(6),
+      schedule.slug.ljust(12),
+      esize.to_s.ljust(3)].join(" ")
+    end
+    
+    puts
+    puts "Found #{empty} empty schedules"
+  end
 end
