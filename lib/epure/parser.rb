@@ -25,7 +25,9 @@ module Epure
       
       tables =  @doc.css("table.KOLOROWA")
     
-      entries = tables[2, tables.size-2].map do |table|
+      entries = []
+      
+      tables[2, tables.size-2].each do |table|
         trs = table.children
         trs = trs[4, trs.size-4]
     
@@ -47,6 +49,8 @@ module Epure
             where_when = td.content.strip
             
             Rails.logger.debug("where_when: " + where_when)
+            
+            m_when = nil
           
             if m_when = where_when.match(/\d{4}-\d{2}-\d{2} \((.+?)\) (\d{2}):(\d{2})-(\d{2}):(\d{2})/u)
               # zaoczne
@@ -66,19 +70,22 @@ module Epure
               entry.end_hour    = m_when[5].to_i
               entry.end_min     = m_when[6].to_i
             end
-
-            if m_where = where_when.match(/bud. (.+?), sala (.+)/u)
-              entry.building = m_where[1]
-              entry.room = m_where[2]
-            else
-              entry.building = "?"
-              entry.room = "?"
-            end
             
+            unless m_when.nil?
+              if m_where = where_when.match(/bud. (.+?), sala (.+)/u)
+                entry.building = m_where[1]
+                entry.room = m_where[2]
+              else
+                entry.building = "?"
+                entry.room = "?"
+              end
+              
+              entries << entry
+            end
           end
-          entry
+
         end
-      end.flatten
+      end
 
       schedule.entries += entries
       schedule

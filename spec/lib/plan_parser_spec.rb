@@ -10,6 +10,16 @@ describe Epure::Parser do
     [schedule, entries]
   end
   
+  it "should parse all and give no errors" do
+    (1..3).each do |i|
+      schedule, entries = parse_schedule "#{i}.html"
+      # schedule.valid?
+      # p schedule.errors
+      # p entries.map {|e| e.errors }
+      schedule.should be_valid
+    end
+  end
+  
   it "should parse 1" do
     schedule, entries = parse_schedule "1.html"
     
