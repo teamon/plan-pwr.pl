@@ -1,0 +1,40 @@
+!!! Strict
+%html{:lang => "pl_PL", "xml:lang" => "pl_PL", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title Plan PWR
+    %meta{"http-equiv" => 'content-type', "content" => 'text/html; charset=utf-8'}
+    :css
+      html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,strong,ul,li,fieldset,form,label {
+        background:transparent;
+        border:0;
+        font-size:100%;
+        margin:0;
+        padding:0;
+        vertical-align:baseline;
+      }
+
+      body {
+        color:#222;
+        font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
+        font-size:10px;
+      }
+      #{@schedule_css}
+      #schedule a { display: none; }
+      #copy {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        text-align: right;
+      }
+      #wrapper { width: 1007px; position: relative; }
+  %body
+    #wrapper
+      = render :partial => "schedules/schedule.html"
+      #copy
+        Plan wygenerowany przez 
+        = link_to Epure::Config::URL
+        \| Tymon Tobolski
+        = "(#{link_to "http://teamon.eu"})".html_safe
+        2010-2011
+  
+

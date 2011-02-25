@@ -1,0 +1,25 @@
+%h3 Edytuj plan zajęć
+= form_for @schedule, :remote => true do |f|
+  %p
+    Ustawienia roku i semestru są wykorzystywane przy generowanie planu
+    w formacie 
+    %strong ics
+    oraz
+    %strong vcs
+    (iCal, Google Calendar, itp.)
+    uwzględniając kalendarz akademicki Politechniki Wrocławskiej
+  %p
+    = f.label "Rok:"
+    = f.select :year, Epure::EDate.semesters.keys
+  %p
+    = f.label "Semestr:"
+    / = f.select :semester, Epure::Config::SEMESTERS
+    %span.radio
+      = f.radio_button :semester, Epure::Config::SEMESTERS.values[0]
+      = f.label Epure::Config::SEMESTERS.keys[0]
+      = f.radio_button :semester, Epure::Config::SEMESTERS.values[1]
+      = f.label Epure::Config::SEMESTERS.keys[1]
+  %p.actions
+    = f.submit "Zapisz"
+    = link_to "Anuluj", "#", :class => "cancel"
+   

@@ -1,0 +1,43 @@
+!!! Strict
+%html{:lang => "pl_PL", "xml:lang" => "pl_PL", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title Plan PWR
+    %meta{"http-equiv" => 'content-type', "content" => 'text/html; charset=utf-8'}
+    :css
+      html,body,div,span,h1,h2,p,a,strong,ul,li,fieldset,form,label {
+        background:transparent;
+        border:0;
+        font-size:100%;
+        margin:0;
+        padding:0;
+        vertical-align:baseline;
+      }
+
+      body {
+        color:#222;
+        font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
+        font-size:10px;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      td, th {
+        border: 1px solid #ddd;
+        padding: 1px 3px;
+      }
+      th {font-weight: bold;}
+  %body
+    %table
+      - @generator.days.reject {|n, e| e.empty?}.each do |name, entries|
+        %tr
+          %th{:colspan => "4"}= name
+          
+        - entries.each do |entry, top, size, cls|
+          %tr
+            %td
+              = entry.course_name 
+              = "(#{entry.course_type})"
+            %td
+              = entry_time(entry)
+            %td= entry.location
+            %td= entry.lecturer

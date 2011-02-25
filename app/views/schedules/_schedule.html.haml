@@ -1,0 +1,30 @@
+:css
+  #{@generator.colors_css}
+  
+#schedule{:class => @generator.schedule_cls}
+  #schedule-main
+    #days
+      - @generator.days.each do |name, _|
+        %div= name
+      
+    #hours
+      - @generator.hours.each do |hour|
+        %div= "%02d:00" % hour
+
+    - @generator.days.each do |name, entries|
+      .day
+        - @generator.hours.each do |hour|
+          %span.sep
+        
+        - entries.each do |entry, top, size, cls|
+          .entry{:style => "top: #{top*4}px; height: #{size*4}px"}
+            .wrap{:class => "c_#{entry.course_type} #{cls}"}
+              .h= entry_time(entry)
+              .n= entry.course_name
+              .l= entry.location
+              .p= entry.lecturer
+              .t= entry.course_type
+              = link_to "edit", [:edit, @schedule, entry], :rel => "facebox"
+    #legend
+      - @generator.course_types.each_pair do |name, code|
+        %span{:class => "c_#{code}"}= name

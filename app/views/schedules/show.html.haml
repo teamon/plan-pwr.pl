@@ -1,0 +1,59 @@
+:javascript
+  $("#entry_lecturer").livequery(function(){
+    $(this).autocomplete({
+      source: "#{search_lecturers_schedule_entries_path(@schedule)}",
+      minLength: 2,
+    });
+  })
+  
+  $("#entry_course_name").livequery(function(){
+    $(this).autocomplete({
+      source: "#{search_course_names_schedule_entries_path(@schedule)}",
+      minLength: 2,
+    });
+  })
+
+- if @schedule.entries.empty?
+  :javascript
+    $(document).ready(function(){ $("#menu-new-entry").click() })
+
+.address
+  Adres twojego planu:
+  = text_field_tag "", schedule_slug_url(@schedule.slug), :id => "schedule_url"
+
+.head
+  %h2 
+    Twój plan
+  #info
+    %div
+      - if @schedule.pwr?
+        %span
+          Rok akademicki:
+          %strong= @schedule.year
+        %span
+          Semestr:
+          %strong= @schedule.semester_name
+
+  .schedule-menu
+    = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
+    = link_to "Eksportuj", "#exports", :rel => "facebox"
+    = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox", :id => "menu-new-entry"
+
+#schedule-wrap
+  #schedule-overlay
+    Aktualizowanie planu
+  = render :partial => "schedule"
+
+#exports
+  .exports
+    %h3 Eksportuj plan
+    %ul
+      %li= link_to "PDF",       schedule_slug_path(@schedule.slug, :format => "pdf")
+      %li= link_to "Mini PDF",  schedule_slug_path(@schedule.slug, :format => "pdfmini")
+      %li= link_to "HTML",      schedule_slug_path(@schedule.slug, :format => "html")
+      %li= link_to "Mini HTML", schedule_slug_path(@schedule.slug, :format => "htmlmini")
+      - if @schedule.pwr?
+        %li= link_to "iCal",      schedule_slug_path(@schedule.slug, :format => "ics")
+        %li= link_to "VCS",       schedule_slug_path(@schedule.slug, :format => "vcs")
+      %li= link_to "JSON",      schedule_slug_path(@schedule.slug, :format => "js")
+      %li= link_to "XML",       schedule_slug_path(@schedule.slug, :format => "xml")

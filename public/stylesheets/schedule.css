@@ -1,0 +1,173 @@
+#schedule {
+  width: 1007px;
+}
+
+#schedule-main {
+  margin: auto;
+  width: 1005px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+#schedule #days  {
+  overflow: hidden;
+  padding-left: 50px;
+}
+
+#schedule #days div {
+  float: left;
+  text-align: center;
+  padding: 5px 0;
+  width: 190px;
+  border-left: 1px solid #ddd;
+}
+
+#schedule #hours {
+  float: left;
+  width: 50px;
+  margin-top: -6px;
+}
+
+#schedule #hours div {
+  text-align: center;
+  width: 50px;
+  height: 48px;
+}
+
+#schedule .day {
+  width: 190px;
+  height: 720px;
+  border-left: 1px solid #ddd;
+  float: left;
+  background: #eee;
+  position: relative;
+}
+
+#schedule .entry {
+  position: absolute;
+  width: 100%;
+}
+
+#schedule .entry .wrap {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  height: 100%;
+  padding: 0 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+#schedule .entry .n { font-weight: bold; font-size: 11px;}
+
+#schedule .sep {
+  display: block;
+  height: 47px;
+  border-top: 1px solid #ddd;
+}
+
+#schedule .w_2 {
+  width: 87px;
+  margin-left: 95px;
+}
+
+#schedule .w_1 {
+  width: 87px;
+}
+
+#schedule .w_2_wider {
+  width: 106px;
+  margin-left: 76px;
+}
+
+#schedule .w_1_wider {
+  width: 106px;
+}
+
+#schedule #legend {
+  padding: 2px 0;
+  float:left;
+  width: 400px;
+  padding-left: 51px;
+}
+
+#schedule #legend span {
+  padding: 5px;
+  float: left;
+  margin-right: 2px;
+}
+
+/* SIX */
+
+#schedule.six {
+  width: 1006px;
+}
+
+#schedule.six #schedule-main {
+  width: 1004px;
+}
+
+#schedule.six #days div {
+  width: 158px;
+}
+
+#schedule.six .day {
+  width: 158px;
+}
+
+#schedule.six .w_2_wider {
+  margin-left: 44px;
+}
+
+#schedule.six .w_1 {
+  width: 71px;
+}
+
+#schedule.six .w_2 {
+  width: 71px;
+  margin-left: 79px;
+} 
+
+#schedule .t {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+#schedule .n {
+  max-height: 28px;
+  overflow: hidden;
+}
+
+
+/* SEVEN */
+#schedule.seven {
+  width: 1004px;
+}
+
+#schedule.seven #schedule-main {
+  width: 1002px;
+}
+
+#schedule.seven #days div {
+  width: 135px;
+}
+
+#schedule.seven .day {
+  width: 135px;
+}
+
+#schedule.seven .w_2_wider {
+  margin-left: 21px;
+}
+
+#schedule.seven .w_1, #schedule.seven .w_2 {
+  width: 59px;
+}
+
+#schedule.seven .w_2 {
+  margin-left: 68px;
+}

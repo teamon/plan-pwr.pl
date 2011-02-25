@@ -1,0 +1,439 @@
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,strong,ul,li,fieldset,form,label {
+  background:transparent;
+  border:0;
+  font-size:100%;
+  margin:0;
+  padding:0;
+  vertical-align:baseline;
+}
+
+body {
+  color:#222;
+  font-family: 'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
+  font-size:10px;
+}
+
+#container {
+  width: 1010px;
+  margin: auto;
+  position: relative;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: normal;
+  padding-top: 10px;
+}
+
+h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 span {
+  font-size: 10px;
+  color: #aaa;
+}
+
+body.home {
+  background-color: #eee;
+}
+
+body.home #main {
+  width: 540px;
+  background-color: #fff;
+  padding: 30px;
+}
+
+body.home #container {
+  width: 600px;
+}
+
+body.home h1 {
+  padding-top: 0;
+}
+
+#new a {
+  background-color: #BFE4FF;
+  text-align: center;
+  display: block;
+  font-size: 15px;
+  padding: 20px 0;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  margin-top: 30px;
+}
+
+#new a:hover {
+  background-color: #AED3EE;
+}
+
+#examples {
+  overflow: hidden;
+  list-style: none;
+}
+
+#examples li {
+  float: left;
+  width: 163px;
+  height: 150px;
+  border: 5px solid #ddd;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+#examples li:first-child {
+  margin-left: 0;
+}
+
+#examples li a {
+  display: block;
+  width: 163px;
+  height: 150px;
+}
+
+.home h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.howto, .howto ul {
+  font-size: 9pt;
+  line-height: 15pt;
+  padding-left: 20px;
+}
+
+.info {
+  font-size: 9pt;
+  padding-top: 20px;
+}
+
+#info {
+  float: left;
+  padding: 10px 0 0 20px;
+}
+
+#info span {
+  padding-right: 20px;
+}
+
+.head {
+  overflow: hidden;
+  padding-bottom: 5px;
+}
+
+.head h2 {
+  float: left;
+}
+
+.head .schedule-menu {
+  float: right;
+}
+
+.address {
+  padding: 15px 0;
+}
+
+#schedule_url {
+  width: 250px;
+  border: 1px solid #ccc;
+  padding: 3px 5px;
+}
+
+#facebook {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}
+
+#fb-root {
+  padding-top: 20px;
+}
+
+
+h2 {
+  font-size: 15px;
+  padding: 5px 0;
+}
+
+.schedule-menu {
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.schedule-menu a {
+  float: right;
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+#schedule-wrap {
+  height: 770px;
+}
+
+#schedule .entry a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  width: 10px;
+  overflow: hidden;
+  text-indent: -200px;
+  height: 10px;
+  background: url("http://facebook.mobissimo.com/images/ico-edit.png") no-repeat 5px 5px;
+  visibility: hidden;
+}
+
+#schedule .entry:hover a {
+  visibility: visible;
+}
+
+#schedule .entry .wrap {
+  position: relative;
+}
+
+#schedule-overlay {
+  position: absolute;
+  width: 943px;
+  height: 752px;
+  z-index: 100;
+  background: rgba(255,255,255,0.7) url("http://assets.teamon.eu/facebox/loading.gif") no-repeat 20px 20px;
+  font-size: 20px;
+  color: #555;
+  padding: 22px 0 0 60px;
+  display: none;
+}
+
+#exports {
+  display: none;
+}
+
+.exports ul {
+  list-style: none;
+  overflow: hidden;
+  width: 400px;
+}
+
+.exports li {
+  float: left;
+  margin: 10px;
+}
+
+.exports li a {
+  background-color: #BFE4FF;
+  text-align: center;
+  display: block;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+.exports li a:hover {
+  background-color: #AED3EE;
+}
+
+#foot {
+  padding: 10px 10px;
+  color: #aaa;
+  text-align: right;
+}
+
+#foot a {
+  color: #888;
+}
+
+
+#facebox form p.location input {
+  text-align: center;
+  width: 40px;
+}
+
+#facebox form p {
+  overflow: hidden;
+  padding: 2px 0;
+}
+
+#facebox form label {
+  float: left;
+  width: 70px;
+  text-align: right;
+  padding: 5px 5px 0 0;
+}
+
+#facebox form input[type="text"] {
+  float: left;
+  border: 1px solid #ccc;
+  padding: 3px 5px;
+  width: 250px;
+}
+#facebox form select {
+  float: left;
+}
+
+#facebox form span {
+  float: left;
+  padding: 5px 5px 0 5px;
+}
+
+#facebox form p.actions {
+  text-align: center;
+  padding-top: 10px;
+}
+
+#facebox form input[type="submit"] {
+  border: 1px solid #204683;
+  background: #5E75A0;
+  color: #fff;
+}
+
+#facebox form a.cancel,
+#facebox form a.custom {
+  color: #555;
+  padding: 0 4px;
+}
+
+#facebox form a.delete {
+  color: #a00;
+  padding: 0 4px;
+}
+
+#facebox form .radio {
+  float: left;
+  padding: 0;
+}
+
+#facebox form .radio input {
+  float: left;
+}
+
+#facebox form label {
+  float: left;
+  text-align: left;
+  width: 40px;
+  line-height: 10px;
+}
+
+#facebox h3 {
+  font-size: 15px;
+  padding-bottom: 5px;
+}
+
+#facebox .form-notice {
+  color: green;
+  font-size: 12px;
+  text-align: center;
+  padding: 10px 0 0 0;
+  position: absolute;
+  top: 0;
+  right: 30px;
+/*  width: 200px;*/
+  border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
+}
+
+#facebox .form-errors {
+  color: red;
+  text-align: center;
+  padding: 5px;
+  list-style: none;
+}
+
+#facebox textarea {
+  width: 550px;
+  height: 200px;
+}
+
+#facebox .settings {
+  width: 600px;
+  overflow: hidden;
+}
+
+#facebox .settings .schemes {
+  width: 340px;
+  float: left;
+  overflow: hidden;
+}
+
+
+#facebox .color-scheme {
+  width: 150px;
+  float: left;
+  background-color: #f5f5f5;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+
+#facebox .color-scheme input[type="text"] {
+  width: 50px;
+}
+
+#picker-wrap {
+  float: right;
+  padding-right: 20px;
+}
+
+#picker-wrap h6 {
+  margin-top: 30px;
+}
+
+#picker-wrap ul.menu {
+  list-style: none;
+}
+
+#picker-wrap ul.menu li {
+  padding: 5px 0 0 0;
+}
+
+a.button {
+  border: 1px solid #204683;
+  background: #5E75A0;
+  color: #fff;
+  text-decoration: none;
+  padding: 2px 4px;
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+}
+
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+.ui-widget-content { border: 1px solid #dddddd; background: #fff; color: #333333; }
+.ui-state-hover, .ui-state-focus {background: #6D84B4 ; font-weight: bold; color: #eee; padding: 0 1px; }
+
+.ui-menu {
+	list-style:none;
+  padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+  margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+}
