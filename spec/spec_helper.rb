@@ -71,3 +71,9 @@ entries[#{i}].room.should == "#{e.room}"
 EOS
   end
 end
+
+def print_errors(schedule)
+  schedule.valid?
+  Rails.logger.debug schedule.errors
+  Rails.logger.debug schedule.entries.map {|e| e.errors }
+end

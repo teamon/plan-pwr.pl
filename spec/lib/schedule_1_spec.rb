@@ -8,7 +8,7 @@ describe "Schedule 1" do
     schedule.should be_valid
     
     schedule.year.should == "2010/2011"
-    schedule.semester.should == Epure::Config::WINTER
+    schedule.semester.should == Epure::Config::SUMMER
     entries.size.should == 18
     
     entries[0].course_code.should == "ETEK00013W"

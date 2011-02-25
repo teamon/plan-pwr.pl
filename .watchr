@@ -16,7 +16,3 @@ end
 watch("app/(.*/.*)\.rb") do |match|
   run_spec %{spec/#{match[1]}_spec.rb}
 end
-
-watch("lib/epure/parser.rb") do |match|
-  run_spec %{spec/lib/plan_parser_spec.rb}
-end
