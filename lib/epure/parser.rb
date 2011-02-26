@@ -1,6 +1,9 @@
 # encoding: utf-8
 
 module Epure
+  class ParserException < Exception
+  end
+
   class Parser
     include Epure::Config
     
@@ -105,6 +108,8 @@ module Epure
 
       schedule.entries += entries
       schedule
+    rescue
+      raise ParserException
     end
   end
 end
