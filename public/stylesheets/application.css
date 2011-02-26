@@ -437,3 +437,7 @@ a.button {
 .ui-menu .ui-menu-item a.ui-state-active {
 	font-weight: normal;
 }
+
+.fb_iframe_widget iframe {
+  min-height: 350px !important;
+}
