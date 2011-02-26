@@ -107,19 +107,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  haml
-  hoptoad_notifier
-  mechanize
+  haml (= 3.0.25)
+  hoptoad_notifier (= 2.4.6)
+  mechanize (= 1.0.0)
   nokogiri (= 1.4.4)
   pdfkit (= 0.5.0)
-  pg
+  pg (= 0.10.1)
   rack-google_analytics (= 1.0.1)
   rails (= 3.0.3)
   ri_cal (= 0.8.7)
   rspec-rails
   silent-postgres
   spork (~> 0.9.0.rc)
-  thin
+  thin (= 1.2.7)
   vpim (= 0.695)
   watchr
   webrat

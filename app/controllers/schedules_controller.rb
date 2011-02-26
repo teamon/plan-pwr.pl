@@ -125,7 +125,7 @@ class SchedulesController < ApplicationController
   rescue Epure::ParserException => ex
     notify_hoptoad(ex)
     render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
-  rescue => e
+  rescue => ex
     notify_hoptoad(ex)
     render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
   end
