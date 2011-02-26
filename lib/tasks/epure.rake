@@ -34,6 +34,6 @@ namespace :epure do
     login = ENV["LOGIN"]
     password = ENV["PASSWORD"]
     
-    Automate.run!(login, password)
+    Epure::Automate.run!(login, password)
   end
 end

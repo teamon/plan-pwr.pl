@@ -264,7 +264,8 @@ h2 {
   padding: 5px 5px 0 0;
 }
 
-#facebox form input[type="text"] {
+#facebox form input[type="text"],
+#facebox form input[type="password"] {
   float: left;
   border: 1px solid #ccc;
   padding: 3px 5px;
@@ -310,12 +311,12 @@ h2 {
   float: left;
 }
 
-#facebox form label {
+/*#facebox form label {
   float: left;
   text-align: left;
   width: 40px;
   line-height: 10px;
-}
+}*/
 
 #facebox h3 {
   font-size: 15px;
@@ -343,8 +344,12 @@ h2 {
 }
 
 #facebox textarea {
-  width: 550px;
+  width: 280px;
+  display: block;
+  margin: auto;
   height: 200px;
+  border: 1px solid #ccc;
+  padding: 3px 5px;
 }
 
 #facebox .settings {
@@ -369,8 +374,42 @@ h2 {
 }
 
 
-#facebox .color-scheme input[type="text"] {
+#facebox .color-scheme input[type="text"],
+#facebox .color-scheme input[type="password"] {
   width: 50px;
+}
+
+#facebox #new_schedule {
+  width: 641px;
+}
+
+#facebox .side {
+  width: 300px;
+  height: 300px;
+  float: left;
+  padding: 10px;
+  
+}
+#facebox .right {
+  border-left: 1px solid #ddd;
+}
+
+#facebox .side input[type="text"],
+#facebox .side input[type="password"] {
+  width: 200px;
+}
+
+#facebox .security_info {
+  padding-top: 20px;
+}
+
+#howto {
+  display: none;
+}
+
+#facebox .howto {
+  width: 500px;
+  padding: 10px 20px 20px 20px;
 }
 
 #picker-wrap {

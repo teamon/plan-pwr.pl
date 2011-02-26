@@ -1,5 +1,8 @@
 # encoding: utf-8
 
+require File.join(Rails.root, "lib", "epure", "automate")
+require File.join(Rails.root, "lib", "epure", "parser")
+
 class SchedulesController < ApplicationController
   respond_to :html, :htmlmini, :pdf, :pdfmini, :js, :xml, :ics, :vcs
   
@@ -104,13 +107,23 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = params[:empty] ? Schedule.new : Epure::Parser.parse!(params[:schedule][:raw])
+    @schedule = if params[:empty]
+      Schedule.new
+    elsif params[:commit] == "Pobierz plan"
+      Epure::Automate.run!(params[:login], params[:password])
+    else
+      Epure::Parser.parse!(params[:schedule][:raw])
+    end
     
     if @schedule.save
       render :json => { :path => schedule_slug_path(@schedule.slug) }
     else
       render :json => @schedule.errors, :status => :unprocessable_entity
     end
+  rescue Epure::LoginException
+    render :json => { :errors => ["Podane hasło jest niepoprawne"] }, :status => :unprocessable_entity
+  rescue Epure::ParserException
+    render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
   rescue
     render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
   end
