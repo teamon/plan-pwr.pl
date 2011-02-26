@@ -1,10 +1,30 @@
 %h3 Nowy plan zajęć
 = form_for @schedule, :remote => true do |f|
-  %p
-    Wklej źródło strony w pole poniżej
-  %p
-    = f.text_area :raw
-  %p.actions
-    = f.submit "Wczytaj"
-    lub
-    = link_to "Utwórz ręcznie", schedules_path(:empty => true), :remote => true, "data-method" => "post", :class => "custom", :id => "new-empty-schedule"
+  .side.left
+    %p.info
+      Wpisz dane logowania do Edukacji
+    %p
+      = f.label "Użytkownik:"
+      = text_field_tag :login
+    %p
+      = f.label "Hasło:"
+      = password_field_tag :password
+    %p.actions
+      = f.submit "Pobierz plan", "data-disable-with" => "Pobieranie planu..."
+    .security_info
+      %h4 Informacje dot. bezpieczeństwa
+      %p
+        Dane używane do pobrania planu z systemu Edukacja.CL nie są w żaden sposób przechowywane.
+      
+        
+  .side.right
+    %p.info
+      lub wklej źródło strony w pole poniżej
+      %br
+      = "(#{link_to "instrukcja krok po kroku", "#howto", :rel => "facebox"})".html_safe
+    %p
+      = f.text_area :raw
+    %p.actions
+      = f.submit "Wczytaj", "data-disable-with" => "Wczytywanie planu..."
+      lub
+      = link_to "Utwórz ręcznie", schedules_path(:empty => true), :remote => true, "data-method" => "post", :class => "custom", :id => "new-empty-schedule"
