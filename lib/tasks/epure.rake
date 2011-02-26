@@ -28,4 +28,12 @@ namespace :epure do
     puts
     puts "Found #{empty} empty schedules"
   end
+  
+  desc "Automat test"
+  task :automate => :environment do
+    login = ENV["LOGIN"]
+    password = ENV["PASSWORD"]
+    
+    Automate.run!(login, password)
+  end
 end
