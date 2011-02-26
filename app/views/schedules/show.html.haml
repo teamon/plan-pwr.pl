@@ -35,9 +35,11 @@
           %strong= @schedule.semester_name
 
   .schedule-menu
-    = link_to "Ustawienia", [@schedule, :color_schemes], :rel => "facebox", :id => "menu-settings"
+    = link_to "Ustawienia", [@schedule, :color_schemes],
+      :rel => "facebox", :id => "menu-settings"
     = link_to "Eksportuj", "#exports", :rel => "facebox"
-    = link_to "Dodaj nowy kurs", [:new, @schedule, :entry], :rel => "facebox", :id => "menu-new-entry"
+    = link_to "Dodaj nowy kurs", [:new, @schedule, :entry],
+      :rel => "facebox", :id => "menu-new-entry"
 
 #schedule-wrap
   #schedule-overlay

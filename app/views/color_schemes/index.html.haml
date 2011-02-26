@@ -19,8 +19,12 @@
       #picker
       %h6 Wybierz schemat kolorów
       %ul.menu
-        %li= link_to "Domyślny", schedule_color_schemes_reset_path(@schedule), :class => "button", :id => "color-schemes-reset", :remote => true, "data-method" => "post"
-        %li= link_to "Czarno-biały", schedule_color_schemes_bw_path(@schedule), :class => "button", :id => "color-schemes-bw", :remote => true, "data-method" => "post"
+        %li= link_to "Domyślny", schedule_color_schemes_reset_path(@schedule),
+          :class => "button", :id => "color-schemes-reset",
+          :remote => true, "data-method" => "post"
+        %li= link_to "Czarno-biały", schedule_color_schemes_bw_path(@schedule),
+          :class => "button", :id => "color-schemes-bw",
+          :remote => true, "data-method" => "post"
         
   %p.actions
     = f.submit "Zapisz"

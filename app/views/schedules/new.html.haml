@@ -27,4 +27,5 @@
     %p.actions
       = f.submit "Wczytaj", "data-disable-with" => "Wczytywanie planu..."
       lub
-      = link_to "Utwórz ręcznie", schedules_path(:empty => true), :remote => true, "data-method" => "post", :class => "custom", :id => "new-empty-schedule"
+      = link_to "Utwórz ręcznie", schedules_path(:empty => true), :remote => true,
+        "data-method" => "post", :class => "custom", :id => "new-empty-schedule"
