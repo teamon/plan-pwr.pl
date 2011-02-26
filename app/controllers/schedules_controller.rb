@@ -122,9 +122,11 @@ class SchedulesController < ApplicationController
     end
   rescue Epure::LoginException
     render :json => { :errors => ["Podane hasło jest niepoprawne"] }, :status => :unprocessable_entity
-  rescue Epure::ParserException
+  rescue Epure::ParserException => ex
+    notify_hoptoad(ex)
     render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
-  rescue
+  rescue => e
+    notify_hoptoad(ex)
     render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
   end
 
