@@ -36,4 +36,5 @@
       = f.submit "Zapisz i dodaj następny", "data-disable-with" => "Zapisuje..."
     = link_to "Anuluj", "#", :class => "cancel"
     - unless @entry.new_record?
-      = link_to "Usuń", [@schedule, @entry], :remote => true, "data-method" => "delete", :class => "delete"
+      = link_to "Usuń", [@schedule, @entry], :remote => true,
+        "data-method" => "delete", :class => "delete"
