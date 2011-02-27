@@ -2,6 +2,10 @@
 
 module Epure
   class ParserException < Exception
+    attr_accessor :data
+    def initialize(data)
+      @data = data
+    end
   end
 
   class Parser
@@ -13,6 +17,7 @@ module Epure
     end
 
     def initialize(html)
+      @html = html
       @doc = Nokogiri::HTML(html)
     end
 
@@ -109,7 +114,7 @@ module Epure
       schedule.entries += entries
       schedule
     rescue
-      raise ParserException
+      raise ParserException.new(@html)
     end
   end
 end
