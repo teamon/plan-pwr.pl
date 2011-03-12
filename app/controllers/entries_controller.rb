@@ -33,12 +33,7 @@ class EntriesController < ApplicationController
       render :json => @entry.errors, :status => :unprocessable_entity
     end
   end
-  
-  def show
-    @entry = @schedule.entries.find(params[:id])
-    render :partial => "entry", :locals => {:entry => @entry}
-  end
-  
+
   def destroy
     @entry = @schedule.entries.find(params[:id])
     @entry.destroy

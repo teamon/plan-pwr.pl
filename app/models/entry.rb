@@ -37,7 +37,7 @@ class Entry < ActiveRecord::Base
   protected
   
   def self.search(term, key)
-    query = (term || "").split(//).reject{|e| e == " "}.join("%")
+    query = term.to_s.split(//).reject{|e| e == " "}.join("%")
     select("DISTINCT(#{key})").where("#{key} ILIKE ?", "%#{query}%").map(&key)
   end
   

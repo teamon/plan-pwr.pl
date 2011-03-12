@@ -2,7 +2,7 @@ Epure::Application.routes.draw do
   resources :schedules
 
   resources :schedules do
-    resources :entries do
+    resources :entries, :except => [:show] do
       collection do
         get :search_course_names
         get :search_lecturers
