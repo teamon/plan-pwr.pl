@@ -29,6 +29,7 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.8)
+    awesome_print (0.4.0)
     builder (2.1.2)
     daemons (1.1.0)
     diff-lcs (1.1.2)
@@ -107,6 +108,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   haml (= 3.0.25)
   hoptoad_notifier (= 2.4.6)
   mechanize (= 1.0.0)

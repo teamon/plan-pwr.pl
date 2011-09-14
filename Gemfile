@@ -26,6 +26,7 @@ gem "hoptoad_notifier", '2.4.6'
 gem "rack-google_analytics", '1.0.1', :require => "rack/google_analytics"
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'rspec-rails'
   gem 'watchr'
   gem 'webrat'
