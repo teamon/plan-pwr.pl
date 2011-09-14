@@ -1,5 +1,6 @@
 HoptoadNotifier.configure do |config|
-   config.api_key = 'e28ac1cce55e954f0b00b2d577c8baa3'
-   config.host    = 'errbit.fiend.pl'
-   config.port    = 80
+  config.api_key     = '6be3a0d0795c17d42d8c705cfb093b67'
+  config.host        = 'pwr-errbit.herokuapp.com'
+  config.port        = 80
+  config.secure      = config.port == 443
 end
