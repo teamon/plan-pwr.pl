@@ -128,7 +128,18 @@ class SchedulesController < ApplicationController
     if params[:commit] == "Pobierz plan"
       render :json => { :errors => ["Wystąpił błąd. Administrator został o nim poinformowany. Możesz sie z nim skontaktować poprzez email: i@teamon.eu"] }, :status => :unprocessable_entity
     else
-      render :json => { :errors => ["Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)"] }, :status => :unprocessable_entity
+      msg = if params[:schedule][:raw].to_s["Zapisy - grupy zajęciowe, do których zapisał się słuchacz w zapisach"]
+        <<-EOS
+        Podane źródło pochodzi ze strony <strong>"Zapisy - grupy zajęciowe, do których zapisał się słuchacz w zapisach", </strong></br>
+        wymanage źródło musi być ze stronie <strong>"Grupy zajęciowe, do których słuchacz jest zapisany w semestrze".</strong><br/>
+        (<a href='http://plan-pwr.pl/images/howto/3.jpg'>Jak trafic na poprawną stronę?</a>)<br/>
+        Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu).
+        EOS
+      else
+        "Błędne źródło strony. Zajrzyj do instrukcji lub skontaktuj się z administratorem (i@teamon.eu)."
+      end
+
+      render :json => { :errors => [msg] }, :status => :unprocessable_entity
     end
   end
 
