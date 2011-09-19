@@ -187,12 +187,13 @@ h2 {
   visibility: hidden;
 }
 
-#schedule .entry:hover a {
+#schedule .entry .wrap:hover a {
   visibility: visible;
 }
 
 #schedule .entry .wrap {
   position: relative;
+  z-index: 100;
 }
 
 #schedule-overlay {
@@ -390,7 +391,7 @@ h2 {
   height: 300px;
   float: left;
   padding: 10px;
-  
+
 }
 #facebox .right {
   border-left: 1px solid #ddd;
