@@ -6,8 +6,8 @@ module Epure
       def generate
         cal = RiCal.Calendar do |c|
           each do |date, entry|
-            start_time = format_date(date, entry, :start)
-            end_time = format_date(date, entry, :end)
+            start_time = format_date(c, date, entry, :start)
+            end_time = format_date(c, date, entry, :end)
             c.event do
               dtstart     start_time
               dtend       end_time
@@ -17,12 +17,14 @@ module Epure
             end
           end
         end
-        
+
         cal.to_s
       end
-      
-      def format_date(date, entry, which)
-        [date.year, "%02d" % date.month, "%02d" % date.day, "T", "%02d" % entry.send(:"#{which}_hour"), "%02d" % entry.send(:"#{which}_min"), "00"].join
+
+      def format_date(calendar, date, entry, which)
+        d = [date.year, "%02d" % date.month, "%02d" % date.day, "T", "%02d" % entry.send(:"#{which}_hour"), "%02d" % entry.send(:"#{which}_min"), "00"].join
+
+        RiCal::PropertyValue::DateTime.new(calendar, :value => d, :params => {'TZID' => "Europe/Warsaw"})
       end
     end # ICal
   end # Generators

@@ -9,7 +9,7 @@ gem "nokogiri", "1.4.4"
 # pdf
 gem "pdfkit", "0.5.0"
 # ical
-gem 'ri_cal', '0.8.7'
+gem 'ri_cal', '0.8.8'
 # vcs
 gem 'vpim', '0.695'
 
