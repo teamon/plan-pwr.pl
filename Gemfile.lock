@@ -28,6 +28,9 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    airbrake (3.0.4)
+      activesupport
+      builder
     arel (2.0.8)
     awesome_print (0.4.0)
     builder (2.1.2)
@@ -37,9 +40,6 @@ GEM
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
     haml (3.0.25)
-    hoptoad_notifier (2.4.6)
-      activesupport
-      builder
     i18n (0.5.0)
     mail (2.2.15)
       activesupport (>= 2.3.6)
@@ -108,9 +108,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   awesome_print
   haml (= 3.0.25)
-  hoptoad_notifier (= 2.4.6)
   mechanize (= 1.0.0)
   nokogiri (= 1.4.4)
   pdfkit (= 0.5.0)

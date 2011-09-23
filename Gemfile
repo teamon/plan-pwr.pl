@@ -20,7 +20,7 @@ gem 'mechanize', '1.0.0'
 gem 'thin', '1.2.7'
 
 # error reporting
-gem "hoptoad_notifier", '2.4.6'
+gem "airbrake"
 
 # statistics
 gem "rack-google_analytics", '1.0.1', :require => "rack/google_analytics"
