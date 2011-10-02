@@ -99,9 +99,17 @@ module Epure
 
               end.compact
 
-              es.reject do |e|
-                et = entry_time(e)
-                e.building == "?" && e.room == "?" && es.find {|x| entry_time(x) == et }
+              if es.uniq {|x| [x.building, x.room] }.size == 1
+                es
+              else
+                es.reject do |e|
+                  et = entry_time(e)
+                  e.building == "?" && e.room == "?" && es.find do |x|
+                    x != e &&
+                    !(x.building == "?" && x.room != "?") &&
+                    entry_time(x) == et
+                  end
+                end
               end.uniq do |e|
                 entry_time(e)
               end.each do |e|
