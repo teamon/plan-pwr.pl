@@ -63,16 +63,25 @@ class SchedulesController < ApplicationController
           end
 
           format.ics do
-            ics = cached(@schedule, "ical") do
-              Epure::Generators::ICS.new(@schedule).generate
-            end
+            if params.has_key?(:zip)
+              zip = cached(@schedule, "ics.zip", true) do
+                Epure::Generators::ICS.new(@schedule).generate(true)
+              end
 
-            send_data ics,  :filename => "plan.ics",
-                            :type => "text/plain"
+              send_data zip,  :filename => "plan.zip",
+                              :type => "application/octet-stream"
+            else
+              ics = cached(@schedule, "ics") do
+                Epure::Generators::ICS.new(@schedule).generate
+              end
+
+              send_data ics,  :filename => "plan.ics",
+                              :type => "text/icalendar"
+            end
           end
 
           format.vcs do
-            vcs = cached(@schedule, "ical") do
+            vcs = cached(@schedule, "vcs") do
               Epure::Generators::VCS.new(@schedule).generate
             end
 
@@ -176,16 +185,21 @@ class SchedulesController < ApplicationController
     render_to_string "exports/#{mini ? "mini" : "normal"}.html", :layout => false
   end
 
-  def cached(schedule, format)
-    path = File.join(Epure.cache_root, schedule.slug, schedule.slug + "." + format)
+  def cached(schedule, format, binary = false)
+    path = cached_path(schedule, format)
     if Epure::Application.config.cache_generated && File.exist?(path)
       File.read(path)
     else
       data = yield
       FileUtils.mkdir_p(File.join(Epure.cache_root, schedule.slug))
-      File.open(path, "w"){|f| f.write data}
+      mode = binary ? "wb" : "w"
+      File.open(path, mode){|f| f.write data}
       data
     end
+  end
+
+  def cached_path(schedule, format)
+    File.join(Epure.cache_root, schedule.slug, schedule.slug + "." + format)
   end
 
 end

@@ -5,7 +5,7 @@
       minLength: 2,
     });
   })
-  
+
   $("#entry_course_name").livequery(function(){
     $(this).autocomplete({
       source: "#{search_course_names_schedule_entries_path(@schedule)}",
@@ -22,7 +22,7 @@
   = text_field_tag "", schedule_slug_url(@schedule.slug), :id => "schedule_url"
 
 .head
-  %h2 
+  %h2
     Twój plan
   #info
     %div
@@ -55,7 +55,9 @@
       %li= link_to "HTML",      schedule_slug_path(@schedule.slug, :format => "html")
       %li= link_to "Mini HTML", schedule_slug_path(@schedule.slug, :format => "htmlmini")
       - if @schedule.pwr?
-        %li= link_to "iCal",      schedule_slug_path(@schedule.slug, :format => "ics")
+        %li
+          %span= link_to "iCal",      schedule_slug_path(@schedule.slug, :format => "ics")
+          %span= link_to "iCal.zip",  schedule_slug_path(@schedule.slug, :format => "ics", :zip => true)
         %li= link_to "VCS",       schedule_slug_path(@schedule.slug, :format => "vcs")
       %li= link_to "JSON",      schedule_slug_path(@schedule.slug, :format => "js")
       %li= link_to "XML",       schedule_slug_path(@schedule.slug, :format => "xml")

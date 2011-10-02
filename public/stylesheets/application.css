@@ -239,6 +239,16 @@ h2 {
   background-color: #AED3EE;
 }
 
+.exports li span a {
+  height: 35px;
+  line-height: 35px;
+}
+
+.exports li span:first-child a {
+    margin-bottom:10px;
+}
+
+
 #foot {
   padding: 10px 10px;
   color: #aaa;

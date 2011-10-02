@@ -22,6 +22,9 @@ gem 'thin', '1.2.7'
 # error reporting
 gem "airbrake"
 
+# zip
+gem "zippy"
+
 # statistics
 gem "rack-google_analytics", '1.0.1', :require => "rack/google_analytics"
 
