@@ -16,22 +16,24 @@
     = javascript_include_tag "http://assets.teamon.eu/rails/rails.js"
     = javascript_include_tag :defaults
 
+    :javascript
+      $(function() {
+        $(".meter > span").each(function() {
+          $(this)
+            .data("origWidth", $(this).width())
+            .width(0)
+            .animate({
+              width: $(this).data("origWidth")
+            }, 1200);
+        });
+      });
+
     = csrf_meta_tag
 
   %body{:class => request.path == "/" || request.path == "/apel" ? "home" : nil}
-    .banner
-      %a{:href => "/apel"}
-        Przeczytaj osobisty apel Tymona Tobolskiego,
-        %br
-        założyciela Generatora planu
-      %a.small{:href => "/apel"} Przeczytaj teraz
     #container
       %h2
-      / {:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
       #main
-        %h1
-          %a{:href => "/"} Generator planu PWR
-          %span (i nie tylko)
         = yield
       #foot
         Generator planu PWR 1.1.8
