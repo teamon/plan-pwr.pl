@@ -12,6 +12,13 @@ class ApplicationController < ActionController::Base
   helper_method :money
   def money
     got = [
+      5.00,
+      8.36,
+      10.00,
+      5.00,
+      10.00,
+      20.00,
+      0.70,
       6.0,
       10.00,
       5.00,

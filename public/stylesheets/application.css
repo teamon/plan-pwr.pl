@@ -185,6 +185,7 @@ h2 {
   height: 10px;
   background: url("http://facebook.mobissimo.com/images/ico-edit.png") no-repeat 5px 5px;
   visibility: hidden;
+  z.index: 98;
 }
 
 #schedule .entry .wrap:hover a {
@@ -496,8 +497,8 @@ a.button {
 
 .banner {
     width: 600px;
-    height: 240px;
-    background: #fff url("/images/banner.png") no-repeat center center;
+    height: 200px;
+    background: #fff url("/images/banner.png") no-repeat top left;
     margin: auto;
     display: block;
     /*text-align: center;*/
@@ -510,7 +511,7 @@ a.button {
     margin-left: 200px;
     font-size: 18pt;
     color: black;
-    padding-top: 60px;
+    padding-top: 30px;
     font-variant: capitalize;
     font-weight: bold;
     text-decoration: none;
