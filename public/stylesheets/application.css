@@ -497,7 +497,7 @@ a.button {
 
 .banner {
     width: 600px;
-    height: 200px;
+    height: 100px;
     background: #fff url("/images/banner.png") no-repeat top left;
     margin: auto;
     display: block;
@@ -508,14 +508,7 @@ a.button {
 
 .banner a {
     display: block;
-    margin-left: 200px;
-    font-size: 18pt;
-    color: black;
-    padding-top: 30px;
-    font-variant: capitalize;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 24pt;
+    height: 100px;
 }
 
 .banner a:hover {
