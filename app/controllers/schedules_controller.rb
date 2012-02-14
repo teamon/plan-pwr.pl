@@ -7,7 +7,6 @@ class SchedulesController < ApplicationController
   respond_to :html, :htmlmini, :pdf, :pdfmini, :js, :xml, :ics, :vcs
 
   def index
-    @schedules = Schedule.all
   end
 
   def show

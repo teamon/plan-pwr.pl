@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110219202547) do
+ActiveRecord::Schema.define(:version => 20120214083209) do
 
   create_table "color_schemes", :force => true do |t|
     t.integer "schedule_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20110219202547) do
     t.string  "border"
     t.string  "font"
   end
+
+  add_index "color_schemes", ["schedule_id"], :name => "index_color_schemes_on_schedule_id"
 
   create_table "entries", :force => true do |t|
     t.integer  "schedule_id"
@@ -39,6 +41,9 @@ ActiveRecord::Schema.define(:version => 20110219202547) do
     t.datetime "updated_at"
   end
 
+  add_index "entries", ["course_name"], :name => "index_entries_on_course_name"
+  add_index "entries", ["lecturer"], :name => "index_entries_on_lecturer"
+
   create_table "schedules", :force => true do |t|
     t.string   "slug"
     t.string   "year"
@@ -46,5 +51,7 @@ ActiveRecord::Schema.define(:version => 20110219202547) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "schedules", ["slug"], :name => "index_schedules_on_slug"
 
 end
