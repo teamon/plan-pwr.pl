@@ -19,8 +19,6 @@
     = csrf_meta_tag
 
   %body{:class => request.path == "/" || request.path == "/apel" ? "home" : nil}
-    .banner
-      %a{:href => "http://synergia.pwr.wroc.pl"}
     #container
       %h2
       / {:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
