@@ -43,6 +43,7 @@ body.home #main {
   width: 540px;
   background-color: #fff;
   padding: 30px;
+  position:relative;
 }
 
 body.home #container {

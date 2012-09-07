@@ -20,8 +20,12 @@
 
   %body{:class => request.path == "/" || request.path == "/apel" ? "home" : nil}
     #container
+      / %h2{:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
       %h2
-      / {:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
+        Szukam osób zainteresowanych rozwojem plan-pwr.pl.
+        Chętnych proszę o kontakt na i@teamon.eu.
+        Kod serwisu dostępny jest na
+        %a{:href => "http://github.com/teamon/plan-pwr"} githubie
       #main
         %h1
           %a{:href => "/"} Generator planu PWR
