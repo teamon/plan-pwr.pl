@@ -14,7 +14,7 @@ Epure::Application.routes.draw do
     post "color_schemes/bw", :to => "color_schemes#bw"
   end
 
-  get "/apel", :to => "application#apel"
+  get "/home", :to => "schedules#index"
   get "/:slug", :to => "schedules#show", :as => :schedule_slug
-  root :to => "schedules#index"
+  root :to => "application#info"
 end

@@ -37,6 +37,7 @@ h1 span {
 
 body.home {
   background-color: #eee;
+  padding-top: 30px;
 }
 
 body.home #main {

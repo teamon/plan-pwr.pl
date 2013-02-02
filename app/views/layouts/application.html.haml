@@ -18,10 +18,10 @@
 
     = csrf_meta_tag
 
-  %body{:class => request.path == "/" || request.path == "/apel" ? "home" : nil}
+  %body{:class => request.path == "/" || request.path == "/home" ? "home" : nil}
     #container
       / %h2{:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
-      %h2
+      %h2{:style => "margin-top: 0"}
         Szukam osób zainteresowanych rozwojem plan-pwr.pl.
         Chętnych proszę o kontakt na i@teamon.eu.
         Kod serwisu dostępny jest na
@@ -32,8 +32,8 @@
           %span (i nie tylko)
         = yield
       #foot
-        Generator planu PWR 1.1.9
-        \&copy; 2010-2012 Tymon Tobolski
+        Generator planu PWR
+        \&copy; 2009-2013 Tymon Tobolski
         %a{:href => "http://teamon.eu"} teamon.eu
 
 

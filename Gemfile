@@ -14,7 +14,7 @@ gem 'ri_cal', '0.8.8'
 gem 'vpim', '0.695'
 
 # automat
-gem 'mechanize', '1.0.0'
+gem 'mechanize', '2.5.1'
 
 # server
 gem 'thin', '1.2.7'
