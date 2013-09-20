@@ -499,13 +499,14 @@ a.button {
 
 .banner {
     width: 600px;
-    height: 100px;
-    background: #fff url("/images/banner.png") no-repeat top left;
+    height: 169px;
+    background: url("/images/banner.png") no-repeat top left;
     margin: auto;
     display: block;
     /*text-align: center;*/
     /*background: #fff;*/
-    margin: 10px auto 20px auto;
+    margin: 0 auto 20px auto;
+    padding: 0;
 }
 
 .banner a {

@@ -19,13 +19,10 @@
     = csrf_meta_tag
 
   %body{:class => request.path == "/" || request.path == "/home" ? "home" : nil}
+    - if request.path == "/home"
+      %a.banner{:href => "http://monterail.com/jobs/ruby-on-rails-developer"}
     #container
-      / %h2{:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
-      %h2{:style => "margin-top: 0"}
-        Szukam osób zainteresowanych rozwojem plan-pwr.pl.
-        Chętnych proszę o kontakt na i@teamon.eu.
-        Kod serwisu dostępny jest na
-        %a{:href => "http://github.com/teamon/plan-pwr.pl"} githubie
+      -# {:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
       #main
         %h1
           %a{:href => "/"} Generator planu PWR
