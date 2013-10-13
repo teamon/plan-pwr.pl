@@ -8,9 +8,13 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Epure
   def self.cache_root
-    File.join(Rails.root, "public", "cache")
+    if ENV["DATA_DIR"]
+      File.join(Rails.root, "cache")
+    else
+      File.join(Rails.root, "public", "cache")
+    end
   end
-  
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -19,7 +23,7 @@ module Epure
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += %W(#{config.root}/lib/epure)
-    
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
