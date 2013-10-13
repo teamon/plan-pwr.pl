@@ -198,7 +198,7 @@ class SchedulesController < ApplicationController
   end
 
   def cached_path(schedule, format)
-    File.join(Epure.cache_root, schedule.slug, schedule.slug + "." + format)
+    File.join(Epure.cache_root, schedule.slug.gsub(/(.{2})/, "\\1/"), schedule.slug + "." + format)
   end
 
 end
