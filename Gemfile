@@ -11,7 +11,7 @@ gem "pdfkit", "0.5.0"
 # ical
 gem 'ri_cal', '0.8.8'
 # vcs
-gem 'vpim', '0.695'
+gem 'vpim-rails', github: "fraser/vpim-rails"
 
 # automat
 gem 'mechanize', '2.5.1'
