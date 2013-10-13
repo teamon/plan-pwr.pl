@@ -9,7 +9,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module Epure
   def self.cache_root
     if ENV["DATA_DIR"]
-      File.join(Rails.root, "cache")
+      File.join(ENV["DATA_DIR"], "cache")
     else
       File.join(Rails.root, "public", "cache")
     end
