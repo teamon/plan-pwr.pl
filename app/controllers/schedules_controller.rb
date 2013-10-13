@@ -190,7 +190,7 @@ class SchedulesController < ApplicationController
       File.read(path)
     else
       data = yield
-      FileUtils.mkdir_p(File.join(Epure.cache_root, schedule.slug))
+      FileUtils.mkdir_p(File.dirname(path))
       mode = binary ? "wb" : "w"
       File.open(path, mode){|f| f.write data}
       data
