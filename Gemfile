@@ -17,7 +17,7 @@ gem 'vpim-rails', github: "fraser/vpim-rails"
 gem 'mechanize', '2.5.1'
 
 # server
-gem 'thin', '1.2.7'
+gem 'thin'
 
 # error reporting
 gem "airbrake"
