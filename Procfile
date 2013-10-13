@@ -1,1 +1,1 @@
-web: bin/thin start -p $PORT
+web: thin start -p $PORT
