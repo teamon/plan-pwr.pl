@@ -2,6 +2,7 @@
 webrat.log
 db/*.sqlite3
 log/*.log
-tmp/**/*
+tmp/*
 public/cache/*
 config/database.yml
+.ruby-version
