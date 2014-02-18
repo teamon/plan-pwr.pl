@@ -1,0 +1,46 @@
+#home
+  %h2 Kalkulator średniej
+  #avg
+    %form{:action => "/srednia", :method => "post"}
+      %fieldset
+        %textarea{:name => "data"}
+      .actions
+        %input.submit{:type => "submit", :value => "Policz"}/
+        %input#avg_more.submit{:type => "button", :value => "Wprowadź własne"}/
+      - if @avg
+        - @avg.each do |data|
+          .semester
+            %h4
+              Rok i semestr akademicki:
+              = data[:info][0]
+              , Rok studiów:
+              = data[:info][1]
+              , Semestr:
+              = data[:info][2]
+            %table
+              %tr
+                %th.name Nazwa kursu
+                %th ECTS
+                %th Ocena
+                %th Średnia
+              - data[:data].each_with_index do |d, i|
+                %tr
+                  %td.name
+                    %input{:type => "text", :value => d[1]}/
+                  %td.ects
+                    %input{:type => "text", :value => d[3]}/
+                  %td.grade
+                    %input{:type => "text", :value => d[4]}/
+                  - if i==0
+                    %td.avg{:rowspan => data[:data].size}
+    #howto
+      %h3 Instrukcja obsługi
+      %ul
+        %li Wejdź na Edukację.CL
+        %li
+          Kliknij zakładkę
+          %strong "Indeks"
+          (po lewej w menu)
+        %li Skopiuj źródło strony i wklej w pole powyżej
+
+%a.back{:href => "/home"} Idź do strony głównej

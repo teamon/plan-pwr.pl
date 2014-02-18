@@ -15,6 +15,8 @@ Epure::Application.routes.draw do
   end
 
   get "/home", :to => "schedules#index"
+  get "/srednia", :to => "application#avg"
+  post "/srednia", :to => "application#avg"
   get "/:slug", :to => "schedules#show", :as => :schedule_slug
   root :to => "application#info"
 end
