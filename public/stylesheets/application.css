@@ -55,7 +55,7 @@ body.home h1 {
   padding-top: 0;
 }
 
-#new a {
+#new a, #average a {
   background-color: #BFE4FF;
   text-align: center;
   display: block;
@@ -69,7 +69,7 @@ body.home h1 {
   margin-top: 30px;
 }
 
-#new a:hover {
+#new a:hover, #average a:hover {
   background-color: #AED3EE;
 }
 
@@ -667,3 +667,98 @@ p.c {
     width: 250px;
     margin: auto;
 }
+
+#avg {
+  font-size: 8pt;
+}
+
+#avg input, #avg textarea {
+  font:inherit;
+}
+
+#avg input::-moz-focus-inner {
+  border:0;
+  margin:0;
+  padding:0;
+}
+
+#avg fieldset label {
+  float:left;
+  padding:6px;
+  text-align:right;
+  width:100px;
+}
+
+#avg fieldset textarea {
+  border:1px solid #ccc;
+  float:left;
+  padding:3px;
+  height:150px;
+  width:540px;
+}
+
+#avg form .actions {
+  padding-bottom:10px;
+  padding-top:10px;
+  overflow:hidden;
+}
+
+#avg form .actions input {
+  -webkit-border-radius:4px;
+  background-color:#4e4e4e;
+  border:none;
+  color:#f2f2f2;
+  float:right;
+  padding:5px 10px;
+}
+
+#avg #howto {
+  display: block;
+}
+
+#avg #howto ul {
+  line-height:15px;
+  padding-left:20px;
+}
+
+#avg #howto ul li {
+  list-style:decimal;
+}
+
+#avg table {
+  border-collapse: collapse;
+}
+#avg table td, #avg table th {
+  border: none;
+  padding: 3px 3px 0 0;
+}
+
+#avg table td input {
+  border:1px solid #ccc;
+  padding:3px;
+  width:200px;
+}
+
+#avg table td.avg {
+  text-align: center;
+  color:#1f75cc;
+  font-size:11pt;
+  font-weight:700;
+  padding: 10px;
+}
+
+#avg table th.name { text-align: left; }
+#avg table td.name input { width: 250px; }
+#avg table td.ects input { width: 50px; text-align: center; margin: 0 0 0 5px;}
+#avg table td.grade input { width: 50px; text-align: center; margin: 0 0 0 5px; }
+#avg table td.name a { color: red;}
+#avg table td.name a.f { color: #f5f5f5;}
+
+#avg input.add {
+  -webkit-border-radius:4px;
+  background-color:#4e4e4e;
+  border:none;
+  color:#f2f2f2;
+  padding:5px 10px;
+}
+
