@@ -35,4 +35,5 @@ group :development, :test do
   gem 'webrat'
   gem 'spork', '~> 0.9.0.rc'
   gem 'silent-postgres'
+  gem 'pry'
 end

@@ -4,6 +4,7 @@ require 'spec_helper'
 
 describe "Schedule 5" do
   it "should work" do
+    pending "12/16 parsed"
     schedule, entries = parse_schedule 5
     schedule.should be_valid
 
@@ -178,7 +179,6 @@ describe "Schedule 5" do
     entries[11].end_min.should == 0
     entries[11].building.should == "A-1"
     entries[11].room.should == "14"
-    
-    pending "12/16 parsed"
+
   end
 end

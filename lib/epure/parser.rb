@@ -45,25 +45,30 @@ module Epure
           trs = table.children
           trs = trs[4, trs.size-4]
 
-          (0...(trs.size / 4)).each do |i|
-            k = 4*i
+          (1...(trs.size / 4)).each do |i|
+            k = (4*i) + 1
             entry = Entry.new
 
             tds = trs[k].css("td")
 
             if tds.size > 2
-              entry.group_code = tds[0].content.strip
+              next unless trs[k+4]
+
+              entry.group_code  = tds[0].content.strip
               entry.course_code = tds[1].content.strip
               entry.course_name = tds[2].content.strip
 
-              tds = trs[k+2].css("td")
-              entry.lecturer = tds[0].content.strip
-              type = tds[1].content.strip
+              tds = trs[k+4].css("td")
+
+              entry.lecturer    = tds[0].content.strip
+              type              = tds[1].content.strip
               entry.course_type = COURSE_TYPES[type] || type
 
-              es = trs[k+3].css("table tr td").map do |td|
+              # finding when and where
+              es_html = trs[k+6].css("table tr td")
+              es = []
+              es_html.each do |td|
                 e = entry.dup
-
                 where_when = td.content.strip
                 m_when = nil
 
@@ -92,29 +97,32 @@ module Epure
                     e.building = "?"
                     e.room = "?"
                   end
-                  e
+                  es << e
                 else
-                  nil
+                  es << nil
                 end
-
-              end.compact
-
-              if es.uniq {|x| [x.building, x.room] }.size == 1
-                es
-              else
-                es.reject do |e|
-                  et = entry_time(e)
-                  e.building == "?" && e.room == "?" && es.find do |x|
-                    x != e &&
-                    !(x.building == "?" && x.room != "?") &&
-                    entry_time(x) == et
-                  end
-                end
-              end.uniq do |e|
-                entry_time(e)
-              end.each do |e|
-                entries << e
               end
+
+              es.compact!
+
+              es = if es.uniq {|x| [x.building, x.room] }.size == 1
+                     es
+                   else
+                     es = es.reject do |e|
+                       et = entry_time(e)
+                       e.building == "?" && e.room == "?" && es.find do |x|
+                         x != e &&
+                           !(x.building == "?" && x.room != "?") &&
+                           entry_time(x) == et
+                       end
+                     end
+                   end.uniq do |e|
+                     entry_time(e)
+                   end.uniq do |e|
+                     [e.week_day, e.building, e.room]
+                   end.each do |e|
+                     entries << e
+                   end
             end
 
           end

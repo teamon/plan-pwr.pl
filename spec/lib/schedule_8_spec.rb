@@ -6,7 +6,7 @@ describe "Schedule 8" do
   it "should work" do
     schedule, entries = parse_schedule 8
     schedule.should be_valid
-    
+
     schedule.year.should == "2010/2011"
     schedule.semester.should == Epure::Config::SUMMER
     entries.size.should == 10
