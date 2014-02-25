@@ -1,0 +1,18 @@
+development: &defaults
+  adapter: postgresql
+  host: localhost
+  database: epure_development
+  username:
+  password:
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  template: template0
+
+test:
+  <<: *defaults
+  database: epure_test
+
+production:
+  <<: *defaults
+  database: epure_production

@@ -7,6 +7,6 @@
 
 ## Dev run
     $ bundle install
-    $ # ensure config/database.yml has correct credentials
+    $ # copy config/database.yml.sample as config/database.yml and ensure it has correct credentials
     $ bundle exec rake db:create db:migrate
     $ bundle exec rails server
