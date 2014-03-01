@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     if not File.exists?(akz_cache) or (File.exists?(akz_cache) and (Time.now - File.mtime(akz_cache)) / 60 > 10) and not File.exists?(akz_cache + ".lock")
       File.open(akz_cache + ".lock", "w") {}
       url = "http://akz.pwr.wroc.pl/katalog_zap.html"
-      html = Net::HTTP.get_response(URI.parse(url).host, URI.parse(url).path).body.force_encoding("UTF-8")
+      html = Net::HTTP.get_response(URI.parse(url).host, URI.parse(url).path).body.force_encoding("UTF-8").encode!('UTF-8', 'UTF-8', :invalid => :replace)
       html = html.gsub(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i, '').gsub(/<link\b[^<]*\/>/i, '').gsub(/src=".*?"/i, '')
       File.open(akz_cache, "w:UTF-8") { |file| file.write(html) }
       File.delete(akz_cache + ".lock")
