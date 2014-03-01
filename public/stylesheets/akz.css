@@ -1,0 +1,36 @@
+.t, #courses {
+  font-size: 11pt;
+}
+
+#idbox {
+  width: 91.5%;
+}
+
+#btnid {
+  width: 7%;
+}
+
+#iframes {
+  display: none;
+}
+
+#tabelka {
+  width: 100%;
+}
+
+#tabelka thead th, #tabelka tfoot th, #tabelka td {
+  padding: 3px 18px 3px 10px;
+  cursor: pointer;
+}
+
+.ukryty {
+  display: none;
+}
+
+.t form input.b {
+  background-color:#4e4e4e;
+  border:none;
+  color:#f2f2f2;
+  padding: 5px;
+}
+

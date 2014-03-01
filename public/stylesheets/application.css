@@ -185,7 +185,7 @@ h2 {
   overflow: hidden;
   text-indent: -200px;
   height: 10px;
-  background: url("http://facebook.mobissimo.com/images/ico-edit.png") no-repeat 5px 5px;
+  background: url("/images/ico-edit.png") no-repeat 5px 5px;
   visibility: hidden;
   z.index: 98;
 }
