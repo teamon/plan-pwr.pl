@@ -9,10 +9,10 @@
   %p.info
     Jeżeli nie jesteś studentem Politechniki Wrocławskiej, możesz sam stworzyć cały plan od podstaw.
         
-  #new
+  .button
     = link_to "Stwórz nowy plan zajęć", new_schedule_path, :rel => "facebox"
 
-  #average
+  .button
     = link_to "Kalkulator średniej", "/srednia"
   
   %h2 Przykładowe plany
@@ -67,3 +67,9 @@
       Kliknij na
       %strong Stwórz nowy plan zajęć
       i wklej w pole.
+
+#github
+  %iframe{:src => "github-buttons/github-btn.html?user=teamon&repo=plan-pwr.pl&type=watch&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "110", :height => "20"}
+  %iframe{:src => "github-buttons/github-btn.html?user=teamon&repo=plan-pwr.pl&type=fork&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "95", :height => "20"}
+  %iframe{:src => "github-buttons/github-btn.html?user=teamon&repo=plan-pwr.pl&type=follow&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "165", :height => "20"}
+

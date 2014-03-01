@@ -55,7 +55,7 @@ body.home h1 {
   padding-top: 0;
 }
 
-#new a, #average a {
+.button a {
   background-color: #BFE4FF;
   text-align: center;
   display: block;
@@ -69,7 +69,7 @@ body.home h1 {
   margin-top: 30px;
 }
 
-#new a:hover, #average a:hover {
+.button a:hover {
   background-color: #AED3EE;
 }
 
@@ -760,5 +760,9 @@ p.c {
   border:none;
   color:#f2f2f2;
   padding:5px 10px;
+}
+
+#github {
+  text-align: center;
 }
 
