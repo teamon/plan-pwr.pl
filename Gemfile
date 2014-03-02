@@ -16,9 +16,9 @@ gem 'ngmin-rails',              "~> 0.4.0"
 gem "autoprefixer-rails",       "~> 1.0.0"
 
 # parser
-gem "nokogiri",   "1.4.4"
-gem "pdfkit",     "0.5.0" # pdf
-gem 'ri_cal',     "0.8.8" # ical
+gem "nokogiri",   "~> 1.4.4"
+gem "pdfkit",     "~> 0.5.0" # pdf
+gem 'ri_cal',     "~> 0.8.8" # ical
 gem 'vpim-rails', github: "fraser/vpim-rails" # vcs
 
 # automat
@@ -26,9 +26,6 @@ gem 'mechanize', '2.5.1'
 
 # zip
 gem "zippy", git: "git@github.com:toretore/zippy.git"
-
-# statistics
-gem "rack-google_analytics", '1.0.1', :require => "rack/google_analytics"
 
 group :development, :test do
   gem "awesome_print",      "~> 1.2.0"
