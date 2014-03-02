@@ -26,22 +26,12 @@
           :rel => "facebox", :title => title,
           :style => "background-image: url(/images/examples/#{file}-thumb.png)"
 
+  #github
+    %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=watch&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "75", :height => "20"}
+    %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=fork&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "85", :height => "20"}
+    %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=follow&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "150", :height => "20"}
 
-  #facebook
-    <fb:like layout='button_count'/>
-  #fb-root
-  :javascript
-    window.fbAsyncInit = function() {
-      FB.init({appId: "174768842569714", status: true, cookie: true, xfbml: true});
-    };
-    (function() {
-      var e = document.createElement("script");
-      e.async = true;
-      e.src = document.location.protocol  + "//connect.facebook.net/pl_PL/all.js";
-      e.async = true;
-      document.getElementById("fb-root").appendChild(e);
-    }());
-  <fb:comments/>
+  = render partial: "comments"
 
 #howto
   %h3 Instrukcja obsługi
@@ -70,9 +60,4 @@
       Kliknij na
       %strong Stwórz nowy plan zajęć
       i wklej w pole.
-
-#github
-  %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=watch&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "75", :height => "20"}
-  %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=fork&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "85", :height => "20"}
-  %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=follow&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "150", :height => "20"}
 
