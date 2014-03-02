@@ -57,8 +57,6 @@ class Schedule < ActiveRecord::Base
     !(year.blank? || semester.blank?)
   end
 
-  protected
-
   def generate_slug
     self.slug = rand(36**8).to_s(36) + id.to_s(36)
     save
@@ -69,6 +67,6 @@ class Schedule < ActiveRecord::Base
   end
 
   def invalidate_cache
-  #   FileUtils.rm_rf(File.join(Epure.cache_root, slug.gsub(/(.{2})/, "\\1/")))
+    Rails.cache.delete_matched("#{slug}*")
   end
 end

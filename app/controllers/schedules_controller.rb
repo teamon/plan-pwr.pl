@@ -58,7 +58,7 @@ class SchedulesController < ApplicationController
 
           format.ics do
             if params.has_key?(:zip)
-              zip = cached(@schedule, "ics.zip", true) do
+              zip = cached(@schedule, "ics.zip") do
                 Epure::Generators::ICS.new(@schedule).generate(true)
               end
 
@@ -167,25 +167,13 @@ class SchedulesController < ApplicationController
 
   def render_html(schedule, mini = false)
     @generator = Epure::Generators::HTML.new(schedule)
-    @schedule_css = File.read(File.join(Rails.root, "public/stylesheets/schedule.css"))
+    @schedule_css = File.read(File.join(Rails.root, "app/assets/stylesheets/schedule.css"))
     render_to_string "exports/#{mini ? "mini" : "normal"}.html", :layout => false
   end
 
-  def cached(schedule, format, binary = false)
-    path = cached_path(schedule, format)
-    if Epure::Application.config.cache_generated && File.exist?(path)
-      File.read(path)
-    else
-      data = yield
-      FileUtils.mkdir_p(File.dirname(path))
-      mode = binary ? "wb" : "w"
-      File.open(path, mode){|f| f.write data}
-      data
-    end
-  end
+  def cached(schedule, format, &block)
+    cache_key = "#{schedule.slug}-#{format}"
 
-  def cached_path(schedule, format)
-    File.join(Epure.cache_root, schedule.slug.gsub(/(.{2})/, "\\1/"), schedule.slug + "." + format)
+    Rails.cache.fetch(cache_key, raw: true, &block)
   end
-
 end

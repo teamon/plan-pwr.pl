@@ -13,6 +13,8 @@ Bundler.require(:default, Rails.env)
 
 module Epure
   class Application < Rails::Application
+    config.cache_store = :redis_store, "#{ENV["REDIS_URL"] || "redis://localhost:6379/0"}/plan-pwr:#{Rails.env}:cache"
+
     config.generators do |g|
       g.helper      false
       g.stylesheets false

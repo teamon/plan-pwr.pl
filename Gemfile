@@ -24,6 +24,9 @@ gem 'vpim-rails', github: "fraser/vpim-rails" # vcs
 # automat
 gem 'mechanize', '2.5.1'
 
+# caching
+gem "redis-rails", "~> 4.0.0"
+
 # zip
 gem "zippy", git: "git@github.com:toretore/zippy.git"
 
