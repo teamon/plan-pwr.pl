@@ -67,6 +67,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -92,6 +94,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
+    multipart-post (2.0.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     ngmin-rails (0.4.0)
@@ -205,6 +208,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   coffee-rails-source-maps (~> 1.4.0)
   execjs (~> 2.0.0)
+  faraday
   haml-rails (~> 0.5.3)
   mechanize (= 2.5.1)
   ngmin-rails (~> 0.4.0)

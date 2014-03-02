@@ -23,6 +23,7 @@ gem 'vpim-rails', github: "fraser/vpim-rails" # vcs
 
 # automat
 gem 'mechanize', '2.5.1'
+gem 'faraday'
 
 # caching
 gem "redis-rails", "~> 4.0.0"

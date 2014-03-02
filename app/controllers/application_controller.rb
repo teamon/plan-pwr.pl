@@ -16,17 +16,14 @@ class ApplicationController < ActionController::Base
   end
 
   def akz_catalogue
-    akz_cache = File.join(Epure.cache_root + "/akz.html")
-    if not File.exists?(akz_cache) or (File.exists?(akz_cache) and (Time.now - File.mtime(akz_cache)) / 60 > 10) and not File.exists?(akz_cache + ".lock")
-      File.open(akz_cache + ".lock", "w") {}
-      url = "http://akz.pwr.wroc.pl/katalog_zap.html"
-      html = Net::HTTP.get_response(URI.parse(url).host, URI.parse(url).path).body.force_encoding("UTF-8").encode!('UTF-8', 'UTF-8', :invalid => :replace)
-      html = html.gsub(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i, '').gsub(/<link\b[^<]*\/>/i, '').gsub(/src=".*?"/i, '')
-      File.open(akz_cache, "w:UTF-8") { |file| file.write(html) }
-      File.delete(akz_cache + ".lock")
+    akz = Rails.cache.fetch("akz", raw: true, expires_in: 10.minutes) do
+      response = Faraday.get("http://akz.pwr.wroc.pl/katalog_zap.html")
+      response.body.gsub(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i, '')
+                  .gsub(/<link\b[^<]*\/>/i, '')
+                  .gsub(/src=".*?"/i, '')
     end
-    @akz = File.read(akz_cache)
-    render :layout => false
+
+    render text: akz
   end
 
   def akz

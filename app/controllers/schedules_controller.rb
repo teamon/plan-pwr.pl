@@ -172,7 +172,7 @@ class SchedulesController < ApplicationController
   end
 
   def cached(schedule, format, &block)
-    cache_key = "#{schedule.slug}-#{format}"
+    cache_key = "schedule:#{schedule.slug}:#{format}"
 
     Rails.cache.fetch(cache_key, raw: true, &block)
   end

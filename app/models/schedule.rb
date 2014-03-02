@@ -67,6 +67,6 @@ class Schedule < ActiveRecord::Base
   end
 
   def invalidate_cache
-    Rails.cache.delete_matched("#{slug}*")
+    Rails.cache.delete_matched("schedule:#{slug}*")
   end
 end
