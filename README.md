@@ -1,4 +1,4 @@
-# Source code for (plan-pwr.pl)[plan-pwr.pl]
+# Source code for [plan-pwr.pl](http://plan-pwr.pl)
 
 ## Requirements
 
