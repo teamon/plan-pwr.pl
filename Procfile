@@ -1,1 +1,1 @@
-web: thin start -p $PORT
+web: puma -p $PORT

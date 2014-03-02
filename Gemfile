@@ -36,6 +36,8 @@ gem "zippy", github: "toretore/zippy"
 gem 'rack-google-analytics'
 gem 'sentry-raven'
 
+gem "puma"
+
 group :development, :test do
   gem "awesome_print",      "~> 1.2.0"
   gem "rspec-rails",        "~> 3.0.0.beta1"
