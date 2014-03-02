@@ -30,7 +30,7 @@ gem 'faraday'
 gem "redis-rails", "~> 4.0.0"
 
 # zip
-gem "zippy", git: "git@github.com:toretore/zippy.git"
+gem "zippy", github: "toretore/zippy"
 
 # services
 gem 'rack-google-analytics'

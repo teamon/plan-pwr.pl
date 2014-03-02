@@ -13,7 +13,7 @@ GIT
       spork (>= 1.0rc0)
 
 GIT
-  remote: git@github.com:toretore/zippy.git
+  remote: git://github.com/toretore/zippy.git
   revision: 5779702dcfb4ea928a510ffdc002bbea69da395c
   specs:
     zippy (0.2.1)
