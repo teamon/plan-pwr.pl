@@ -5,6 +5,7 @@ ruby "2.0.0"
 gem 'rails',        "~> 4.0.0"
 gem 'pg',           "~> 0.17.0"
 gem 'haml-rails',   "~> 0.5.3"
+gem 'figaro'
 
 # assets processors
 gem "sass-rails",               "~> 4.0.0"
@@ -30,6 +31,10 @@ gem "redis-rails", "~> 4.0.0"
 
 # zip
 gem "zippy", git: "git@github.com:toretore/zippy.git"
+
+# services
+gem 'rack-google-analytics'
+gem 'sentry-raven'
 
 group :development, :test do
   gem "awesome_print",      "~> 1.2.0"

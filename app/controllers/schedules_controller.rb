@@ -126,7 +126,7 @@ class SchedulesController < ApplicationController
     render :json => { :errors => ["Podane hasło jest niepoprawne"] }, :status => :unprocessable_entity
   rescue Epure::ParserException => ex
     params[:parser_input] = ex.data
-    # notify_airbrake(ex)
+    Raven.capture_exception(ex)
     if params[:commit] == "Pobierz plan"
       render :json => { :errors => ["Wystąpił błąd. Administrator został o nim poinformowany. Możesz sie z nim skontaktować poprzez email: i@teamon.eu"] }, :status => :unprocessable_entity
     else

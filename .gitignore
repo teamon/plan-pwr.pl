@@ -1,8 +1,8 @@
-.bundle
-webrat.log
-db/*.sqlite3
-log/*.log
-tmp/*
-public/cache/*
-config/database.yml
-.ruby-version
+/.bundle
+/db/*.sqlite3
+/log/*.log
+/tmp/*
+/public/cache/*
+/config/database.yml
+/config/application.yml
+/.ruby-version
