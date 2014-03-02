@@ -70,6 +70,6 @@ class Schedule < ActiveRecord::Base
   end
   
   def invalidate_cache
-    FileUtils.rm_rf(File.join(Epure.cache_root, slug))
+    FileUtils.rm_rf(File.join(Epure.cache_root, slug.gsub(/(.{2})/, "\\1/")))
   end
 end
