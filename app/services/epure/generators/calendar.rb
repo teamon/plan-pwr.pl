@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-require "epure/edate"
-
 module Epure
   module Generators
     class Calendar < Generator
