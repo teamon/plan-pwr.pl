@@ -7,7 +7,7 @@ describe ColorScheme do
     cs = ColorScheme.new
     cs.course_type = "W"
     cs.name.should == "Wykład"
-    
+
     cs = ColorScheme.new
     cs.course_type = "P"
     cs.name.should == "Projekt"

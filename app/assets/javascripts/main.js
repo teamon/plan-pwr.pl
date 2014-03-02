@@ -6,9 +6,9 @@ var Epure = {
       $("#schedule-overlay").hide()
     })
   },
-  
+
   showNotice: function(msg){
-    if(msg == undefined) return; 
+    if(msg == undefined) return;
     var form = $("#facebox form")
     form.children(".form-errors").hide()
     var notice = $(form).children(".form-notice")
@@ -51,15 +51,15 @@ function calculate(){
 $(document).ready(function(){
   $.facebox.settings.closeImage = 'http://assets.teamon.eu/facebox/closelabel.png'
   $.facebox.settings.loadingImage = 'http://assets.teamon.eu/facebox/loading.gif'
-  
+
   $("a[rel=facebox]").livequery(function(){
     $(this).facebox();
   });
-  
+
   $("#facebox form").live("ajax:success", function(ev, data, status, xhr){
     Epure.showNotice(data.notice)
   })
-  
+
   $("#facebox form").live("ajax:error", function(ev, xhr, status){
     console.log($.parseJSON(xhr.responseText))
     var errors = $(this).children(".form-errors")
@@ -67,25 +67,25 @@ $(document).ready(function(){
       errors = $("<ul class='form-errors'></ul>");
       $(this).prepend(errors);
     }
-    
+
     errors.html("")
     data = $.parseJSON(xhr.responseText);
     for(key in data){
       errors.append("<li>" + data[key] + "</li>")
     }
-    
+
     errors.show();
   })
-  
+
   $("#facebox form a.cancel").live("click", function(){
     jQuery(document).trigger('close.facebox');
     return false
   })
-  
+
   $("form.edit_entry").live("ajax:success", function(){
     Epure.reload();
   });
-  
+
   $("form.new_entry").live("ajax:success", function(ev, data, status, xhr){
     Epure.reload();
     jQuery.facebox({ ajax: data.path });
@@ -94,21 +94,21 @@ $(document).ready(function(){
       $(document).unbind("reveal.facebox");
     })
   });
-  
+
   $("#facebox a.delete").live("click", function(){
     jQuery(document).trigger('close.facebox');
   });
-  
+
   $("form.edit_schedule_settings").live("ajax:success", function(ev, data, status, xhr){
     Epure.reload();
   });
-  
+
   $("form.edit_schedule").live("ajax:success", function(ev, data, status, xhr){
     $("#info .year").text(data.year);
     $("#info .sem").text(data.semester);
     jQuery(document).trigger('close.facebox');
   });
-  
+
   $("#facebox #color-schemes-reset, #facebox #color-schemes-bw").live("ajax:success", function(ev, data, status, xhr){
     Epure.reload();
     jQuery.facebox({ ajax: $("#menu-settings").attr("href") });
@@ -117,18 +117,18 @@ $(document).ready(function(){
       $(document).unbind("reveal.facebox");
     });
   });
-  
+
   $("#new-empty-schedule, #new_schedule").live("ajax:success", function(ev, data, status, xhr){
     document.location.href = data.path;
   })
-  
+
   $("#picker").livequery(function(){
     var farb = $.farbtastic('#picker');
     var picker = $('#picker').css('opacity', 0.15);
     var selected;
-    $('.color-scheme input[type="text"]').each(function () { 
-      farb.linkTo(this); 
-      $(this).css('opacity', 0.75); 
+    $('.color-scheme input[type="text"]').each(function () {
+      farb.linkTo(this);
+      $(this).css('opacity', 0.75);
     }).focus(function() {
       if (selected) {
         $(selected).css('opacity', 0.75).removeClass('color-selected');

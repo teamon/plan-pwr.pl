@@ -1,14 +1,14 @@
 #home
   %p.info
     Generator planu pozwala na wygenerowanie estetycznego planu w PDF wprost z systemu Edukacja.CL.
-    Po wczytaniu planu z edukacji generator pozwala na dodawanie, edycję oraz usuwanie kursów. 
+    Po wczytaniu planu z edukacji generator pozwala na dodawanie, edycję oraz usuwanie kursów.
     Wygenerowany plan jest zapisywany i dostępny zawsze pod wskazanym adresem.
   %p.info
     Serwis udostępnia eksport planu do formatów: PDF, HTML, VCS,
     ICS (iCal, Google Calendar z możliwością subskrybcji),JSON, XML.
   %p.info
     Jeżeli nie jesteś studentem Politechniki Wrocławskiej, możesz sam stworzyć cały plan od podstaw.
-        
+
   .button
     = link_to "Stwórz nowy plan zajęć", new_schedule_path, :rel => "facebox"
 
@@ -17,7 +17,7 @@
 
   .button
     = link_to "Przeglądarka AKZ", "/akz"
-  
+
   %h2 Przykładowe plany
   %ul#examples
     - examples.each do |title, file|
@@ -25,7 +25,7 @@
         = link_to "", "/images/examples/#{file}.png",
           :rel => "facebox", :title => title,
           :style => "background-image: url(/images/examples/#{file}-thumb.png)"
-                                            
+
 
   #facebook
     <fb:like layout='button_count'/>
@@ -35,32 +35,32 @@
       FB.init({appId: "174768842569714", status: true, cookie: true, xfbml: true});
     };
     (function() {
-      var e = document.createElement("script"); 
+      var e = document.createElement("script");
       e.async = true;
       e.src = document.location.protocol  + "//connect.facebook.net/pl_PL/all.js";
       e.async = true;
       document.getElementById("fb-root").appendChild(e);
     }());
   <fb:comments/>
-  
-#howto  
+
+#howto
   %h3 Instrukcja obsługi
   %ul.howto
-    %li 
-      Wejdź na 
+    %li
+      Wejdź na
       = link_to "Edukacje.CL", "http://edukacja.pwr.wroc.pl"
-      (zaloguj się itp) 
+      (zaloguj się itp)
       == (#{link_to "screen", "/images/howto/1.jpg", :title => "Logowanie", :rel => "facebox"})
-    %li 
-      Kliknij zakładkę 
+    %li
+      Kliknij zakładkę
       %strong "Zapisy"
       (po lewej w menu)
       == (#{link_to "screen", "/images/howto/2.jpg", :title => "Zapisy", :rel => "facebox"})
-    %li 
-      Teraz klik na 
+    %li
+      Teraz klik na
       %strong "Przełącz na &lt;Grupy zajęciowe do których słuchacz jest zapisany w semestrze&gt;"
       == (#{link_to "screen", "/images/howto/3.jpg", :title => "Grupy", :rel => "facebox"})
-    %li 
+    %li
       Skopiuj źródło strony
       %ul
         %li Z menu "Widok" wybierz "Źródło strony"
@@ -72,7 +72,7 @@
       i wklej w pole.
 
 #github
-  %iframe{:src => "github-buttons/github-btn.html?user=teamon&repo=plan-pwr.pl&type=watch&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "75", :height => "20"}
-  %iframe{:src => "github-buttons/github-btn.html?user=teamon&repo=plan-pwr.pl&type=fork&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "85", :height => "20"}
-  %iframe{:src => "github-buttons/github-btn.html?user=teamon&repo=plan-pwr.pl&type=follow&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "150", :height => "20"}
+  %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=watch&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "75", :height => "20"}
+  %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=fork&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "85", :height => "20"}
+  %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=follow&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "150", :height => "20"}
 

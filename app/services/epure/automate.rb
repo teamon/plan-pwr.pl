@@ -1,9 +1,6 @@
 # encoding: utf-8
 
 module Epure
-  class LoginException < Exception
-  end
-
   class Automate
     def self.run!(login, password)
       agent = Mechanize.new

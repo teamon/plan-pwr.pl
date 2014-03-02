@@ -1,8 +1,3 @@
-# encoding: utf-8
-
-require File.join(Rails.root, "lib", "epure", "automate")
-require File.join(Rails.root, "lib", "epure", "parser")
-
 class SchedulesController < ApplicationController
   respond_to :html, :htmlmini, :pdf, :pdfmini, :js, :xml, :ics, :vcs
 
@@ -131,7 +126,7 @@ class SchedulesController < ApplicationController
     render :json => { :errors => ["Podane hasło jest niepoprawne"] }, :status => :unprocessable_entity
   rescue Epure::ParserException => ex
     params[:parser_input] = ex.data
-    notify_airbrake(ex)
+    # notify_airbrake(ex)
     if params[:commit] == "Pobierz plan"
       render :json => { :errors => ["Wystąpił błąd. Administrator został o nim poinformowany. Możesz sie z nim skontaktować poprzez email: i@teamon.eu"] }, :status => :unprocessable_entity
     else
@@ -153,7 +148,7 @@ class SchedulesController < ApplicationController
 
   def update
     @schedule = Schedule.find(params[:id])
-    if @schedule.update_attributes(params[:schedule])
+    if @schedule.update_attributes(schedule_params)
       render :json => {
         :notice => "Ustawienia pomyślnie zapisane",
         :year => @schedule.year,
@@ -164,19 +159,11 @@ class SchedulesController < ApplicationController
     end
   end
 
-
-
-  # def destroy
-  #   @schedule = Schedule.find(params[:id])
-  #   @schedule.destroy
-  #
-  #   respond_to do |format|
-  #     format.html { redirect_to(schedules_url) }
-  #     format.xml  { head :ok }
-  #   end
-  # end
-
   protected
+
+  def schedule_params
+    params.require(:schedule).permit(:year, :semester, :color_schemes_attributes)
+  end
 
   def render_html(schedule, mini = false)
     @generator = Epure::Generators::HTML.new(schedule)

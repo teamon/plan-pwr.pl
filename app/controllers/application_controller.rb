@@ -1,8 +1,3 @@
-# encoding: utf-8
-
-require File.join(Rails.root, "lib", "epure", "avg")
-require File.join(Rails.root, "lib", "epure", "parser")
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
 

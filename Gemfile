@@ -1,41 +1,39 @@
 source 'http://rubygems.org'
 
-ruby "1.9.3"
+ruby "2.0.0"
 
-gem 'rails', '3.0.3'
-gem 'pg', '0.10.1'
-gem 'haml', '3.0.25'
+gem 'rails',        "~> 4.0.0"
+gem 'pg',           "~> 0.17.0"
+gem 'haml-rails',   "~> 0.5.3"
+
+# assets processors
+gem "sass-rails",               "~> 4.0.0"
+gem "uglifier",                 ">= 1.3.0"
+gem "coffee-rails",             "~> 4.0.0"
+gem "coffee-rails-source-maps", "~> 1.4.0"
+gem "execjs",                   "~> 2.0.0"
+gem 'ngmin-rails',              "~> 0.4.0"
+gem "autoprefixer-rails",       "~> 1.0.0"
 
 # parser
-gem "nokogiri", "1.4.4"
-# pdf
-gem "pdfkit", "0.5.0"
-# ical
-gem 'ri_cal', '0.8.8'
-# vcs
-gem 'vpim-rails', github: "fraser/vpim-rails"
+gem "nokogiri",   "1.4.4"
+gem "pdfkit",     "0.5.0" # pdf
+gem 'ri_cal',     "0.8.8" # ical
+gem 'vpim-rails', github: "fraser/vpim-rails" # vcs
 
 # automat
 gem 'mechanize', '2.5.1'
 
-# server
-gem 'thin'
-
-# error reporting
-gem "airbrake"
-
 # zip
-gem "zippy"
+gem "zippy", git: "git@github.com:toretore/zippy.git"
 
 # statistics
 gem "rack-google_analytics", '1.0.1', :require => "rack/google_analytics"
 
 group :development, :test do
-  gem 'awesome_print'
-  gem 'rspec-rails'
+  gem "awesome_print",      "~> 1.2.0"
+  gem "rspec-rails",        "~> 3.0.0.beta1"
   gem 'watchr'
-  gem 'webrat'
-  gem 'spork', '~> 0.9.0.rc'
-  gem 'silent-postgres'
-  gem 'pry'
+  gem 'spork-rails',        github: 'sporkrb/spork-rails' # rubygems version not rails 4 compatible
+  gem "pry-rails",          "~> 0.3.0"
 end
