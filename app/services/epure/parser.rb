@@ -80,7 +80,7 @@ module Epure
                   e.start_min   = m_when[3].to_i
                   e.end_hour    = m_when[4].to_i
                   e.end_min     = m_when[5].to_i
-                elsif m_when = where_when.match(/(.{2})(?:\/(T(?:P|N)?))? (\d{2}):(\d{2})-(\d{2}):(\d{2})/u)
+                elsif m_when = where_when.match(/(.{2})(?:\/(T(?:P|N)?))?(?:.*)? (\d{2}):(\d{2})-(\d{2}):(\d{2})/u)
                   e.week_day    = WEEK_DAYS[m_when[1]]
                   e.week        = WEEKS[m_when[2] || ""]
                   e.start_hour  = m_when[3].to_i
