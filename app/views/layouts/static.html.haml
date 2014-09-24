@@ -19,7 +19,7 @@
     = csrf_meta_tag
 
   %body{:class => request.path == "/" || request.path == "/home" || request.path == "/srednia" ? "home" : nil}
-    %a.banner{:href => "http://monterail.com/jobs/ruby-on-rails-developer"}
+    %a.banner{:href => 'http://join.hussa.rs/', :target=> '_blank'}
     #container
       #main
         = yield

@@ -11,7 +11,7 @@
 
   %body{:class => request.path == "/" || request.path == "/home" || request.path == "/srednia" ? "home" : nil}
     - if ['/home', '/'].include? request.path
-      %a.banner{:href => "http://monterail.com/jobs/ruby-on-rails-developer"}
+      %a.banner{:href => 'http://join.hussa.rs/', :target=> '_blank'}
     #container
       -# {:style=>"color: red; text-align:center;"} W związku ze zmianami w systemie Edukacja.CL mogą występować błędy. Proszę o zgłaszanie problemów na email i@teamon.eu lub w komentarzach poniżej
       #main
