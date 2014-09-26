@@ -5,7 +5,7 @@
     Wygenerowany plan jest zapisywany i dostępny zawsze pod wskazanym adresem.
   %p.info
     Serwis udostępnia eksport planu do formatów: PDF, HTML, VCS,
-    ICS (iCal, Google Calendar z możliwością subskrybcji),JSON, XML.
+    ICS (iCal, Google Calendar z możliwością subskrybcji), JSON, XML.
   %p.info
     Jeżeli nie jesteś studentem Politechniki Wrocławskiej, możesz sam stworzyć cały plan od podstaw.
 
@@ -25,6 +25,32 @@
         = link_to "", "/images/examples/#{file}.png",
           :rel => "facebox", :title => title,
           :style => "background-image: url(/images/examples/#{file}-thumb.png)"
+
+  %h2 FAQ
+  %dl.faq
+    %dt Czy moje dane logowania do Edukacji są bezpieczne?
+    %dd
+      Dane używane do pobrania planu z systemu Edukacja.CL nie są w żaden sposób przechowywane ani logowane.
+
+    %dt Nie działa pobieranie planu z Edukacji
+    %dd
+      Spróbuj <a href="#howto" rel="facebox">wkleić źródło strony</a>.
+
+    %dt Po wklejeniu źródła mój plan jest pusty
+    %dd
+      Kopiowanie źródła najlepiej działa pod Firefoxem.
+      %br
+      Pod Chromem spróbuj użyć <a href="http://michaljodko.com/planix/">wtyczki Planix</a>.
+
+    %dt Znalazłem błąd - gdzie go zgłosić?
+    %dd
+      Wyślij maila na <a href="mailto:support@plan-pwr.pl">support@plan-pwr.pl</a> z opisem problemu.
+
+    %dt Chcę się zaangażować w rozwój serwisu, od czego mam zacząć?
+    %dd
+      Pełny kod źródłowy dostępny jest <a href="https://github.com/teamon/plan-pwr.pl/">na GitHubie</a>.
+      %br
+      W razie pytań napisz na <a href="mailto:support@plan-pwr.pl">support@plan-pwr.pl</a>.
 
   #github
     %iframe{:src => "http://ghbtns.com/github-btn.html?user=teamon&repo=plan-pwr.pl&type=watch&count=true&count=true", :allowtransparency => "true", :frameborder => "0", :scrolling => "0", :width => "75", :height => "20"}

@@ -4,17 +4,8 @@
     %title Generator planu PWR
     %meta{"http-equiv" => 'content-type', "content" => 'text/html; charset=utf-8'}
 
-    = stylesheet_link_tag "http://assets.teamon.eu/facebox/facebox.css"
-    = stylesheet_link_tag "http://assets.teamon.eu/farbtastic/farbtastic.css"
-    = stylesheet_link_tag :all
-
-    = javascript_include_tag "http://assets.teamon.eu/jquery/jquery-1.5.min.js"
-    = javascript_include_tag "http://assets.teamon.eu/livequery/jquery.livequery.js"
-    = javascript_include_tag "http://assets.teamon.eu/farbtastic/farbtastic.js"
-    = javascript_include_tag "http://assets.teamon.eu/facebox/facebox.js"
-    = javascript_include_tag "http://assets.teamon.eu/jquery-ui-autocomplete.min.js"
-    = javascript_include_tag "http://assets.teamon.eu/rails/rails.js"
-    = javascript_include_tag :defaults
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
 
     = csrf_meta_tag
 
