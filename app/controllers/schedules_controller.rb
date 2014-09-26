@@ -162,7 +162,8 @@ class SchedulesController < ApplicationController
   protected
 
   def schedule_params
-    params.require(:schedule).permit(:year, :semester, :color_schemes_attributes)
+    params.require(:schedule).permit(:year, :semester,
+      :color_schemes_attributes => [:background, :border, :font, :id])
   end
 
   def render_html(schedule, mini = false)
