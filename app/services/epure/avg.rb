@@ -13,10 +13,10 @@ module Epure
       table =  @doc.css("table.KOLOROWA")[1]
       data = []
 
-      (table.children.size / 4).times do |index|
-        da = table.children[4*index + 3].css("table.KOLOROWA")[0].css("tr")
+      table.css("table.KOLOROWA").size.times do |index|
+        da = table.css("table.KOLOROWA")[index].css("tr")
         data << {
-          :info => (0..2).map {|i| table.children[4*index + i].css("td.BIALA_LEFT")[0].content.gsub(/&nbsp;/, "").strip },
+          :info => (0..2).map {|i| table.css("td.BIALA_LEFT")[3*index + i].content.gsub(/&nbsp;/, "").strip },
           :data => da[1, da.size-1].map {|d| d.css("td").map {|e| e.content.strip} }
         }
       end
