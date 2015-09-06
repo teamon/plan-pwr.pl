@@ -1,3 +1,0 @@
-[submodule "public/github-buttons"]
-	path = public/github-buttons
-	url = git@github.com:mdo/github-buttons.git
