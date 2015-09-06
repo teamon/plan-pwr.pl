@@ -1,7 +1,6 @@
 PDFKit.configure do |config|
-  if RUBY_PLATFORM =~ /darwin/
-    config.wkhtmltopdf = File.join(Rails.root, 'bin', 'wkhtmltopdf-0.9.9-OS-X.i368')
-  else  
-    config.wkhtmltopdf = File.join(Rails.root, 'bin', 'wkhtmltopdf-amd64')
+  config.wkhtmltopdf = ''
+  ENV['PATH'].split(File::PATH_SEPARATOR).any? do |directory|
+    config.wkhtmltopdf = File.join(directory, program.to_s) if File.executable?(File.join(directory, program.to_s))
   end
 end
