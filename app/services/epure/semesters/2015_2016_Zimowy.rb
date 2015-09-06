@@ -1,4 +1,4 @@
-Epure::EDate.register("2014/2015", Epure::Config::WINTER) do
+Epure::EDate.register("2015/2016", Epure::Config::WINTER) do
   add D(2015, 10, 1)..D(2015, 11, 10)
   add D(2015, 11, 12, 3, 0)
   add D(2015, 11, 13)..D(2015, 12, 21)
