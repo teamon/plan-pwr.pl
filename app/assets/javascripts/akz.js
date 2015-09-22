@@ -56,7 +56,7 @@ function sFilter(){
 }
 
 function whatDay(s){
-  s = s.replace(/\(|\)/g, "").split("/");
+  s = s.replace(/\(|\)/g, "").split(" ");
 
   var day = 0;
   var par = "";
@@ -86,7 +86,7 @@ function showCourses(t, el){
   var name = el.find("td:nth-child(3)").text();
   var teacher = el.find("td:nth-child(5)").text();
   for(var i = 0; i < thing2.length; i++) {
-    s = thing2[i].split(' ');
+    s = thing2[i].split(')');
     d = s[0];
     h = s[1].split('-');
     godz = new Array(parseInt(h[0].split(":")[0]), parseInt(h[1].split(":")[0]));
